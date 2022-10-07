@@ -1,0 +1,39 @@
+\documentclass[11pt,titlepage=false]{scrreprt}
+\usepackage{evan}
+\usepackage[cache=false]{minted}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,fit}
+
+
+% \title{MATH 421 Lecture notes}
+% \author{Pongsaphol Pongsawakul}
+\begin{document}
+
+% \setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.5in}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\setlength{\parindent}{0pt}
+
+\setuptoc{toc}{leveldown}
+
+\title{MATH 421 Lecture Notes}
+\author{Pongsaphol Pongsawakul}
+\date{Fall 2022}
+\maketitle
+\tableofcontents
+
+\setcounter{secnumdepth}{-1}
+
+\include{Notes/properties.tex}
+\include{Notes/00}
+
+\setcounter{secnumdepth}{1}
+
+\include{Notes/01}
+\include{Notes/02}
+\include{Notes/03}
+% \include{Notes/04}
+
+\end{document}

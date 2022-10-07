@@ -1,0 +1,75 @@
+\chapter{Real Intervals}
+$\forall a, b \in \RR$ such that $a < b$, we denote $\left[a,b\right]$, the set of all $\RR$ between $a$ and $b$ (inclusive)
+$$\left[a,b\right]=\{x\in \RR : a \leq x \leq b\}$$
+Similarly, we have
+$$\left(a,b\right)=\{x\in \RR : a < x < b\}$$
+by convention, $\left(a,a\right)=\emptyset$, the empty set 
+$$\left(a,b\right]=\{x\in \RR : a < x \leq b\}$$
+$$\left[a,b\right)=\{x\in \RR : a \leq x < b\}$$
+Subset of this form are call \textbf{intervals}. We also adopt the notation
+$$\left(\infty,a\right]=\{x\in \RR : x \leq a\}$$
+$$\left(b,\infty\right]=\{x\in \RR : x > a\}$$
+We'll never write $\left[\infty,a\right]$, since $\pm\infty$ are \textbf{not} real numbers.
+
+$\left[a,b\right],\left(a,b\right],\left[a,b\right),\left(a,b\right)$, they are \textbf{bounded}
+
+\begin{definition}
+A set $B \subseteq \RR$ is bounded below 
+(respectively bounded above) 
+if $\exists b \in \RR$ such that $x \geq b\ \forall x \in B$ (respectively $x\leq b$ for all $x \in B$)
+
+e.g. $\{0, 1, 50^{72}, -350\pi\}$ and $\left[-\frac{1}{\sqrt{10}},3\right)$ are bounded while $\RR$ and $\NN$ are not bounded
+
+e.g. $\left[-357,\infty\right)$ is bounded below but not above
+\end{definition}
+
+\begin{definition}
+Let $B \subseteq \RR$ be a subset that is bounded. We say that $b \in \RR$ is the least upper bound of $B$ (also call the supremum of $B$) if
+
+\begin{enumerate}[(i)]
+    \item $b$ is an upper bound for $B$
+    \item if $b'$ is also an upper bound for $B$, then we have $b \leq b'$
+\end{enumerate}
+
+We denote this least upper bound by $\sup B$
+
+\end{definition}
+
+\begin{remark}
+It is easy to see that for a set $B$ bounded above. $\sup B$ is unique. 
+To see this, suppose that both $\beta_1$ and $\beta_2$ are least upper bound for $B$. 
+Then since $\beta_2$ is least upper bound and $\beta_1$ is an upper bound. We have $\beta_2 \leq \beta_1$. 
+But also since $\beta_1$ is least upper bound and $\beta_2$ is a lower bound, we have $\beta_1 \leq \beta_2$. 
+Hence $\beta_1 = \beta_2$
+\end{remark}
+
+We have the corresponding notation for lower bounds
+
+\begin{definition}
+Let $A \subseteq \RR$ be a subset bounded below. 
+We say that $a\in\RR$ is the greatest lower bound for $A$ (also called the infimum of $A$) if
+\begin{enumerate}[(i)]
+    \item $a$ is an lower bound for $A$
+    \item if $a'$ is also an lower bound for $A$, then $a' \leq a$
+\end{enumerate}
+\end{definition}
+
+For $B=\left(-1,\infty\right), \inf B = -1$.
+
+For $B=\left[-1,\infty\right), \inf B = -1$.
+
+For $A=\left[2,10\right) \cup \left(510,511\right] \cup \{520\}, \inf A = 2, \sup A = 520$
+
+Note that some sets contain their infimum/supremum while others do not.
+We note down a property of the real-numbers which we state but do not prove
+
+\begin{example*}
+Prove that if $a = \left(0,1\right), \sup A = 1$
+\end{example*}
+
+\begin{proof}
+    Notice that if $x\in A$ then $x < 1$, so $1$ is an upper bound for $A$.
+    Suppose for contradiction that $\sup A \neq 1$.
+    Then we must have $\sup A < 1$ but $m=\frac{1}{2}(\sup A + 1) \in A$ but $m > \sup A$.
+    So $\sup A$ is not an upper bound for $A$
+\end{proof}

@@ -1,0 +1,475 @@
+\chapter{Functions \& Their Representation}
+A function is a ``thing" that assigns a number to another number
+\begin{example*}
+    the square function $x \mapsto x^2$ 
+
+    The way we represent this is by writing that $f$, the function such that $f(x)=x^2$, also written $f:x\mapsto x^2$
+\end{example*}
+\begin{example*}
+    We could also define a function, say $g$, that acts on $\{0, 1, 3\}$ and maps from elements of this set to $\{-1,2\}$, for instance
+    $$g(0) = 1,\ g(1) = 2,\ g(3) = 2$$
+\end{example*}
+One way of representing this is with the diagram
+
+\begin{center}
+\begin{tikzpicture}
+%put some nodes on the left
+% \foreach \x in {1,2,3}{
+% \node[fill,circle,inner sep=2pt] (d\x) at (0,\x) {};
+% }
+
+\node[fill,circle,inner sep=2pt, label={left:3}] (d1) at (0,1) {};
+\node[fill,circle,inner sep=2pt, label={left:1}] (d2) at (0,2) {};
+\node[fill,circle,inner sep=2pt, label={left:0}] (d3) at (0,3) {};
+
+\node[fit=(d1) (d2) (d3),ellipse,draw,minimum width=2cm] {}; 
+%put some nodes on the center
+% \foreach \x[count=\xi] in {1.5,2.5}{
+% \node[fill,circle,inner sep=2pt, label={}] (r1) at (2,1.5) {};
+% }
+\node[fill,circle,inner sep=2pt, label={right:2}] (r1) at (3,1.5) {};
+\node[fill,circle,inner sep=2pt, label={right:-1}] (r2) at (3,2.5) {};
+
+\node[fit=(r1) (r2),ellipse,draw,minimum width=2cm] {}; 
+
+\draw[-latex] (d1) -- (r1);
+\draw[-latex] (d2) -- (r1);
+\draw[-latex] (d3) -- (r2);
+
+\end{tikzpicture}
+\end{center}
+
+When defining a function $f$, we write $f:A\lthen B$, where $A$ is domain and $B$ is range
+
+\begin{example*}
+    Define the function $r:\left[-17,-\frac{\pi}{3}\right] \lthen \RR$ by the explicit formula $$r(x)=x^3,r:\left[-17,-\frac{\pi}{3}\right] \lthen \left[-17^3,-\left(\frac{\pi}{3}\right)^3\right] \subseteq \RR$$
+\end{example*}
+
+\section{Operation between functions}
+Suppose $f_1, f_2$ have the same domain $A$, then we can define a new function, say $g$, to take the values of the sum of $f_1$ and $f_2$
+i.e., for $f_1: A \lthen B$ and $f_2: A \lthen B$ we define $g: A \lthen B'$ bo be
+$$g(x) = f_1(x) + f_2(x)\ \forall x \in A$$
+Note that $B'$ might not be equal to $B$
+
+\begin{example*}
+    $f_1, f_2 : \left[0,1\right] \lthen \left[0,1\right],\ f_1(x) = x,\ f_2(x) = \frac{1}{2}x,\ g(x) = \frac{3}{2}x$ and $g: \left[0,1\right] \lthen \left[0,\frac{3}{2}\right]$
+\end{example*}
+For ease of notation, we write $g$ as $(f_1 + f_2)$
+
+Similarly, we define the product function $(f_1 \cdot f_2)(x) = f_1(x)\cdot f_2(x) \ \forall x \in A$
+\begin{example*}
+    $f(x) = \log x$ for $x \geq 1$, $g(x) = 10x^2\ \forall x \in \RR$ 
+    To define $f+g$ and $f\cdot g$, we must to the smaller domain $\{x\in\RR : x \geq 1\}$
+\end{example*}
+
+\section{Some examples of functions}
+
+\subsection{Polynomials}
+\begin{definition}
+    $f: \RR \lthen \RR$ is a polynomial function, if $\exists N \in \NN$ and $\exists\{a_0, \dotsc, a_N\} \in \RR^{N+1}$ 
+    $$f(x) = a_0 + a_1x+ \dotsc a_Nx^N\ \forall x \in \RR$$
+\end{definition}
+\subsection{Rational function}
+\begin{definition}
+    We say that $f$ is a rational function if for some polynomial functions $p: \RR \lthen \RR$ and $q: \RR \lthen \RR$ such that
+    $$f(x) = \frac{p(x)}{q(x)}\ \forall x \in \RR\setminus R_q$$
+    where $R_q = \{x\in\RR:q(x) = 0\}$ is the set of roots of $q$
+\end{definition}
+
+\subsection{Construct functions}
+\begin{definition}
+    $f: \RR\lthen\RR$ is a constant function if $\exists c \in \RR$ such that $f(x) = c\ \forall x \in \RR$
+\end{definition}
+
+\subsection{The identity}
+\begin{definition}
+    If $f(x) = x\ \forall x \in \RR$ then we say that $f$ is the identity map.
+\end{definition}
+
+\section{Composition}
+\begin{definition}
+    Let $f:A \lthen B$ and $g:B\lthen C$ be functions.
+    We define the composition $g \circ f : A \lthen C$ by $g \circ f(x) = g(f(x))\ \forall x \in A$
+\end{definition}
+
+\section{Formal definition}
+\begin{definition}\label{def:fndefine}
+    A function is a collection of pairs of points with the property if $(a, b)$ and $(a, c)$ belong to the collection, the $b = c$. 
+    The pairs of points are of the form $(a, f(a)$. 
+    The property in \textbf{Definition~\ref{def:fndefine}} ensure that we stay clear of a confusion of the sort $f(2) = 2$ and $f(2) = 3$, which would using the diagram representation.
+\begin{center}
+\begin{tikzpicture}
+\node[fill,circle,inner sep=2pt, label={left:a}] (d2) at (0,2) {};
+
+\node[fit=(d2),ellipse,draw,minimum width=1.25cm] {}; 
+
+\node[fill,circle,inner sep=2pt, label={right:b}] (r1) at (3,1.5) {};
+\node[fill,circle,inner sep=2pt, label={right:c}] (r2) at (3,2.5) {};
+\node[fit=(r1) (r2),ellipse,draw,minimum width=1.25cm] {}; 
+
+\draw[-latex] (d2) -- (r1);
+\draw[-latex] (d2) -- (r2);
+
+\end{tikzpicture}
+
+\textbf{NOT} a function
+\end{center}
+\end{definition}
+
+\begin{definition}
+    Let $f$ be a function and denote by $\mathcal{F}$ its collection of points. The domain of $f$, written $\dom(f)$, is the set of all points $a$ such that there exists some $b$ for which $(a, b) \in \mathcal{F}$.
+\end{definition}
+i.e., $\dom(f) = \{a: \exists b$ for which $(a, b) \in \mathcal{F}\}$
+
+Moreover, by \textbf{Definition~\ref{def:fndefine}} for each $a\in\dom(f)$ there exists $a$ unique $b$ such that $(a, b) \in \mathbf{F}$
+
+\section{Graphs of functions}
+An intimidate way to represent a function is by writing its coordinate pair on curves, i.e., drawing its graph
+
+\begin{center}
+    \begin{tikzpicture}
+  \draw[->] (-1, 0) -- (4.2, 0) node[right] {$x$};
+  \draw[->] (0, -1) -- (0, 4.2) node[above] {$f(x)$};
+  \draw[scale=0.5, domain=-2:8, smooth, variable=\x] plot ({\x}, {\x*\x*0.1});
+\end{tikzpicture}
+
+This diagram is representation of $\{(x, f(x)\}, x\in A$
+\end{center}
+
+\begin{definition}
+    Let $f: \RR \lthen \RR$ be a function.
+    We say $f$ is \textbf{linear} if $\exists a \in \RR$ such that $$f(x) = ax,\ \forall x \in \RR$$
+\end{definition}
+\begin{definition}
+    Let $f: \RR \lthen \RR$ be a function.
+    We say $f$ is \textbf{affine} if $\exists a \in \RR$ such that $$f(x) = ax + b,\ \forall x \in \RR$$
+\end{definition}\begin{definition}
+    Let $f: \RR \lthen \RR$ be a function.
+    We say $f$ is \textbf{even} if $\exists a \in \RR$ such that $$f(x) = f(-x),\ \forall x \in \RR$$
+\end{definition}\begin{definition}
+    Let $f: \RR \lthen \RR$ be a function.
+    We say $f$ is \textbf{odd} if $\exists a \in \RR$ such that $$f(x) = -f(-x),\ \forall x \in \RR$$
+\end{definition}
+
+\section{What is limit}
+
+What is a limit? Intutively, a function has a limit at a point $x_*$ if the function values $f(x)$ ``approach" this limit number as $x$ gets closer to $x_*$
+
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (-1, 0) -- (4.2, 0) node[right] {$x$};
+  \draw[->] (0, -1) -- (0, 4.2) node[above] {$f(x)$};
+  \draw[dotted] (2, 0) -- (2, 2);
+  \draw[dotted] (0, 2) -- (2, 2);
+  \draw[->] (1.5, 1.35) -- (1.95, 1.8);
+  \draw[->] (2.5, 2.35) -- (2.05, 1.9);
+  \draw[scale=0.5, domain=-0.8:8, smooth, variable=\x] plot ({\x}, {\x});
+  \node[] at (2,-0.3) {1};
+  \node[] at (-0.2, 2) {1};
+\end{tikzpicture}
+
+if $f(x) = x\ \forall x \in \RR$ that as $x$ increases to $1$
+\end{center}
+
+\begin{center}
+    \begin{tikzpicture}
+  \draw[->] (-1, 0) -- (4.2, 0) node[right] {$x$};
+  \draw[->] (0, -1) -- (0, 4.2) node[above] {$f(x)$};
+
+  \draw[scale=0.5, domain=0.13:8, smooth, variable=\x] plot ({\x}, {1/\x});
+\end{tikzpicture}
+
+as $x \lthen \infty, f(x)$ goes arbitrary close to $0$, as $x \lthen 0, f(x)$ ``explodes" and has not limit
+\end{center}
+
+This idea of a function having a limit is also preserve for more basic objects, e.g., sequence
+
+e.g., the sequence of points $\{0, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dotsc\}$ where the $n^{th}$ element of the sequnec may be written as $a_n=1-\frac{1}{n}$, converge to $1$ as $n \lthen \infty$
+
+\subsection{definition of limit}
+
+\begin{definition}\label{def:limit}
+    Let $f: \RR \lthen \RR$ be a function and let $a, l \in \RR$.
+    We say that $f$ approach the limit $l$ near $a$ if for all $\eps > 0$ there exists $\delta > 0$ such that
+    $$0 < |x-a| < \delta \implies |f(x)-l| < \eps$$
+    We write $\lim\limits_{x \to a} f(x) = l$
+\end{definition}
+
+Some comments on \textbf{Definition}~\ref{def:limit}
+\begin{enumerate}[(i)]
+    \item $\delta$ is allowed to depend on $\eps, a, l$ 
+    \item ``for all $\eps > 0$" can be read as ``given any $\eps > 0$"
+\end{enumerate}
+
+\begin{example*}
+    Let $f(x) = cx$ for some $c \in \RR$ we show that $\lim\limits_{x \to 1} f(x) = c$
+\end{example*}
+\begin{proof}
+    let $\eps > 0$ be given. Then 
+    \begin{align*}
+        |f(x)-c|&=|cx-c|\\
+        &=|c|\cdot|1-x|
+    \end{align*}
+    So, letting $\delta=\delta(\eps)=|c|^{-1}\cdot\eps$, we get that
+    $$0 < |1-x| < \delta \implies |f(x)-c| < \eps$$
+    Since this hold for all $\eps > 0$, we define $\lim\limits_{x \to 1} f(x) = c$
+\end{proof}
+
+\begin{example*}
+    Let $g(x) = x\sin(\frac{1}{x})$ for some $x \in (0, \infty)$. Then $\lim\limits_{x \to 0} g(x) = 0$
+\end{example*}
+\begin{proof}
+    Indeed, let $\eps > 0$ be given.
+    Notice that $|g(x)| = |x|\cdot|\sin(\frac{1}{x})| \leq |x|$
+    
+    , thus, letting $\delta=\delta(\eps)=\eps$, we see that
+    $$0 < |x| < \delta \implies |g(x)| < \eps$$
+\end{proof}
+
+\begin{definition}
+    Let $f: \RR \lthen \RR$ and let $l \in \RR$. We say that $f$ apporaches the limit $l$ as $x$ tends to infinity if:
+    for all $\eps > 0$, there exists $R > 0$ such that 
+    $$x > R \implies |f(x)-l| < \eps$$
+    We write $\lim\limits_{x \to \infty} f(x) = l$
+    ($R$ is allowed to depend on $\eps, l$)
+\end{definition}
+
+\begin{example*}
+    let $f(x) = \frac{1}{x}$ for $x > 0$. We show that $\lim\limits_{x \to \infty} f(x) = 0$
+
+    letting $R(\eps)=\eps^{-1}$, wee see that $x > R \implies |f(x) - 0| < \eps$
+\end{example*}
+\begin{definition}
+    Let $l \in \RR$ and $\{a_n\}_{n\in\NN}$ be a sequence of real numbers.
+    We say that $a_n$ approaches the limit $l$ as $n$ tends to infinty if
+    for all $\eps > 0$, there exists $N\in \NN$ such that 
+    $$n > N \implies |a_n - l| < \eps$$
+    Write $\lim\limits_{x \to \infty a_n }= l$
+\end{definition}
+
+\begin{example*}
+    For the sequence $\{0, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dotsc\}$ where $a_n = 1-\frac{1}{n}\ \forall n\in\NN$
+    we see that $\lim\limits_{x \to \infty a_n }= 1$
+\end{example*}
+\begin{proof}
+    Indeed, let $\eps > 0$ be given. Observe that $|a_n - 1| < \frac{1}{n}$
+    ,letting $N(\eps) = \lceil \eps^{-1}\rceil$, we see that,
+    whenever $n > N$, $n > \eps^{-1} \implies \frac{1}{n} < \eps$ and $|a_n - 1| < \eps$ for such $n$
+\end{proof}
+
+What does it mean to not have a limit?
+
+\subsection{what is no limit}
+\begin{corollary}\label{def:nolimit}
+   $f: \RR \lthen \RR$ does not approach the limit $l \in \RR$ at the point $a \in \RR$ if
+   there exists some $\eps_0 > 0$ such that for all $\delta > 0$
+   there exists $x_\delta \in \RR$ for which there holds
+   \begin{center}
+       $|x_\delta - a| < \delta$ and $|f(x_\delta) - l| \geq \eps_0$
+   \end{center}
+\end{corollary}
+
+\begin{example*}
+    We show that $\substack{f:(0, 1)\lthen (0, \infty)\\
+    x\mapsto \frac{1}{x}}$ has no limit at $x=0$
+\end{example*}
+\begin{proof}
+    We show that $\forall p \geq 0$, $f$ does not approach the limit $p$ at $x=0$
+    Let $p \geq 0$ be given. We'll show that Corollary~\ref{def:nolimit} holds with $\eps_0 = 1$
+    Note that $|f(x)-p| = |\frac{1}{x}-p|=\frac{1}{x} - p$ provided $0 < x \leq \frac{1}{p}$.
+    Also observe that $0 < x \leq \frac{1}{p+1} \implies \frac{1}{x} - p \geq p+1-p=1$
+    This given any $\delta > 0$, choosing $x_\delta=\min\{\frac{\delta}{2},\frac{1}{p+1}\}$
+    we get $0 < x_\delta < \delta$ and by $|f(x_\delta - p) \geq 1$
+\end{proof}
+
+\begin{example*}
+    Let $\substack{f:(0, \infty)\lthen \RR \\
+    x\mapsto \sin(\frac{1}{x})}$.
+    We show $f$ does not approach the value $0$ as $x \lthen 0$.
+\end{example*}
+\begin{proof}
+    Indeed, for this case set $\eps_0 = \frac{1}{2}$ 
+    and for every $\delta > 0$, set $x_\delta=\frac{1}{\frac{\pi}{2} + 2\pi n_\delta}$
+    where $n_\delta \in \NN$ chosen sufficiently large such that $0 < x_\delta < \delta$.
+    For instance, $n_\delta = \lceil\frac{\delta^{-1}}{2\pi}\rceil$
+    clearify that $x_\delta=\frac{1}{\frac{\pi}{2} + 2\pi n_\delta} < \frac{1}{2\pi n_\delta}$ and 
+    \begin{align*}
+        n_\delta &\geq \frac{\delta^{-1}}{2\pi} \\
+        2\pi n_\delta &\geq \delta^{-1} \\
+        \frac{1}{2\pi n_\delta} &\leq \delta
+    \end{align*}
+    Then, $0 < x_\delta < \delta$, and 
+    \begin{align*}
+        f(x) &= \sin\left(\frac{1}{x_\delta}\right) \\
+        &= \sin\left(\frac{\pi}{2} + \frac{1}{x_\delta}\right)\\
+        &= \sin\left(\frac{\pi}{2}\right) = 1
+    \end{align*}
+    So, $|x_\delta - 0| < \delta$ and $f(x_\delta) - 0| = 1 > \frac{1}{2} = \eps_0$ $\left(\text{So, }\lim\limits_{x \to 0} f(x) \neq 0\right)$
+\end{proof}
+
+\begin{example}
+    Let $f: \RR \lthen \RR$ be defined by
+    \[ f(x) =
+  \begin{cases}
+    x       & \quad \text{if } x\in\QQ\\
+    0  & \quad \text{if } x\notin\QQ
+  \end{cases}
+\]
+$\lim\limits_{x \to 0} f(x) = 0$ but $f$ has no limit at any other point $a \neq 0$
+\end{example}
+
+\textbf{Fact} Given $s < t$ real numbers:
+\begin{enumerate}[(i)]
+    \item $\exists q \in \QQ$ such that $s < q < t$
+    \item $\exists r \in \RR\setminus\QQ$ such that $s < r < t$
+\end{enumerate}
+
+\begin{proof}
+    Fix $a > 0$ and let $l \in \RR$ be arbitrary. There are 2 cases
+    \begin{enumerate}
+        \item Suppose $l = 0$ set $\eps_0 = a$
+        Then, given $\delta > 0$ by Fact(i), $\exists x_\delta \in \QQ$ such that $a < x_\delta < a + \delta$ and thus
+        $|x_\delta - a| < \delta$ and $|f(x_\delta)-l| = x_\delta > a = \eps_0$
+        so $f(x)\nrightarrow 0$ as $x \lthen a$
+        \item Suppose $l \neq 0$ set $\eps_0=\frac{|l|}{2}$
+        then given any $\delta > 0$ by Fact(ii), $\exists x_\delta\in \RR\setminus \QQ$ such that $a < x_\delta < a + \delta$, $|x_\delta - a| < \delta$ and $|f(x_\delta)-l| = |l| > \frac{|l|}{2} = \eps_0$
+        repeating the same strategy for $a < 0$ concludes the proof.
+    \end{enumerate}
+\end{proof}
+
+\section{Identity of Limit}
+\begin{theorem}
+    Let $f:\RR \lthen \RR$ and $a \in \RR$.
+    Suppose that for $\mu, \nu \in \RR$ we have $\lim\limits_{x \to a} f(x) = \mu$ and $\lim\limits_{x \to a} f(x) = \nu$ then $\mu = \nu$
+    (i.e., the limit is unique)
+\end{theorem}
+\begin{proof}
+    Let $\eps > 0$ be given. 
+    By the definition of the limit $\exists \delta_1 = \delta_1(\eps, a, \mu) > 0$ such that 
+    $0 < |x - a| < \delta_1 \implies |f(x) - \mu| < \frac{\eps}{2}$
+    also $\exists \delta_2 = \delta_2(\eps, a, \nu) > 0$ such that 
+    $0 < |x - a| < \delta_2 \implies |f(x) - \nu| < \frac{\eps}{2}$
+    Letting $\delta = \min\{\delta_1, \delta_2\} > 0$,
+    we see that $|\mu - \nu| \leq |\mu - f(x)| + |f(x) - \nu|$, which provided $|x-a|<\delta$.
+    Hence, $|\mu-\nu| < \eps$ whenever $|x-a|<\delta$
+
+    We will show that $\mu-\nu = 0$. Suppose $\mu-\nu \neq 0$ then $|\mu-\nu| \geq 0$ but then, choosing $\eps=\frac{1}{2}|\mu-\nu|$ we get $|\mu-\nu| < \frac{1}{2}|\mu-\nu|$
+    
+\end{proof}
+
+
+\begin{theorem}
+    Let $f, g:\RR \lthen \RR$ and $a \in \RR$.
+    Suppose that for $\mu, \nu \in \RR$, $\lim\limits_{x \to a} f(x) = \mu$ and $\lim\limits_{x \to a} g(x) = \nu$ then \begin{enumerate}[(a)]
+        \item $\lim\limits_{x \to a} (f+g)(x) = \mu + \nu$
+        \item$\lim\limits_{x \to a} (f\cdot g)(x) = \mu \cdot \nu$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+We will prove each separately
+\begin{enumerate}[(a)]
+    \item Let $\eps > 0$ be given. by the definition of limit,  
+    $\exists \delta_1 = \delta_1(\eps, a, \mu) > 0$ such that 
+    $0 < |x - a| < \delta_1 \implies |f(x) - \mu| < \frac{\eps}{2}$ and 
+    $\exists \delta_2 = \delta_2(\eps, a, \nu) > 0$ such that 
+    $0 < |x - a| < \delta_2 \implies |g(x) - \nu| < \frac{\eps}{2}$.
+    Let $\delta=\min\{\delta_1, \delta_2\}$, provided $0 < |x-a| < \delta$, and observe that
+    \begin{align*}
+        |(f+g)(x)-(\mu+\nu)| &= |(f(x)-\mu)+(g(x)-\nu)| \\
+        &\leq |f(x)-\mu|+|g(x)-\nu| \\
+        &< \frac{\eps}{2} + \frac{\eps}{2} = \eps
+    \end{align*}
+    and $0 < |x-a| < \delta \implies |(f+g)(x)-(\mu+\nu)| < \eps$
+    \item Let $\eps > 0$ be given, and observe that 
+    \begin{align*}
+        |(f\cdot g)(x)-(\mu\nu)| &= |(f(x)g(x)-\mu g(x))+(\mu g(x)-\mu\nu)| \\
+        &\leq |g(x)|\cdot|f(x)-\mu|+|\mu|\cdot|g(x)-\nu| 
+    \end{align*}
+    By the definition of limit $\exists \delta_g=\delta_g(\eps, a, \nu) > 0$ such that $|g(x) - \nu| < \min\{\frac{\eps}{2(1+|\mu|)}, 1\}$, whenever $0 < |x-a| < \delta_g$.
+    
+    Note: whenever $0 < |x-a| < \delta_g$, we have
+    \begin{enumerate}[(i)]
+        \item $|g(x) - \nu| < \frac{\eps}{2(1+|\mu|)}$ and $|\mu|\cdot|g(x)-\nu| < \frac{\eps}{2}$
+        \item $|g(x)-\nu| < 1$ and $g(x) \leq |g(x) - \nu| + |\nu| < 1 + |\nu|$
+    \end{enumerate}
+    Again, by the definition of limit, $\exists\delta_f=\delta_f(\eps, a, \mu, \nu) > 0$ such that $$|x-a| < \delta_f \implies |f(x) - \mu| < \frac{\eps}{2(1+|\nu|)}$$
+    then, we see that, for $\delta = \min\{\delta_f, \delta_g\}$ we have $$|(f\cdot g)(x)-(\mu\nu)| < (1 + |\nu|)\frac{\eps}{2(1 + |\nu|)} + \frac{\eps}{2} = \eps$$
+\end{enumerate}
+\end{proof}
+
+\section{Infremum / Supremum}
+Our objective is to give a sense of infremum/supremum as limits.
+For example, consider $\left[1, 2\right]$. 
+This set has the property that for every $x \in \left[1, 2\right]$, there exists a sequence of points $(x_n)_{n\in\NN}$ belonging to $\left[1, 2\right]$ such that $x_n \lthen x$ as $n \lthen \infty$.
+Indeed, $x\in(1, 2)$, then for $M_x > 0$ sufficiently large. $x_n = x + \frac{1}{n\cdot M_x}$ is such that $x_n \in (1, 2)$ and $x_n \lthen x$.
+And for when $x \in \{1, 2\}$, we can build the sequences $x_n = \frac{1}{100n}$ or $x_n = 2- \frac{1}{100n}$
+This property also holds for $(1, 2)$, but also even though $1, 2 \notin (1, 2)$, 
+there exists sequences $(y_n)_{n\in\NN}$ and $(z_n)_{n\in\NN}$ such that $y_n, z_n \notin (1, 2)\ \forall n \in \NN$ and $y_n \lthen 1$ as $n \lthen \infty$, $z_n \lthen 2$ as $n \lthen \infty$
+
+It turns out that the property of ``having a sequence inside the set converging to this point" is a property that holds true for the $\inf$ and $\sup$ of any bounded set.
+
+To this end, we prove the following lemma
+
+\begin{lemma}\label{lem:bab}
+    Let $B \subseteq \RR$ be a nonempty set bounded above.
+    Then, given any $\eps > 0$, there exists some $b_\eps \in B$ such that $$\sup B - \eps < b_\eps\ (\leq \sup B)$$
+\end{lemma}
+\begin{proof}
+    Let $\eps > 0$ be given. 
+    Denote $\sup B$ by $\beta$.
+    Suppose for contradiction that no such $b_\eps$ exists, Then for all $b \in B$, 
+    we must have $b \leq \beta - \eps$ but then $\beta - \eps$ is the least upper bound for $B$
+\end{proof}
+
+An analogous argument prove
+\begin{lemma}\label{lem:bbl}
+    Let $A \subseteq \RR$ be a nonempty set bounded below.
+    Then, given any $\eps > 0$, there exists some $a_\eps \in B$ such that $$(\inf A \leq)\ a_\eps < \inf A + \eps$$
+\end{lemma}
+
+\begin{corollary}
+    Let $A\subseteq \RR$ be nonempty and bounded, then, $\exists(x_n)_{n\in\NN}$ and $\exists(y_n)_{n\in\NN}$ 
+    for which $x_n, y_n \in A$ for all $n \in \NN$ and
+    $\lim\limits_{x \to \infty}x_n = \inf A$, $\lim\limits_{x \to \infty}y_n = \sup A$
+\end{corollary}
+\begin{proof}
+    By Lemma~\ref{lem:bab} for each $n \in \NN$, $\exists y_n \in A$ such that $\sup A - \frac{1}{n} < y_n \leq \sup A$ and 
+    $|y_n - \sup A| < \frac{1}{n} \lthen 0$ as $n \lthen \infty$
+    So, $\lim\limits_{x \to \infty}y_n = \sup A$.
+    Also, for each $n \in \NN$, by Lemma~\ref{lem:bbl}, $\exists x_n \in A$ such that $\inf A \leq x_n < \inf A + \frac{1}{n}$.
+    i.e., $|x_n - \inf A| < \frac{1}{n} \lthen 0$ as $n \lthen \infty$. 
+    So, $\lim\limits_{x \to \infty}x_n = \inf A$.
+\end{proof}
+
+\begin{lemma}
+    Suppose $A$ is non-empty and bounded below.
+    Let $B$ be the set of all lower bounds of $A$.
+    Then $\inf A = \sup B$
+\end{lemma}
+\begin{proof}
+There are 3 steps
+
+\par\textbf{Step 1} $\left[B\text{ is nonempty}\right]$ 
+Since $A$ is bounded below, there exists at least one lower bound, which belongs to $B$, so $B \neq \emptyset$
+
+\par\textbf{Step 2} $\left[B\text{ is bounded above}\right]$ 
+Suppose for contradiction that $B$ is not bounded above. 
+Then given any $n \in \NN, \exists x_n \in B$ such that $x_n \geq n$.
+Then by the definition of $B$, $x_n$ is a lower bound for $A$ for each $n \in \NN$.
+Thus given any $a \in A$, we have $a \geq x_n \geq n\ \forall n \in \NN$.
+Here $B$ is bounded above.
+
+\par\textbf{Step 3} $\left[\text{showing the equality}\right]$ 
+\begin{itemize}
+    \item[$(\leq)$] Let $\nu = \inf A$ nad $\mu = \sup B$.
+    Since $\nu$ is the infimum of $A$, $\nu$ is a lower bound for $A$.
+    So $\nu \in B \implies \nu \leq \sup B = \mu$ 
+    \item[$(\geq)$] Let $\eps > 0$ be arbitrary. Then by \textbf{Lemma}~\ref{lem:bab} $\exists b_\eps \in B$ such that $\mu - \eps < b_\eps \leq \mu$.
+    Hence, $\mu < \eps + b_\eps$. Now, let $a \in A$ be any point of $A$ and observe that since $b_\eps \in B$, $b_\eps \leq a \implies \mu < \eps + b_\eps \leq \eps + a$.
+    i.e., $\mu < \eps + a$ for all $a \in A$.
+    i.e., $\mu - \eps < a\ \forall a \in A$.
+    So, $\mu - \eps$ is a lower bound for $A \implies \mu - \eps < \inf A = \nu$
+    i.e., $\mu < \nu + \eps$, but $\eps > 0$ was arbitrary $\implies \mu \leq \nu$
+\end{itemize}
+
+\end{proof}
