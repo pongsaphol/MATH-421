@@ -207,7 +207,7 @@ We make the following define
     also written $\lim\limits_{x \nearrow a} f(x)$
 \end{definition*}
 
-\begin{definition*}[32]
+\begin{definition*}[32]\label{def:lfcts}
     Let $f: \RR \lthen \RR$ and $a \in \RR$
     \begin{enumerate}[(i)]
         \item We write $\mu = \lim\limits_{x \searrow a} f(x)$ if for all $\eps > 0$, $\exists\delta > 0$ such that
@@ -261,11 +261,35 @@ We make the following define
     (we say that $f$ achieves its supremum on $\left[a, b\right]$)
 \end{theorem}
 
+\begin{lemma*}[$35'$]
+    Let $f: \RR \lthen \RR$ and $b \in \RR$.
+    Suppose $\lim\limits_{x \nearrow b} f(x) = f(b) > 0$
+    Then $\exists \delta > 0$ such that $f(x) > 0$ for all $x \in (b - \delta, b)$
+\end{lemma*}
+
+\begin{proof}
+    Directly from Definition 32(ii) (definition of $\lim\limits_{x \nearrow b} f(x)$) such that
+    $$x \in (b - \delta, b) \implies |f(x) - f(b)| < \frac{1}{2} f(b)$$
+    Then for such $x \in (b - \delta, b)$ we have 
+    \begin{align*}
+        f(x) &= (f(x) - f(b)) + f(b) \\
+        & \geq f(b) - \overbrace{|f(x) - f(b)|}^{<\frac{1}{2}f(b)} \\
+        &> \frac{1}{2} f(b) > 0
+    \end{align*}
+    Hence, for $x \in (b - \frac{\delta}{2}, b)$ we have $f(x) > 0$
+\end{proof}
+
+\begin{lemma*}[$35'$]
+    Let $f: \RR \lthen \RR$ and $b \in \RR$.
+    Suppose $\lim\limits_{x \searrow a} f(x) = f(a) > 0$
+    Then $\exists \delta > 0$ such that $f(x) > 0$ for all $x \in (a, a + \delta)$
+\end{lemma*}
+
 \begin{proof}[Proof Theorem \ref{thm:ivalt}]
     Define the set $A=\{x \in \left[a, b\right]:f(y) < 0\ \forall y \in \left[a, x\right]\}$
     Since $f(a) < 0$, so $a \in A$, so $A \neq \emptyset$
-    Also, using \textbf{Lemma 35''} $\exists \delta_1 > 0$ such that $f(y) < 0\ \forall y \in \left[a, a + \delta_1\right]$
-    so $a + \delta_1 \in A$, and by \textbf{Lemma 35'} 
+    Also, using Lemma $35''$ $\exists \delta_1 > 0$ such that $f(y) < 0\ \forall y \in \left[a, a + \delta_1\right]$
+    so $a + \delta_1 \in A$, and by Lemma $35'$ 
     $\exists \delta_2 > 0$ such that $f(y) > 0\ \forall y \in \left[b-\delta_2, b\right]$ where $b-\delta_2$ is an upper bound for $A$.
     So $A$ is bounded above and $\sup A$ is well-defined.
     Let $\alpha=\sup A$. We already know that $\alpha\in (a, b)$
