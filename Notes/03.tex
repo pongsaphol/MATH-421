@@ -54,7 +54,7 @@ is not continuous
 Another way of writing Definition~\ref{def:contin} is
 \begin{definition*}[32]
     $f$ is continuous at $x_0$ if for all $\eps > 0$, $\exists\delta=\delta(\eps, x_0, f(x_0)) > 0$ such that
-    $$|x-x_0| < \delta \implies |f(x) - f(x_0| < \eps$$
+    $$|x-x_0| < \delta \implies |f(x) - f(x_0)| < \eps$$
 \end{definition*}
 
 \begin{example*}
@@ -62,7 +62,7 @@ Another way of writing Definition~\ref{def:contin} is
 \end{example*}
 \begin{proof}
     Indeed, setting $\eps_0 = 1$, 
-    we see that, given any $\delta > 0$, the point $x_\delta = 1 + \frac{\delta}{2}$ is such that $|x_\delta = 1| < \delta$ and $|f(x_\delta) - f(1)| = |1-(-1)|=2 > \eps_0$
+    we see that, given any $\delta > 0$, the point $x_\delta = 1 + \frac{\delta}{2}$ is such that $|x_\delta - 1| < \delta$ and $|f(x_\delta) - f(1)| = |1-(-1)|=2 > \eps_0$
 \end{proof}
 
 \begin{example*}
@@ -78,7 +78,7 @@ Another way of writing Definition~\ref{def:contin} is
     Let $\eps > 0$ be given. Now let $\delta = \min\{1, \frac{\eps}{2(1+|x_0|)}\}$, then
      \begin{align*}
         |x+x_0| &= |x-x_0+2x_0| \\
-        &\leq |x+x_0| + 2|x_0| \\
+        &\leq |x-x_0| + 2|x_0| \\
         &\leq 1 + 2|x_0|
     \end{align*}
     Then provided $|x - x_0| < \delta$ we get
