@@ -6,6 +6,8 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric,fit}
 
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1.5pt] (char) {#1};}}
 
 % \title{MATH 421 Lecture notes}
 % \author{Pongsaphol Pongsawakul}

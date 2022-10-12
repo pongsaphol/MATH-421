@@ -75,7 +75,7 @@ Another way of writing Definition~\ref{def:contin} is
         &= |(x+x_0)(x-x_0)| \\
         &= |x+x_0|\cdot|x-x_0|
     \end{align*}
-    Let $\eps > 0$ be given. Now let $\delta = \min\{1, \frac{\eps}{2(1+|x_0|)}\}$, then
+    Let $\eps > 0$ be given. Now let $\delta = \min\left\{1, \frac{\eps}{2(1+|x_0|)}\right\}$, then
      \begin{align*}
         |x+x_0| &= |x-x_0+2x_0| \\
         &\leq |x-x_0| + 2|x_0| \\
@@ -276,10 +276,10 @@ We make the following define
         & \geq f(b) - \overbrace{|f(x) - f(b)|}^{<\frac{1}{2}f(b)} \\
         &> \frac{1}{2} f(b) > 0
     \end{align*}
-    Hence, for $x \in (b - \frac{\delta}{2}, b)$ we have $f(x) > 0$
+    Hence, for $x \in \left(b - \frac{\delta}{2}, b\right)$ we have $f(x) > 0$
 \end{proof}
 
-\begin{lemma*}[$35'$]
+\begin{lemma*}[$35''$]
     Let $f: \RR \lthen \RR$ and $b \in \RR$.
     Suppose $\lim\limits_{x \searrow a} f(x) = f(a) > 0$
     Then $\exists \delta > 0$ such that $f(x) > 0$ for all $x \in (a, a + \delta)$
@@ -325,7 +325,7 @@ We make the following define
     \textbf{Fact}: all polynomials are continuous $\forall x \in \RR$
     A nice application of the Intermidiate Value Theorem is to find roots of continuous functions
     We can see by plugging in that 
-    $$ f(1) = 1 + (-1) - 3 = 3$$
+    $$ f(1) = 1 + (-1) - 3 = -3$$
     $$ f(2) = 16 + 2 - 3 = 15$$
     IVT $\implies \exists x_0 \in (1, 2)$ such that $f(x_0) = 0$
     This  at least lets us estimate where roots are
@@ -409,15 +409,15 @@ To prove Theorem~\ref{thm:upbndcts}, we'll need a few Lemmas.
     Since $a \in A$, we know $a \neq \emptyset$.
     Moreover, the point $b$ is an upper bound for $A$, so $\sup A = \alpha$ exists.
 
-    Goal: Show $\alpha = b$.
+    Our objective is to show that $\alpha = b$.
 
-    Suppose for the sake of contradiction that $\alpha < b$.
-    Note that we must have $a < \alpha$. Why?
+    Suppose for contradiction that $\alpha < b$.
+    (Note that we must have $a < \alpha$.
     We can't have $a > \alpha$ since $a \in A$. and $\sup A \geq a$.
     If $\alpha = a$, then $A = \{a\}$, but we know from Lemma $43''$ that
-    $\exists \delta > 0$ such that $\left[a, a+\delta\right] \subset A$.
+    $\exists \delta > 0$ such that $\left[a, a+\delta\right] \subseteq A$)
 
-    So far, we know $a < \alpha < b$ and so Lemma $43$ $\implies \delta > 0$ such that
+    By assumption $a < \alpha < b$ and so Lemma $43$ $\implies \exists\delta > 0$ such that
     $f$ isbounded on $\left[\alpha - \delta, \alpha + \delta\right]$.
     Let's say $f(x) \leq m_2$ on this interval $\left[\alpha - \delta, \alpha + \delta\right]$.
 
@@ -425,4 +425,70 @@ To prove Theorem~\ref{thm:upbndcts}, we'll need a few Lemmas.
     $\exists x_0 \in A$ such that $\alpha - \delta < x_0 \leq \alpha$.
     $f$ is bounded above on $\left[a, x_0\right]$ (by the definition of $A$).
     say $f(x) \leq m_1$ on $\left[a, x_0\right]$
+    \begin{center}
+    \begin{tikzpicture}
+        \draw[-] (0, 0.5) -- (4, 0.5);
+        \draw[-] (0, 0.5) -- (0, 0.2);
+        \draw[-] (4, 0.5) -- (4, 0.2);
+        \node at (2, 0.8) {$f(x) \leq m_1$};
+        \node at (0, 0)[circle,fill,inner sep=1.5pt]{};
+        \node at (0, -0.3){$a$};
+        \node at (2.5, 0)[circle,fill,inner sep=1.5pt]{};
+        \node at (2.5, -0.3){$\alpha - \delta$};
+        \node at (4, 0)[circle,fill,inner sep=1.5pt]{};
+        \node at (4, -0.3){$x_0$};
+        \node at (5.5, 0)[circle,fill,inner sep=1.5pt]{};
+        \node at (5.5, -0.3){$\alpha + \delta$};
+        \draw[-] (2.5, -0.9) -- (5.5, -0.9);
+        \draw[-] (2.5, -0.9) -- (2.5, -0.6);
+        \draw[-] (5.5, -0.9) -- (5.5, -0.6);
+        \node at (4, -1.2) {$f(x) \leq m_2$};
+    \end{tikzpicture}
+    \end{center}
+    Thus, $f(x) \leq \max\{m_1, m_2\}\ \forall x \in \left[a, \alpha+\delta\right]$
+    We deduce that $\alpha + \delta \in A$ and $\alpha + \delta > \alpha = \sup A$.
+    Hence, 
+    \begin{align*}
+        \alpha = b &\iff \sup A = b \\
+        &\implies f \text{ is bounded above on }\left[a, b\right] \text{ for every } x < b \text{ \circled{1}}
+    \end{align*}
+    Finally, using continuity at the point $b$ by Lemma $43'$ $\exists \delta'$ such that
+    $f$ is bounded on $\left[b-\delta', b\right]$ \circled{2}.
+
+    Hence, choosing $x = b - \delta'$ in \circled{1}, $\exists M$ such that $f(x) \leq M,\ \forall x \in \left[a, b - \delta'\right]$.
+    and by \circled{2}, $\exists M_2$ such that $f(x) \leq M_2,\ \forall x \in \left[b-\delta', b\right]$.
+    So, $f(x) \leq \max\{M, M_2\}\ \forall x \in \left[a, b\right]$.
 \end{proof}
+
+Summarize steps:
+\begin{enumerate}[(i)]
+    \item define a good set $A$
+    \item show $b = \sup A$
+    \item show $b \in A$
+\end{enumerate}
+
+The picture is 
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (-1, 0) -- (4.2, 0) node[right] {$x$};
+        \draw[->] (0, -1) -- (0, 4.2) node[above] {$f(x)$};
+        \draw[dotted] (-0.5, 3) -- (3.5, 3);
+        \draw[-] (0.5, -0.1) -- (0.5, 0.1);
+        \draw[-] (3.5, -0.1) -- (3.5, 0.1);
+        \node at (0.5, -0.3){$a$};
+        \node at (3.5, -0.3){$b$};
+        \node at (-0.8, 3){$M$};
+        \draw[dotted] (-0.5, -0.5) -- (3.5, -0.5);
+        \node at (-0.8, -0.5){$m$};
+        \draw (0.5, 1) sin (1.5, 3) cos (2, 1.25) sin (2.5, -0.5) cos (3.5, 2);
+    \end{tikzpicture}
+\end{center}
+
+Whenever $f$ is continuous on $\left[a, b\right], \exists M > m$ such that 
+$m \leq f(x) \leq M\ \forall x \in \left[a, b\right]$
+
+\textbf{Note:} We must be careful aboue being continuous on $\left[a, b\right]$,
+and mot just $(a, b)$. Indeed, $\substack{f:(0, 1)\lthen (0, \infty)\\
+x\mapsto \frac{1}{x}}$, $f$ is continuous on $\left[\tilde{x}, \infty\right)$ for every $\tilde{x} > 0$,
+but it is \underline{not} continuous on $\left[0, \infty\right)$.
+    
