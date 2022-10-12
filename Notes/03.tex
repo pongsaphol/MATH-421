@@ -254,7 +254,7 @@ We make the following define
     Then $f$ is bounded above on $\left[a, b\right]$, i.e., $\exists M \in \RR$ such that $f(x) \leq M\ x \in \left[a, b\right]$
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}\label{thm:supbndcts}
     Let $f: \RR \lthen \RR$ be continuous on $\left[a, b\right]$.
     Then $\exists \xi \in \left[a, b\right]$ such that $f(x) \leq f(\xi)\ \forall x \in \left[a, b\right]$
     i.e., $f(\xi)=\sup\{f(x): x\in\left[a, b\right]\}$
@@ -472,14 +472,14 @@ The picture is
     \begin{tikzpicture}
         \draw[->] (-1, 0) -- (4.2, 0) node[right] {$x$};
         \draw[->] (0, -1) -- (0, 4.2) node[above] {$f(x)$};
-        \draw[dotted] (-0.5, 3) -- (3.5, 3);
+        \draw[dotted] (-0.5, 3.2) -- (3.5, 3.2);
         \draw[-] (0.5, -0.1) -- (0.5, 0.1);
         \draw[-] (3.5, -0.1) -- (3.5, 0.1);
         \node at (0.5, -0.3){$a$};
         \node at (3.5, -0.3){$b$};
-        \node at (-0.8, 3){$M$};
-        \draw[dotted] (-0.5, -0.5) -- (3.5, -0.5);
-        \node at (-0.8, -0.5){$m$};
+        \node at (-0.8, 3.2){$M$};
+        \draw[dotted] (-0.5, -0.6) -- (3.5, -0.6);
+        \node at (-0.8, -0.6){$m$};
         \draw (0.5, 1) sin (1.5, 3) cos (2, 1.25) sin (2.5, -0.5) cos (3.5, 2);
     \end{tikzpicture}
 \end{center}
@@ -492,3 +492,71 @@ and mot just $(a, b)$. Indeed, $\substack{f:(0, 1)\lthen (0, \infty)\\
 x\mapsto \frac{1}{x}}$, $f$ is continuous on $\left[\tilde{x}, \infty\right)$ for every $\tilde{x} > 0$,
 but it is \underline{not} continuous on $\left[0, \infty\right)$.
     
+\textbf{Question:} does these exists $\xi_1,\xi_2 \in \left[a, b\right]$ such that
+
+$$f(\xi_1) = \inf_{\left[a, b\right]} f \text{ and } f(\xi_2) = \sup_{\left[a, b\right]} f$$
+
+\textbf{Anwer:} Yes
+
+Later on, when we discuss differentiability, if $\sup$/$\inf$ is achieved in $(a, b)$,
+then $f' = 0$ at such points. This we will prove later. 
+
+\begin{proof}[Proof of Theorm~\ref{thm:supbndcts}]
+    We already know from Theorem~\ref{thm:upbndcts} that $f$ is bounded on $\left[a, b\right]$,
+    i.e., the set $B = f(\left[a, b\right]) = \{f(x): x \in \left[a, b\right]\}$ is bounded.
+    This set is nonempty and so $\beta = \sup B$ is well-defined;
+    Since $\beta \geq f(x)\ \forall x \in \left[a, b\right]$ it suffies to show that
+    $\exists \xi \in \left[a, b\right]$ such that $f(\xi) = \beta$.
+    
+    Suppose for contradiction that this is not the case, i.e., 
+    $\beta \neq f(y)\ \forall y \in \left[a, b\right]$ Then the function $g: \left[a, b\right] \to \RR$,
+    defined by $g(x) = \frac{1}{\beta - f(x)} \forall x \in \left[a, b\right]$,
+    is well-defined and $g$ is continuous on $\left[a, b\right]$ by virtue of Lemma 33
+
+    Since $g$ is continuous, by Theorem~\ref{thm:upbndcts}$\implies\ g$ is bounded above on $\left[a, b\right]$
+    However, by Lemma 28, given any $n \in \NN, \exists x_n \in \left[a, b\right]$ such that 
+    $$\beta - \frac{1}{n} < f(x_n)\leq \beta \implies g(x_n) \geq \frac{1}{\beta - \left(\beta-\frac{1}{n}\right)} = n$$ 
+
+    Hence given any $n \in \NN, \exists x_n \in \left[a, b\right]$ such that $g(x_n) \geq n$ and
+    therefore $g$ is unbounded on $\left[a, b\right]$.
+\end{proof}
+
+We've actually proved
+\begin{corollary}\label{col:44}
+    Let $f: \RR \to \RR$ be continuous on $\left[a, b\right]$. Then $\exists\xi \in \left[a, b\right]$ such that
+    $f(\xi) = \sup\{f(x) : x \in \left[a, b\right]\}$ (we often write with the shorthand $\sup_{\left[a, b\right]} f$)
+\end{corollary}
+
+\begin{corollary}
+    Let $f: \RR \to \RR$ be continuous on $\left[a, b\right]$. Then $\exists \xi \in \left[a, b\right]$ such that
+    $f(\xi) = \inf\{f(x) : x \in \left[a, b\right]\}$ 
+\end{corollary}
+
+\begin{proof}
+    Apploy Corollary~\ref{col:44} to the function $-f$ and use the result $\inf B = -\sup(-B)$.
+\end{proof}
+
+\begin{example}
+    Suppose $f, g$ are continuous on $\left[a, b\right]$ and $f(a) < g(a)$ and $f(b) > g(b)$.
+    Then $\exists x \in \left[a, b\right]$ such that $f(x) = g(x)$ (in actual fact, $x \in (a, b)$)
+\end{example}
+
+\begin{proof}
+    define $h(x) = f(x) - g(x)$. Then $h$ is continuous on $\left[a, b\right]$,
+    $h(a) < 0 < h(b)$ so from Theorem~\ref{thm:ivalt}, $\exists \xi \in (a, b)$ such that
+    $h(\xi) = 0 \implies f(\xi)=g(\xi)$
+\end{proof}
+
+\begin{example}
+    Suppose $f: \RR \to \RR$ is continuous on $\left[0, 1\right]$ and suppose 
+    $0 \leq f(x) \leq 1\ \forall x \in \left[0, 1\right]$. Then $\exists x_0 \in \left[0, 1\right]$ 
+    such that $f(x_0) = x_0$ (we can imagine that $f$ cross $y = x$)
+\end{example}
+
+\begin{proof}
+    Note that if $f(0) = 0$ on if $f(1) = 1$, then we are done.
+    Suppose that $f(0) \neq 0$ and $f(1) \neq 1$ then $0 < f(0)$ and $f(1) < 1$
+    Let $g(x) = x - f(x)$. Then, $g(0) = 0 - f(0) < 0$ and $g(1) = 1 - f(1) > 0$.
+    So, $g$ is continuous and $g(0) < 0 < g(1)$, where Theorem~\ref{thm:ivalt} 
+    $\exists x_0 \in \left[0, 1\right]$ such that $g(x_0) = 0$ and hence $x_0 =f(x_0)$
+\end{proof}
