@@ -536,6 +536,8 @@ We've actually proved
     Apploy Corollary~\ref{col:44} to the function $-f$ and use the result $\inf B = -\sup(-B)$.
 \end{proof}
 
+\section{Usage of 3 Hard Theorem}
+
 \begin{example}
     Suppose $f, g$ are continuous on $\left[a, b\right]$ and $f(a) < g(a)$ and $f(b) > g(b)$.
     Then $\exists x \in \left[a, b\right]$ such that $f(x) = g(x)$ (in actual fact, $x \in (a, b)$)
@@ -560,3 +562,114 @@ We've actually proved
     So, $g$ is continuous and $g(0) < 0 < g(1)$, where Theorem~\ref{thm:ivalt} 
     $\exists x_0 \in \left[0, 1\right]$ such that $g(x_0) = 0$ and hence $x_0 =f(x_0)$
 \end{proof}
+
+\begin{example}
+    There are 3 sub-examples here:
+    \begin{enumerate}[(a)]
+        \item Suppose $f: \RR \to \RR$ satsfies $|f(x)| \leq |x|$ for all $x \in \RR$. Then $f$ is continuous at $0$
+        \item There exists a function which satisfies the assumption of a.) but is not continuous at any other points
+        other than $x = 0$
+        \item Suppose $g$ is continuous at $0$ and $g(0) = 0$ and suppose $|f(x)| \leq |g(x)|\ \forall x \in \RR$.
+        Then $f$ is continuous at $0$.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    We will prove each separately:
+    \begin{enumerate}[(a)]
+        \item The inequallity implies $f(0) = 0$. Let $\eps > 0$ be given, then the inequallity show that
+        $$|f(x) - f(0)| = |f(x)| \leq |x - 0|$$
+        so letting $\delta = \eps$, we see that
+        $$|x-0| < \delta \implies |f(x) - f(0)| < \eps$$
+        so $f$ is continuous at $0$
+        \item \[ f(x) =
+            \begin{cases}
+            x       & \quad \text{if } x \in \QQ \\
+            0       & \quad \text{if } x \notin \QQ
+            \end{cases}
+        \]
+        Then $|f(x)| \leq |x|\ \forall x$ but $f$ is not continuous at any points other than $0$
+        \item Since $g(0) = 0$, we immediately get $f(0) = 0$. Let $\eps > 0$ be given.
+        Since $g$ is continuous at $0$, $\exists \delta = \delta(\eps, 0) > 0$ such that
+        $$|x - 0| < \delta \implies |g(x) - g(0)| \leq \eps$$
+        but then, in view of the bound $|f(x)| \leq |g(x)|\ \forall x$, we see that
+        $$|x - 0| < \delta \implies |f(x) - f(0)| = |f(x)| \leq |g(x)| = |g(x)-g(0)| < \eps$$
+    \end{enumerate} 
+\end{proof}
+
+\begin{example}
+    This exercis is here to help us gain more familiarity with limits-- it's not concern with 
+    continuous functions per se.
+    \begin{enumerate}[(i)]
+        \item Let $f, g: \RR \to \RR$ and suppose $f(x) \leq g(x)\ \forall x \in \RR$ and suppose 
+        $\mu := \lim\limits_{x\to a} f(x), \nu := \lim\limits_{x\to a}g(x)$
+        Show that $\mu \leq \nu$
+        \item Now suppose $f(x) < g(x)\ \forall x \in \RR$. Does this guarantee $\mu < \nu$?
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    We will prove each separately:
+    \begin{enumerate}[(i)]
+    \item Let $\eps > 0$ be given. Then $\exists \delta_1 = \delta_1(\eps, a, \mu) > 0$ and 
+        $\exists \delta_2 = \delta_2(\eps, a, \nu) > 0$ such that 
+        $$ |x-a| < \delta_1 \implies |f(x) - \mu| < \frac{\eps}{2},$$ 
+        $$ |x-a| < \delta_2 \implies |g(x) - \nu| < \frac{\eps}{2}$$
+        Set $\delta := \min(\delta_1, \delta 2)$
+        Then, provided $|x-a| < \delta$, we have 
+        \begin{align*}
+            \nu - \mu &= (\nu - g(x)) + (g(x) - f(x)) + (f(x) - \mu) \\
+            &\geq \underbrace{g(x) - f(x)}_{\geq 0} - \underbrace{|\nu - g(x)|}_{<\frac{\eps}{2}} - \underbrace{|\mu - f(x)|}_{<\frac{\eps}{2}} \\
+            &> -\eps
+        \end{align*}
+        So, $\nu - \mu > -\eps$ for all $\eps > 0 \implies \nu - \mu \geq 0$
+    \item \underline{NO}: Suppose $f(x) = 0$ and $g(x) = \begin{cases}
+        1       & \quad \text{if } |x| < 1\\
+        \frac{1}{x}& \quad \text{if } |x| \geq 1
+        \end{cases}$
+
+        Then $\lim\limits_{x\to \infty} f(x) = 0$ and $\lim\limits_{x\to \infty} g(x) = 0$
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    Let $f(x) = \begin{cases}
+        \sin\left(\frac{1}{x}\right)       & \quad \text{for } x \neq 0\\
+        0 & \quad x = 0
+        \end{cases}$
+    \begin{enumerate}[(a)]
+        \item Show that $f$ is not continuous on $\left[-1, 1\right]$
+        \item Show that $f$ satisfies the conclusion of Theorem~\ref{thm:ivalt} (IVT)
+    \end{enumerate}
+\end{example}
+
+\begin{proof}\text{ }
+    \begin{enumerate}[(a)]
+        \item for every $\delta > 0$, $n_\delta := \max\left(\lceil\frac{1}{2\pi}\delta^{-1}\rceil, 1\right)\in \NN$ such that 
+        $$\frac{1}{\frac{\pi}{2} + 2\pi n_\delta} < \delta\text{ and }x_\delta := \frac{1}{\frac{\pi}{2} + 2\pi n_\delta}$$
+        we get $0 < x_\delta < \delta$ and 
+        $$|f(x_\delta) - f(0)| = |\sin(\frac{\pi}{2} + 2\pi n_\delta)| = 1$$
+        so, for all $\delta > 0, \exists x_\delta$ such that $0 < x_\delta < \delta$ and
+        $|f(x_\delta) - f(0)| = 1$, so $f$ is not continuous at $0$.
+        \item $f$ is not continuous at $0$, however $f$ is continuous on $(-1, 0)$ and on $\left(0, 1\right]$ and 
+        so Theorem~\ref{thm:ivalt} holds on any interval of the form $\left[-1, y\right]$ and $\left[ x, 1\right]$ for 
+        $y < 0$ and $x > 0$
+
+        It remains to check that 
+
+        *Suppose $a > 0$ and $f(a) > 0$. Then, for every $c \in \left[0, f(a)\right], \exists \xi_c\in\left[0, a\right]$ such that 
+        $f(\xi_c) = c$
+
+        Note that $f(a) \leq 1$, Indeed $\xi = \frac{1}{\arcsin(c)}$ is such that 
+        \begin{align*}
+            f(\xi) &= c \\
+            \sin\left(\frac{1}{\xi}\right) &= \sin(\arcsin(c))
+        \end{align*}
+        So the only remaining issue is that we do not necessarily have $\xi \in \left[0, a\right]$.
+
+        To this end, notice that, for every $N \in \NN$, $\xi = \frac{1}{2\pi N + \arcsin(c)}$ 
+        also satisfies $f(\xi) = c$ and hence, choosing $N$ sufficiently large such that $\frac{1}{2\pi N + \arcsin(c)} \leq a$, 
+        we have that $\xi = \frac{1}{2\pi N + \arcsin(c)}$ is a point that verifies *
+    \end{enumerate}
+\end{proof}
+
