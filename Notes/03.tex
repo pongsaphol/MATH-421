@@ -645,10 +645,10 @@ We've actually proved
 
 \begin{proof}\text{ }
     \begin{enumerate}[(a)]
-        \item for every $\delta > 0$, $n_\delta := \max\left(\lceil\frac{1}{2\pi}\delta^{-1}\rceil, 1\right)\in \NN$ such that 
+        \item for every $\delta > 0$, $n_\delta := \max\left(\left\lceil\frac{1}{2\pi}\delta^{-1}\right\rceil, 1\right)\in \NN$ such that 
         $$\frac{1}{\frac{\pi}{2} + 2\pi n_\delta} < \delta\text{ and }x_\delta := \frac{1}{\frac{\pi}{2} + 2\pi n_\delta}$$
         we get $0 < x_\delta < \delta$ and 
-        $$|f(x_\delta) - f(0)| = |\sin(\frac{\pi}{2} + 2\pi n_\delta)| = 1$$
+        $$|f(x_\delta) - f(0)| = \left|\sin\left(\frac{\pi}{2} + 2\pi n_\delta\right)\right| = 1$$
         so, for all $\delta > 0, \exists x_\delta$ such that $0 < x_\delta < \delta$ and
         $|f(x_\delta) - f(0)| = 1$, so $f$ is not continuous at $0$.
         \item $f$ is not continuous at $0$, however $f$ is continuous on $(-1, 0)$ and on $\left(0, 1\right]$ and 
@@ -673,3 +673,136 @@ We've actually proved
     \end{enumerate}
 \end{proof}
 
+\begin{example}
+    Suppose $f, g: \RR \to \RR$ are continuous, and $f(x)^2 = g(x)^2\ \forall x \in \RR$ and $f(x) \neq 0$. 
+    Then either
+    \begin{enumerate}[(i)]
+        \item $f(x) = g(x)\ \forall x \in \RR$
+        \item $f(x) = -g(x)\ \forall x \in \RR$
+    \end{enumerate}
+    i.e., $f$ cannot `jump' between $\pm g$.
+\end{example}
+
+\begin{proof}
+    Suppose for contradiction that $\exists a, b \in \RR$ such that $f(a) = g(a)$ and $f(b) = -g(b) \circledast$
+    and wlog(without loss of generality), assume $a < b$.
+    Since $f(x) \neq 0\ \forall x$, we also assume wlog $f(a) < 0$
+    Then it can't be the case that $f(b) > 0$. 
+    Indeed, if this were the case, then by Theorem~\ref{thm:ivalt},
+    $\exists \xi \in (a, b)$ such that $f(\xi) = 0$, which contradicts $f(x) \neq 0\ \forall x$.
+
+    Hence $f(a) < 0$ and $f(b) < 0$. 
+    
+    Then, $\circledast \implies g(a) < 0$ and $g(b) > 0$, 
+    so Theorem~\ref{thm:ivalt}$\implies \exists \zeta \in (a, b)$ such that $g(\zeta) = 0$.
+    But then $f(\zeta) = 0$, which is again a contradiction.
+\end{proof}
+
+\begin{example}
+    Suppose $f: \RR \to \RR$ is continuous and such that $f(x)^2 = x^2\ \forall x \in \RR$.
+    Then, either $f(x) = x\ \forall x \in \RR$, or $f(x) = -x\ \forall x \in \RR$, or $f(x) = |x|\ \forall x \in \RR$.
+\end{example}
+
+\begin{proof}
+    It sufficies to show that 
+    \begin{enumerate}[(A)]
+        \item for $x < 0$, either: $f(x) = x\ \forall x < 0$, or $f(x) = -x\ \forall x < 0$
+        \item for $x > 0$, either: $f(x) = x\ \forall x > 0$, or $f(x) = -x\ \forall x > 0$
+    \end{enumerate}
+    We only prove (B), as the proof for (A) is identical.
+
+    Suppose for contradiction $\exists 0 < a < b$ such that (wlog) $f(a) = -a$ and $f(b) = b$.
+    Then, observe that $f(a) < 0$, while $f(b) > 0$.
+
+    Thus, Theorem~\ref{thm:ivalt} $\implies \exists \xi \in (a, b)$ such that $f(\xi) = 0$.
+    But, $(f(\xi))^2 = \xi^2 > a^2 > 0$
+\end{proof}
+
+\begin{example}
+    Suppose $f$ is continuous on $\left[a, b\right]$ and $f(x) \in \QQ\ \forall x \in \left[a, b\right]$.
+    Then, $f$ is a constant function, i.e., $\exists q \in \QQ$ such that $f(x) = q\ \forall x \in \left[a, b\right]$.
+\end{example}
+
+\begin{proof}
+    Suppose for contradiction that $f$ is not constant, i.e., $\exists a, b \in \RR$ such that $f(a) < f(b)$ and wlog $a < b$.
+    Since between any 2 real numbers, there exists an innational number, it follows that there exists $c \in \RR \setminus \QQ$ such that $f(a) < c < f(b)$.
+
+    Then, from IVT, $\exists \xi_c \in (a, b)$ such that $f(\xi_c) = c \in \RR \setminus \QQ$.
+\end{proof}
+
+\begin{example}
+    Suppose $f$ is continuous on $\left[0, 1\right]$ and $f(0) = f(1)$. Let $n \in \NN$ be arbitrary.
+    Then, $\exists x_* \in \left[0, 1\right)$ such that $f(x_*) = f\left(x_* + \frac{n}{n+1}\right)$. 
+\end{example}
+
+\begin{proof}
+    Define $g: \left[0, 1 - \frac{1}{n}\right] \to \RR$ by $g(x) := f(x) - f\left(x + \frac{1}{n}\right)$.
+
+    Suppose for contradiction that $g(x) \neq 0\ \forall x \in \left[0, 1 - \frac{1}{n}\right]$.
+    By cty (using Theorm~\ref{thm:ivalt}), we must have either $g(x) > 0$ or $g(x) < 0\ \forall x \in \left[0, 1 - \frac{1}{n}\right]$.
+
+    Wlog, assume $g(x) > 0\ \forall x \in \left[0, 1 - \frac{1}{n}\right]$.
+    Then, $f(x) > f\left(x + \frac{1}{n}\right)\ \forall x \in \left[0, 1 - \frac{1}{n}\right]$.
+    It follows that, by setting $x=0$, $f(0) > f\left(\frac{1}{n}\right)$, but also by setting $x = \frac{1}{n}$,
+    $$f\left(\frac{1}{n}\right) > f\left(\frac{2}{n}\right), \ldots, f\left(\frac{m}{n}\right) > f\left(\frac{m + 1}{n}\right)\ \forall m \in \left\{0, \ldots, \frac{n-1}{n}\right\}$$
+    $$\implies f(0) > f\left(\frac{1}{n}\right) > f\left(\frac{2}{n}\right), \ldots, f\left(\frac{n-1}{n}\right) > f\left(1\right)$$
+    $$\implies f(0) > f(1)$$
+    but we assumed $f(0) = f(1)$, which is a contradiction.
+\end{proof}
+
+\begin{example}
+    Suppose $\phi : \RR \to \RR$ is continuous and $n \in \NN$, and $\lim\limits_{x \to \infty}\frac{\phi(x)}{x^n} = 0 = \lim\limits_{x \to -\infty}\frac{\phi(x)}{x^n}$.
+    Then,
+    \begin{enumerate}[(a)]
+        \item if $n$ is odd, $\exists x_* \in \RR$ such that $(x_*)^n + \phi(x_*) = 0$
+        \item if $n$ is even, $\exists y \in \RR$ such that $(y)^n + \phi(y) \leq x^n + \phi(x)\ \forall x \in \RR$
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    Define $\psi: \RR \to \RR$ by $\psi(x):= x^n + \phi(x)\ \forall x \in \RR$
+    and note that $\psi$ is also continuous on $\RR$.
+    % Then, $\psi(x) < -\frac{1}{2}(R_1)^n\ \forall x < -R_1$.
+    \begin{enumerate}[(a)]
+        \item Since $n$ is odd, $\lim\limits_{x\to -\infty}\frac{\psi(x)}{|x|^n} = -1 + \underbrace{\lim\limits_{x \to -\infty} \frac{\phi(x)}{|x|^n}}_{=0}$
+        and similarly $\lim\limits_{x\to \infty}\frac{\psi(x)}{|x|^n} = 1$.
+
+        Note that $x \mapsto \frac{\psi(x)}{|x|^n}$ is continuous on any internal excluding 0. 
+
+        Then, since $\frac{\psi(x)}{|x|^n}$ is continuous on $(-\infty, 0)$, $\exists R_1 = R_1(\frac{1}{2}) > 0$ such that
+        $$x < -R_1 \implies \left|\frac{\psi(x)}{|x|^n} - (-1)\right| < \frac{1}{2}$$
+        i.e., for $x < -R_1$, we have $\frac{\psi(x)}{|x|^n} < (-1) + \frac{1}{2} = -\frac{1}{2}$.
+        $$\implies \psi(x) < -\frac{1}{2}|x|^n\ \forall x \in \RR$$
+
+        i.e., for all $x < -R_1$, we have $\psi(x) < 0\ \circledast$.
+
+        Similarly, $\exists R_2 = R_2(\frac{1}{2}) > 0$ such that 
+        \begin{align*}
+            x > R_2 &\implies \left|\frac{\psi(x)}{|x|^n}  - 1\right| < \frac{1}{2} \\
+            &\implies \psi(x) > |x|^n > \frac{1}{2}\ \forall x > R_2 \\
+        \end{align*}
+        Therefore, $\psi(x) > 0$ for all $x > R_2\ \circledast \circledast $.
+
+        By $\circledast$ and $\circledast \circledast$,$\exists a, b \in \RR$ $(a < b)$ such that
+        $$\psi(a) < 0 < \psi(b)$$ Then since $\psi$ is continuous, by Theorem~\ref{thm:ivalt}
+        $\implies \exists x_* \in (a, b)$ suc htaht $\phi(x_*) = 0$, i.e., $x_*^n + \phi(x_*) = 0$.
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    
+\end{example}
+\begin{example}
+    
+\end{example}
+\begin{example}
+    
+\end{example}
+
+
+
+
+\begin{example}
+    Suppose $f$ is continuous and $\circledast \lim\limits_{x \to -\infty} f(x) = \lim\limits_{x \to \infty} f(x) = 0$, 
+    and $f(x) > 0\ \forall x in \RR$. Then, $\exists x_* \in \RR$ such that $f(x) \leq f(x_*)\ \forall x \in \RR$.
+\end{example}
