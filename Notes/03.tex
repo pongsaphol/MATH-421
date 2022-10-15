@@ -799,10 +799,149 @@ We've actually proved
     
 \end{example}
 
-
-
-
 \begin{example}
     Suppose $f$ is continuous and $\circledast \lim\limits_{x \to -\infty} f(x) = \lim\limits_{x \to \infty} f(x) = 0$, 
-    and $f(x) > 0\ \forall x in \RR$. Then, $\exists x_* \in \RR$ such that $f(x) \leq f(x_*)\ \forall x \in \RR$.
+    and $f(x) > 0\ \forall x \in \RR$. Then, $\exists x_* \in \RR$ such that $f(x) \leq f(x_*)\ \forall x \in \RR$.
+\end{example}
+
+\begin{proof}
+    Let $\mu := \displaystyle\max_{y \in \left[-1, 1\right]} f(y)$, by $\circledast$, $\exists R_1, R_2 > 0$ such that
+    $$x < -R_1 \implies 0 < f(x) < \frac{1}{2} \mu$$ 
+    $$x > R_2 \implies 0 < f(x) < \frac{1}{2} \mu$$ 
+
+    Hence $0 < f(x) < \frac{1}{2} \mu$ for all $|x| \in \RR := \max\{R_1, R_2\}$.
+    and meanwhile $\displaystyle\sup_{x \in \RR} f(x) \geq \displaystyle\sup_{x \in \left[-1, 1\right]} f(x) = \mu$.
+
+    $\displaystyle\sup_{x \in \RR} f(x)$ is well-defined Since $\sup_{\left[-R, -R\right]} f $ is well-defined and achieved by Theorem and 
+    $|f(x)| < \frac{1}{2}\mu$ for $|x| > R$.
+
+    $$ + \infty > \sup_{x \in \RR} f(x) \geq \max_{x \in \left[-R, R\right]} f(x) \geq \mu > \sup_{|x| > R} f(x)$$
+
+    It follows that $\sup_{x\in\RR} f(x) = \sup_{x \in \left[-R, R\right]} f(x)$
+    $(\RR = \underbrace{\{x : |x| \leq R\}}_{=\left[-R, R\right]} \cup \{x : |x| > R\})$
+
+    Since $f$ is continuous, it achieves its boundes by Theorem 38
+    $\implies \exists x_* \in \left[-R, R\right]$ such that $f(x_*) = \sup_{\left[-R, R\right]} f = \sup_{\RR} f$.
+\end{proof}
+
+\begin{example}
+    Let $f: \RR \to \RR$ be defined by 
+    $$f(x) = (\sin x)^2 + (\sin (x + (\cos x)^7))^2$$
+    Then, $\exists c > 0$ such that $f(x) \geq c\ \forall x \in \RR$.
+\end{example}
+
+\begin{proof}
+    Observe that $f(x) \geq 0\ forall x$ and $A := \{ f(x) : x\in \RR\}$ is bounded below by 0.
+
+    Define $c := \inf A$ is well-defined. 
+    \begin{align*}
+        f(x + 2\pi) &= (\sin (x + 2\pi))^2 + \sin (\overbrace{(x + 2\pi) + (\underbrace{\cos (x + 2\pi)}_{=\cos x})^7}^{=x + 2\pi + (\cos x)^7})^2 \\
+        &= (\sin x)^2 + \sin (x + (\cos x)^7)^2 \\
+        &= f(x)
+    \end{align*}
+
+    $f$ is $2\pi$-periodic, 
+    $\implies c = \inf A = \inf\{f(x): x \in \left[0, 2\pi\right]\}$
+
+    Since $f$ is continuous, Theorem 38 $\implies \exists x_* \in \left[0, 2\pi\right]$ such that $f(x_*) = c$.
+    
+    Suppose for contradiction that $c = 0$
+    \begin{align*}
+        &\implies f(x_*) = 0 \\
+        &\implies (\underbrace{\sin x_*}_{=0})^2 + (\underbrace{\sin (x_* + (\cos x_*)^7)}_{=0})^2 = 0 \\
+        &\implies x_* \in \{0, \pi, 2\pi\}\text{ but then }\cos x_* \in \{1, -1\} \\
+        &\implies x_* + (\cos x_*)^7 \in \{1, \pi-1, 2\pi + 1\} \\
+        &\implies \sin(x_* + (\cos x_*)^7) \in \{\sin(1), \sin(\pi - 1)\} \text{ neither of which are } 0\\
+    \end{align*} 
+\end{proof}
+
+\section{Uniform Continuity}
+
+Finally, we look at uniform continuity
+
+\begin{definition} \label{def:uniform}
+    Let $f: \RR \to \RR$. We say $f$ is \underline{uniformly continuous} on an interval $A$ if
+    for all $\eps > 0, \exists \delta = \delta(\eps) > 0$ such that 
+    $$|x - y| < \delta\text{ and } x, y \in A \implies |f(x) - f(y)| < \eps$$
+    \underline{\textbf{KEY}}: $\delta$ is \underline{not} depend on a specific point. 
+\end{definition}
+
+\begin{example*}
+    $f(x) = x$ is uniformly continuous on $\RR$. 
+    Let $\eps > 0$ be given then letting $\delta = \eps$, we see that 
+    $$|x-y| < \delta \implies |f(x) - f(y)| < \eps$$
+\end{example*}
+
+\begin{example*}\label{ex:xsq}
+    $f(x) = x^2$ is \underline{not} uniformly continuous on $\RR$.
+\end{example*}
+
+Fix $\eps > 0$ and recall from Lecture 10 that
+$$|f(x) - f(x_0)| = |x^2 - x_0^2| = |x - x_0||x + x_0|$$
+and so we need $\delta = \min\left(1, \frac{\eps}{1 + 2|x_0|}\right)$
+to have $|x-x_0| < \delta \implies |f(x) - f(x_0)| < \eps$.
+
+We see that $\delta$ depends on specific point $x_0$.
+
+This is only an indication that $f$ is not uniformly continuous -- not a proof yet.
+
+
+The negation of Definition~\ref{def:uniform}
+
+\begin{definition*}[$61'$]
+    $\exists \eps_0 > 0$ such that for all $\delta > 0$ there exist corresponding $x_\delta, y\delta \in A$ such that
+    $$|x_\delta - y_\delta| < \delta\text{ and } |f(x_\delta) - f(y_\delta)| \geq \eps_0$$
+\end{definition*}
+
+\begin{proof}[Proof of Example~\ref{ex:xsq}]
+    Let $\eps_0 = 1$. Observe that for $x > y > 0$,
+    $$|f(x) - f(y)| = x^2 - y^2 = (x+y)(x-y)$$
+    For each $\delta > 0$ choose $y_\delta = \delta^{-1}$ and $x_\delta = \delta^{-1} + \frac{\delta}{2}$
+
+    Then, $x_\delta + y_\delta = 2\delta^{-1} + \frac{\delta}{2} > 2\delta^{-1}$ and
+    $|x_\delta - y_\delta| =\frac{\delta}{2} < \delta$. 
+
+    Hence, $|x_\delta - y_\delta| < \delta$ and also 
+    \begin{align*}
+        |f(x_\delta) - f(y_\delta)|&= (x_\delta + y_\delta)(x_\delta - y_\delta) \\
+        &= (2\delta^{-1} + \frac{\delta}{2})\cdot\frac{\delta}{2} \\
+        &= 1 + \frac{\delta^2}{4} \\
+        &> 1 = \eps_0
+    \end{align*}
+\end{proof}
+
+\begin{remark*}
+    $x \mapsto x^2$ is uniformly continuous on $\left[-1, 1\right]$, even though it is not uniformly continuous on $\RR$. 
+\end{remark*}
+
+\begin{example}
+    Let $f: \left[0, \infty\right) \to \left[0, \infty\right), x \mapsto x^{\frac{1}{2}}$ 
+    Then $f$ is uniform continuous on $\left[0, \infty\right)$.
+\end{example}
+
+\begin{proof}
+    Let $x, y \in \left[0, \infty\right)$ and wlog assume $x > y$. Notice that 
+    $$\oplus |f(x) - f(y)| = \sqrt{x} - \sqrt{y} \overbrace{\leq}^{\circledast } \sqrt{x-y}$$
+    Hence, given any $\eps > 0, |x-y| < \eps^2 \underbrace{\implies}_{\oplus} |f(x) - f(y)| < \eps$.
+
+    \underline{proof of $\circledast$}: let $a > b \geq 0$
+    \begin{align*}
+    (\sqrt{a} - \sqrt{b})^2 &= a + b \overbrace{- 2\sqrt{a}\sqrt{b}}^{ < -2\sqrt{b}\sqrt{b} = -2b} \\
+    &\leq a - b \\
+    \implies \sqrt{a} - \sqrt{b} &\leq \sqrt{a - b}
+    \end{align*}
+\end{proof}
+
+\begin{theorem}
+    If $f$ is continuous on $\left[a, b\right]$, then $f$ is uniformly continuous on $\left[a, b\right]$.
+\end{theorem}
+
+The choice of the interval $A$ matters on the Definition~\ref{def:uniform}.
+
+\begin{example}
+    \text{ }
+    \begin{enumerate}[(i)]
+        \item $f(x) = \sin\left(\frac{1}{x}\right)$ is continuous and bounded on $\left(0, 1\right]$ however it it not uniformly continuous on $\left(0, 1\right]$.
+        \item $f(x) = \sin\left(e^x\right)$ is continuous and bounded on $\left[0, \infty\right)$ however it is not uniformly continuous on $\left[0, \infty\right)$. 
+    \end{enumerate}
 \end{example}
