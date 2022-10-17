@@ -418,7 +418,7 @@ To prove Theorem~\ref{thm:upbndcts}, we'll need a few Lemmas.
     $\exists \delta > 0$ such that $\left[a, a+\delta\right] \subseteq A$)
 
     By assumption $a < \alpha < b$ and so Lemma $43$ $\implies \exists\delta > 0$ such that
-    $f$ isbounded on $\left[\alpha - \delta, \alpha + \delta\right]$.
+    $f$ is bounded on $\left[\alpha - \delta, \alpha + \delta\right]$.
     Let's say $f(x) \leq m_2$ on this interval $\left[\alpha - \delta, \alpha + \delta\right]$.
 
     By Lemma 28 (Alternate definition of supremum)
@@ -598,7 +598,7 @@ We've actually proved
 \end{proof}
 
 \begin{example}
-    This exercis is here to help us gain more familiarity with limits-- it's not concern with 
+    This exercisc is here to help us gain more familiarity with limits-- it's not concern with 
     continuous functions per se.
     \begin{enumerate}[(i)]
         \item Let $f, g: \RR \to \RR$ and suppose $f(x) \leq g(x)\ \forall x \in \RR$ and suppose 
@@ -615,7 +615,7 @@ We've actually proved
         $\exists \delta_2 = \delta_2(\eps, a, \nu) > 0$ such that 
         $$ |x-a| < \delta_1 \implies |f(x) - \mu| < \frac{\eps}{2},$$ 
         $$ |x-a| < \delta_2 \implies |g(x) - \nu| < \frac{\eps}{2}$$
-        Set $\delta := \min(\delta_1, \delta 2)$
+        Set $\delta := \min(\delta_1, \delta_2)$
         Then, provided $|x-a| < \delta$, we have 
         \begin{align*}
             \nu - \mu &= (\nu - g(x)) + (g(x) - f(x)) + (f(x) - \mu) \\
@@ -732,7 +732,7 @@ We've actually proved
 
 \begin{example}
     Suppose $f$ is continuous on $\left[0, 1\right]$ and $f(0) = f(1)$. Let $n \in \NN$ be arbitrary.
-    Then, $\exists x_* \in \left[0, 1\right)$ such that $f(x_*) = f\left(x_* + \frac{n}{n+1}\right)$. 
+    Then, $\exists x_* \in \left[0, 1\right)$ such that $f(x_*) = f\left(x_* + \frac{1}{n}\right)$. 
 \end{example}
 
 \begin{proof}
@@ -779,13 +779,13 @@ We've actually proved
         Similarly, $\exists R_2 = R_2(\frac{1}{2}) > 0$ such that 
         \begin{align*}
             x > R_2 &\implies \left|\frac{\psi(x)}{|x|^n}  - 1\right| < \frac{1}{2} \\
-            &\implies \psi(x) > |x|^n > \frac{1}{2}\ \forall x > R_2 \\
+            &\implies \psi(x) >\frac{1}{2} |x|^n\ \forall x > R_2 \\
         \end{align*}
         Therefore, $\psi(x) > 0$ for all $x > R_2\ \circledast \circledast $.
 
         By $\circledast$ and $\circledast \circledast$,$\exists a, b \in \RR$ $(a < b)$ such that
         $$\psi(a) < 0 < \psi(b)$$ Then since $\psi$ is continuous, by Theorem~\ref{thm:ivalt}
-        $\implies \exists x_* \in (a, b)$ suc htaht $\phi(x_*) = 0$, i.e., $x_*^n + \phi(x_*) = 0$.
+        $\implies \exists x_* \in (a, b)$ such that $\phi(x_*) = 0$, i.e., $x_*^n + \phi(x_*) = 0$.
     \end{enumerate}
 \end{proof}
 
@@ -812,16 +812,16 @@ We've actually proved
     Hence $0 < f(x) < \frac{1}{2} \mu$ for all $|x| \in \RR := \max\{R_1, R_2\}$.
     and meanwhile $\displaystyle\sup_{x \in \RR} f(x) \geq \displaystyle\sup_{x \in \left[-1, 1\right]} f(x) = \mu$.
 
-    $\displaystyle\sup_{x \in \RR} f(x)$ is well-defined Since $\sup_{\left[-R, -R\right]} f $ is well-defined and achieved by Theorem and 
+    $\displaystyle\sup_{x \in \RR} f(x)$ is well-defined Since $\displaystyle\sup_{\left[-R, -R\right]} f $ is well-defined and achieved by Theorem and 
     $|f(x)| < \frac{1}{2}\mu$ for $|x| > R$.
 
     $$ + \infty > \sup_{x \in \RR} f(x) \geq \max_{x \in \left[-R, R\right]} f(x) \geq \mu > \sup_{|x| > R} f(x)$$
 
-    It follows that $\sup_{x\in\RR} f(x) = \sup_{x \in \left[-R, R\right]} f(x)$
+    It follows that $\displaystyle\sup_{x\in\RR} f(x) = \displaystyle\sup_{x \in \left[-R, R\right]} f(x)$
     $(\RR = \underbrace{\{x : |x| \leq R\}}_{=\left[-R, R\right]} \cup \{x : |x| > R\})$
 
     Since $f$ is continuous, it achieves its boundes by Theorem 38
-    $\implies \exists x_* \in \left[-R, R\right]$ such that $f(x_*) = \sup_{\left[-R, R\right]} f = \sup_{\RR} f$.
+    $\implies \exists x_* \in \left[-R, R\right]$ such that $f(x_*) = \displaystyle\sup_{\left[-R, R\right]} f = \displaystyle\sup_{\RR} f$.
 \end{proof}
 
 \begin{example}

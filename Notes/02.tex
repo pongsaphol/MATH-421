@@ -244,16 +244,16 @@ Some comments on \textbf{Definition}~\ref{def:limit}
     We say that $a_n$ approaches the limit $l$ as $n$ tends to infinty if
     for all $\eps > 0$, there exists $N\in \NN$ such that 
     $$n > N \implies |a_n - l| < \eps$$
-    Write $\lim\limits_{x \to \infty a_n }= l$
+    Write $\lim\limits_{x \to \infty  } a_n= l$
 \end{definition}
 
 \begin{example*}
-    For the sequence $\{0, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dotsc\}$ where $a_n = 1-\frac{1}{n}\ \forall n\in\NN$
-    we see that $\lim\limits_{x \to \infty a_n }= 1$
+    For the sequence $\left\{0, \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \dotsc\right\}$ where $a_n = 1-\frac{1}{n}\ \forall n\in\NN$
+    we see that $\lim\limits_{x \to \infty} a_n= 1$
 \end{example*}
 \begin{proof}
-    Indeed, let $\eps > 0$ be given. Observe that $|a_n - 1| < \frac{1}{n}$
-    ,letting $N(\eps) = \lceil \eps^{-1}\rceil$, we see that,
+    Indeed, let $\eps > 0$ be given. Observe that $|a_n - 1| < \frac{1}{n}$,
+     letting $N(\eps) = \lceil \eps^{-1}\rceil$, we see that,
     whenever $n > N$, $n > \eps^{-1} \implies \frac{1}{n} < \eps$ and $|a_n - 1| < \eps$ for such $n$
 \end{proof}
 
