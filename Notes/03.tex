@@ -938,6 +938,70 @@ The negation of Definition~\ref{def:uniform}
 
 The choice of the interval $A$ matters on the Definition~\ref{def:uniform}.
 
+\begin{proof}
+    We first make the following definition
+
+    For $\eps > 0$, we say that $g$ is \underline{$\eps$-good on $\left[a, b\right]$} if
+    $\exists \delta = \delta(\eps)$ such that for all $y, z \in \left[a, b\right]$,
+    $$|y-z| < \delta \implies |g(y) - g(z)| < \eps$$
+
+    We want to prove that $f$ is $\eps$-good on $\left[a, b\right]$ for every $\eps > 0$.
+
+    For each $\eps > 0$, define 
+    $$A_\eps := \left\{x \in \left[a, b\right]: f \text{ is }\eps\text{-good on } \left[a, x\right] \right\}$$
+    Then, $A_\eps \neq \emptyset$ since $a \in A_\eps$, and $A_\eps$ is certainly bounded above by $b$.
+    Hence, $\sup A_\eps$ is well-defined and we set $\alpha_\eps := \sup A_\eps$ 
+
+    Fix $\eps > 0$. Our aim is to prove that $\alpha_\eps = b$. Suppose for contradiction $\alpha_\eps < b$.
+    Since $f$ is continuous at $\alpha_\eps, \exists\delta_0 = \delta_0(\eps, \alpha_\eps)$ such that
+    $$|y-\alpha_\eps| < \delta_0 \implies |f(y) - f(\alpha_\eps)| < \frac{\eps}{2}$$
+    Hence if both $y, z \in \left[\alpha_\eps - \delta_0, \alpha_\eps + \delta_0\right]$ there holds
+    $$|y - \alpha_\eps| < \delta_0 \implies |f(y) - f(\alpha_\eps)| < \frac{\eps}{2}$$
+    $$|z - \alpha_\eps| < \delta_0 \implies |f(z) - f(\alpha_\eps)| < \frac{\eps}{2}$$
+    So, triangle inequality gives $|f(y) - f(z)| < \eps$.
+
+    This, $f$ is $\eps$-good on $\left[\alpha_\eps - \delta_0, \alpha_\eps + \delta_0\right]$.
+    Also since $\alpha_\eps = \sup A_\eps$, it is also clear (from Lemma 28) that $f$ is $\eps$-good on $\left[a, \alpha_\eps - \delta_0\right]$.
+
+    \underline{Claim:} $f$ is $\eps$-good on $\left[a, \alpha_\eps + \delta_0\right]$.
+
+    We will prove this claim later. Assuming it holds, we get that
+    $f$ is $\eps$-good on $\left[a, \alpha_\eps + \delta_0\right] \implies \alpha_\eps + \delta_0 \in A_\eps$ 
+    but $\alpha_\eps + \delta_0 > \alpha_\eps = \sup A_\eps$.
+
+    Hence, $\alpha_\eps = b$. We now show that $b \in A$. Since $f$ is continuous at $b$, 
+    $\exists \delta_1 = \delta_1(\eps, b)$ such that
+    $$b - \delta_1 < y \leq b \implies |f(y) - f(b)| < \frac{\eps}{2}$$
+    So we again see that $f$ is $\eps$-good on $\left[b - \delta_1, b\right]$.
+    But $f$ is also $\eps$-good on $\left[a, b - \delta_1\right]$.
+    Since $b - \delta_1 \in A$ by Lemma 28. 
+    So, using the claim again we get that $b \in A_\eps$.
+\end{proof}
+
+\begin{proof}[proof of Claim]
+    Since $f$ is continuous at $\alpha_\eps - \delta_0$, $\exists \delta_2 = \delta_2(\eps, \alpha_\eps - \delta_0)$ such that
+    $$(\dagger\dagger\dagger) |x-(\alpha_\eps - \delta_0)| < \delta_2 \implies |f(x) - f(\alpha_\eps-\delta_0)| < \frac{\eps}{2}$$
+    Meanwhile, $f$ is $\eps$-good on $\left[a, \alpha_\eps - \delta_0\right]$, so $\exists \delta_3 = \delta_3(\eps)$ such that
+    $$x, y \in \left[a, \alpha_\eps - \delta_0\right], |x-y| < \delta_3 \implies |f(x) - f(y)| < \frac{\eps}{2} (\dagger)$$
+    and similarly, $\exists \delta_4 = \delta_4(\eps)$ such that
+    $$x, y \in \left[\alpha_\eps - \delta_0, \alpha_\eps + \delta_0\right], |x-y| < \delta_4 \implies |f(x) - f(y)| < \frac{\eps}{2} (\dagger\dagger)$$
+    Now, choose any $x, y \in \left[a, \alpha_\eps + \delta_0\right]$.
+    If $x, y$ both belong either to $\left[a, \alpha_\eps - \delta_0\right]$ or to$\left[\alpha_\eps - \delta_0, \alpha_\eps + \delta_0\right]$, then there is 
+    nothing to show (by $\dagger$, $\dagger\dagger$). The final possibility is $x\in \left[a, \alpha_\eps - \delta_0\right]$ and $y \in \left[\alpha_\eps - \delta_0, \alpha_\eps + \delta_0\right]$.
+
+    In this case, let $\delta := \min(\delta_2, \delta_3, \delta_4)$ and observe that
+    \begin{align*}
+        |x-y| < \delta &\overbrace{\implies}^{\text{since } y > x} 0 \leq y-x<\delta \\
+        &\implies 0 \leq (y - (\alpha_\eps - \delta_0)) + ((\alpha_\eps - \delta_0) - x) < \delta \\
+        &\implies |y - (\alpha_\eps - \delta_0)| < \delta \\
+        &\implies |f(y) - f(\alpha_\eps - \delta_0)| < \frac{\eps}{2} (\dagger\dagger\dagger) \text{ and } |f(z) - f(\alpha_\eps - \delta_0)| < \frac{\eps}{2} \\
+        &\implies |f(y) - f(z)| < \eps
+    \end{align*}
+    Note that $\delta = \min(\delta_2(\eps, \alpha_\eps - \delta_0(\eps, \alpha_\eps)), \delta_3(\eps), \delta_4(\eps))$.
+
+    $\delta$ only depends on $\eps, \alpha_\eps$, and since $\alpha_\eps$ only depends on $\eps$, we define that \underline{$\delta$ only depends on $\eps$}, as required.
+\end{proof}
+
 \begin{example}
     \text{ }
     \begin{enumerate}[(i)]
@@ -945,3 +1009,29 @@ The choice of the interval $A$ matters on the Definition~\ref{def:uniform}.
         \item $f(x) = \sin\left(e^x\right)$ is continuous and bounded on $\left[0, \infty\right)$ however it is not uniformly continuous on $\left[0, \infty\right)$. 
     \end{enumerate}
 \end{example}
+
+\begin{proof}
+    \text{}
+    \begin{enumerate}[(i)]
+        \item Fix any $\delta > 0$ and let $x_\delta = \frac{1}{2\pi n_\delta}$ and $y_\delta = \frac{1}{\frac{\pi}{2} + 2\pi n_\delta}$, 
+        where $n_\delta \in \NN$ is to be chosen. Notice that 
+        $$0 < x_\delta - y_\delta = \frac{\frac{\pi}{2} + 2\pi n_\delta- 2\pi n_\delta}{2\pi n_\delta\left(\frac{\pi}{2} + 2\pi n_\delta\right)} = \frac{1}{4 n_\delta\left(\frac{\pi}{2} + 2\pi n_\delta\right)}$$
+        thus, by choosing $n_\delta$ large enough, 
+        $$\frac{1}{4 n_\delta\left(\frac{\pi}{2} + 2\pi n_\delta\right)} < \delta$$
+        and thus $|x_\delta - y_\delta| < \delta$, and yet $|f(x_\delta) - f(y_\delta)| = 1$
+
+        So, $f$ is not uniformly continuous on $\left(0, 1\right]$.
+        \item Fix any $\delta > 0$ and let 
+        $x_\delta = \log\left(2\pi n_\delta + \frac{\pi}{2}\right), y_\delta = \log(2\pi n_\delta) $
+        where $n_\delta$ is to be chosen. Observe that 
+        $$0 < x_\delta - y_\delta = \log\left(1 + \frac{1}{4 n_\delta}\right)$$
+        Since $\log : \left[1, \infty\right) \to \left[0, \infty\right)$ is continuous at $1$, and $\log(1) = 0$, 
+        $\exists n_\delta \in \NN$ sufficiently large such that
+        $$0 < \log\left(1 + \frac{1}{4n_\delta}\right) < \delta$$
+        Thus, $|x_\delta - y_\delta| < \delta$ and yet $|\underbrace{f(x_\delta)}_{\sin\left(2\pi n_\delta + \frac{\pi}{2}\right) = 1} - \underbrace{f(y_\delta)}_{\sin(2\pi n_\delta) = 0}| = 1$.
+
+        So, $f$ is not uniformly continuous on $\left[0, \infty\right)$.
+    \end{enumerate}
+\end{proof}
+
+This concludes our section on continuity. We are now ready to look at differentation.
