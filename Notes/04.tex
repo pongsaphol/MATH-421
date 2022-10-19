@@ -1,0 +1,71 @@
+\chapter{Differenitiation}
+
+Office hours on Monday
+
+\begin{enumerate}
+  \item Office hour 6.pm to 7.pm on Monday
+  \item can meet before 8:50 am Monday in my office Van Vleck 613 (send an email on sunday)
+\end{enumerate}
+
+Consider a function defined on on interval $I$, with real values.
+$f: I \to \RR$
+
+\begin{definition*}
+  $f$ is differentiable at the point $a \in I$ if the limit $\lim\limits_{x \to a} \frac{f(x) - f(a)}{x - a}$  exists,
+  then we call this limit the deriviative $f'(a)$
+\end{definition*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (-1, 0) -- (4.2, 0) node[right] {$x$};
+    \draw[->] (0, -1) -- (0, 4.2) node[above] {$f(x)$};
+    \draw[scale=1, domain=0.3:3.5, smooth, variable=\x] plot ({\x}, {\x^2/4});
+
+    \draw[dotted] (2, -0.5) -- (2, 4) node[above] {$$};
+    \draw[dotted] (2.5, -0.5) -- (2.5, 4) node[above] {$$};
+    \draw[-] (2, 1) -- (2.5, 1) node[above] {$$};
+    \draw[-] (2.5, 1) -- (2.5, 1.5625) node[above] {$$};
+    \node[] at (2.25,0.8) {$x-a$};
+    \node[] at (4,1.25) {$f(x) - f(a)$};
+    \node[] at (2,-0.2) {$a$};
+    \node[] at (2.5,-0.2) {$x$};
+  \end{tikzpicture}
+
+  $y = f(x)$, $\frac{f(x) - f(a)}{x-a} = $ slope of $f$
+\end{center}
+
+Computation of some derivatives
+
+\begin{example*}
+  \text{ }
+  \begin{enumerate}[(i)]
+    \item $f(x) = c$ ($c$ is some fixed point)
+      we get $f'(a) = 0$ for all $a$, 
+
+      $f(x) = f(a) = 0$ for all $x$, $\frac{f(x) - f(a)}{x-a} = 0 \implies f$ is differentiable and $f'(a) = 0$ for all $a$
+
+      $\lim\limits_{x \to a} \frac{f(x) - f(a)}{x-a} = f'(x)$ is equivalent with saying $\lim\limits_{h \to 0} \frac{f(a+h) - f(a)}{h} = f'(a)$
+    \item $f(x) = x$, then $$\frac{f(a+h) - f(a)}{h} = \frac{a + h - a}{h} = 1$$ (written $f'(x) = 1$)
+
+    \item $f(x) = x^2$, then fix $a$, $$\frac{f(a + h) - f(a)}{h} = \frac{(a+h)^2 - a^2}{h} = \frac{a^2 + 2ah + h^2 - a^2}{h} = 2a + h$$
+    $$\lim\limits_{h \to 0} \frac{f(a+h) - f(a)}{h} = \lim\limits_{h \to 0}2a + h = 2a$$
+    \item $f(x) = |x|$, We should examine the differentiability of $f$ at \underline{$a = 0$}
+    $$\frac{f(0 + h) - \overbrace{f(0)}^{=0}}{h} = \frac{|h|}{h} =\begin{cases}
+      1       & \quad \text{if } h > 0\\
+      -1  & \quad \text{if } h < 0
+    \end{cases}$$
+    The limit does not exist, and thus $f$ is not differentiable at $0$.
+    \item $f(x) = \sqrt{|x|}$, $f$ is not differentiable at $0$ because $f(0) = 0$ and $\frac{f(0 + h) - f(0)}{h} = \frac{\sqrt{|h|}}{h}$, this limit also does not exist 
+
+    Examine differentiability and derivative of $f(x) = \sqrt{|x|}$ at $x = a, a > 0$
+    \begin{align*}
+    \frac{f(a + h) - f(a)}{h} &= \frac{\sqrt{|a + h|} - \sqrt{|a|}}{h} \\
+    &= \frac{\sqrt{a + h} - \sqrt{a}}{h} \\
+    &= \frac{a+h - a}{\sqrt{a + h} + \sqrt{a}}\cdot \frac{1}{h} \\
+    &= \frac{1}{\sqrt{a + h} + \sqrt{a}} \to \frac{1}{2\sqrt{a}}\\
+    \end{align*}
+    \item $f(x) = x^n$ 
+    $$\frac{f(a+h) - f(a)}{h} = \frac{(a + h) ^ n - a^n}{h} = n\cdot a^{n-1}$$
+  \end{enumerate}
+\end{example*}
+
