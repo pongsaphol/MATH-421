@@ -69,3 +69,96 @@ Computation of some derivatives
   \end{enumerate}
 \end{example*}
 
+\section{Basic fact about differentiation}
+
+Continuity is necessary (but not sufficient) for differentiation 
+
+\begin{theorem*}
+  If $f: I \to \RR$ is differentiable at $a$ the $f$ is continuous at $a$.
+\end{theorem*}
+
+\textbf{Reminder} If $\lim\limits_{x \to a} F(x) = l$ and $\lim\limits_{x \to a} G(x) = m$, then $\lim\limits_{x \to a} F(x)G(x)= lm$
+
+If $\lim\limits_{x \to a} F(x) = l$ and $\lim\limits_{x \to a} G(x) = m$, then $\lim\limits_{x \to a} \frac{F(x)}{G(x)}= \frac{l}{m}$ or not? Yes if $m \neq 0$
+
+\begin{proof}
+  We know that $\lim\limits_{x \to 0} \frac{f(a + h) - f(a)}{h} = f'(a)$
+  $$f(a + h) - f(a) = \frac{f(a + h) - f(a)}{h} \cdot h$$
+  $$\implies \lim\limits_{h \to 0} f(a + h) - f(a) = f'(a) \cdot 0 = 0$$
+  $$\lim\limits_{h \to 0} f(a + h) = f(a)$$ 
+  this is continuity of $f$ at $a$
+  
+  Another argument : for sufficiently small $h$, $|f(a + h) - f(a)| \leq C|h|$
+\end{proof}
+
+\section{Sum Rule}
+
+\begin{theorem*}
+  Let $f: I \to \RR$ and $g: I \to \RR$, $a\in I$ assume that $f$ and $g$ are differentiable at $a$. 
+  Then $f + g$, $(f + g)(x) = f(x) + g(x)|_{x = a}$ is differentiable and its derivative $f'(a) + g'(a)$
+  (The derivative of the sum is the sum of the derivatiives)
+\end{theorem*}
+
+\begin{proof}
+  \begin{align*}
+    \frac{(f+g)(a + h) - (f+g)(a)}{h} &= \frac{f(a + h) + g(a + h) - (f(a) + g(a))}{h} \\
+    &= \frac{f(a + h) - f(a)}{h} + \frac{g(a + h) - g(a)}{h} \\
+  \end{align*}
+  As $h \to 0$ this has limit $f'(a) + g'(a)$
+\end{proof}
+
+\section{Product Rule}
+
+\begin{theorem*}
+  Let $f: I \to \RR$ and $g: I \to \RR$, $a\in I$ assume that $f$ and $g$ are differentiable at $a$. 
+  the $f\cdot g$ is differentiable at $a$
+  $$(f\cdot g)'(a) = f'(a)g(a) + f(a)g'(a)$$
+\end{theorem*}
+\begin{proof}
+  \begin{align*}
+    \frac{f(a + h)g(a + h) - f(a)g(a)}{h} &= \frac{(f(a+h) - f(a))g(a+h) + f(a)g(a+h) - f(a)g(a)}{h} \\
+    &= \underbrace{\frac{f(a+h) - f(a)}{h}}_{f'(a)}\cdot \underbrace{g(a+h)}_{\to g(a)} + \underbrace{\frac{g(a + h) - g(a)}{h}}_{\to g'(a)} \cdot \underbrace{f(a)}_{f(a)} \\
+  \end{align*}
+  By theorem about products and of limits, and the continuity of $g$ at $a$, we get
+
+  $$\lim\limits_{h \to 0} \frac{f(a+h)g(a+h) - f(a)g(a)}{h} = f'(a)g(a) + g'(a)f(a)$$
+\end{proof}
+
+
+\begin{theorem*}
+  Let $f: I \to \RR$ and $g: I \to \RR$, $a\in I$ is differentiable at $a$, and if $g(a) \neq 0$
+  then $\frac{1}{g}$ is differentiable at $a$ and $$\left(\frac{1}{g}\right)'(a) = -\frac{g'(a)}{(g(a))^2}$$
+  % $$\left(\frac{f}{g}\right)'(a) = \frac{f'g - fg'}{g^2} |_a$$
+\end{theorem*}
+\begin{proof}
+  \begin{align*}
+    \frac{\frac{1}{g(a+h)} - \frac{1}{g(a)}}{h} &= \frac{g(a) - g(a + h)}{g(a+h)g(a)}\cdot\frac{1}{h} \\
+    &= \frac{1}{g(a+h)g(a)}\cdot (-1)\frac{g(a+h) - g(a)}{h} \\
+    &\to \frac{1}{(g(a))^2}\cdot (-1) g'(a) 
+  \end{align*}
+\end{proof}
+
+
+\section{Quotient Rule}
+\begin{theorem*}
+  Let $f: I \to \RR$ and $g: I \to \RR$, $a\in I$ assume $f$ and $g$ are differentiable at $a$, and if $g(a) \neq 0$
+  then $\frac{f}{g}$ is differentiable at $a$ and $$\left(\frac{f}{g}\right)'(a) = \frac{f'(a)g(a) - f(a)g'(a)}{g(a)^2}$$
+\end{theorem*}
+\begin{proof}
+  Combine the theorems about products and reciprocals of differentiable function
+
+  \begin{align*}
+  \left(\frac{f}{g}\right)'(a) &= \left(f \cdot \frac{1}{g}\right)'(a) \\
+  &= f'(a) \cdot \frac{1}{g(a)} + f(a) \cdot \left(\frac{1}{g}\right)'(a) \\
+  &= \frac{f'(a)}{g(a)} + f(a)\left(-\frac{g'(a)}{g(a)^2}\right) \\
+  &= \frac{f'(a)g(a) - f(a)g'(a)}{g(a)^2}
+  \end{align*}
+\end{proof}
+
+\begin{example*}
+  \begin{align*}
+    \left(\frac{\sin x}{\cos x}\right)' &= \frac{\sin'(x) \cos(x) - \cos' x \sin x}{(\cos x)^2} \\
+    &= \frac{(\cos x)^2 - (-\sin ^2 x)}{(\cos x)^2} \\
+    &= \frac{1}{(\cos x)^2} \\
+  \end{align*}
+\end{example*}
