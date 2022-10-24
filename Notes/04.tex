@@ -162,3 +162,116 @@ If $\lim\limits_{x \to a} F(x) = l$ and $\lim\limits_{x \to a} G(x) = m$, then $
     &= \frac{1}{(\cos x)^2} \\
   \end{align*}
 \end{example*}
+
+\begin{example*}
+  $f(x) = x^n$ then
+  $f'(x) = n x^{n-1}$
+\end{example*}
+\begin{proof}
+  $$f_0(x) = 1, f_0'(x) = 0$$
+  $$f_1(x) = x, f_1'(x) = 1$$
+  $$f_1(x) = x^2, f_2'(x) = 2x$$
+  We want to show this formula for a given $n$, assuming that we already know if for $n = 1$,
+  In other words, the formula $f_{n-1}'(x) = (n-1)x^{n-1}, n \geq 2$,
+  implies the formula for $f_n$
+
+  Induction step: $$f_n(x) = x^n = \underbrace{x^{n-1}}_{f_{n-1}} \cdot \underbrace{x}_{f_1}$$
+  By using Product Rule, we get
+  \begin{align*}
+  f_n'(x) &= f_{n-1}'(x)f_1(x) + f_{n-1}(x)f_1'(x) \\
+  &= (n-1)x^{n-1} \cdot x + x^{n-1} \cdot 1 \\
+  &= nx^{n-1} 
+  \end{align*}
+\end{proof}
+
+\begin{example*}
+  \begin{align*}
+    (fg)'' &= (f'g + fg')' \\
+    &= (f'g)' + (fg')' \\
+    &= f''g + f'g' + f'g' + fg'' \\
+    &= f''g + 2f'g' + fg'' \\
+  \end{align*}
+  $(fg)''' = f'''g + 3f''g' + 3f'g'' + fg'''$
+  and can be written as $(fg)^{(3)}$
+  $$(fg)^{(n)}(x) = \sum_{k=0}^n \binom{n}{k} f^{(k)}(x)g^{(n-k)}(x)$$
+  As the analogy
+  $$(a + b)^n = \sum_{k=0}^n \binom{n}{k} a^k b^{n-k}$$
+\end{example*}
+
+We will not talk much about higher derivative in this class
+
+\section{Chain Rule}
+
+Let $\zeta(x) = f(g(x))$
+Assume that $g$ is defined on an interval containing $a$, and $g$ is differentiable at \underline{$a$}.
+Let $f$ be defined in an interval that contain the range (image) of $g$, and let $f$ be differentiable at $g(a)$.
+then, $\zeta = f \circ g$ is differentiable at $a$ and $\zeta'(a) = f'(g(a))g'(a)$
+
+\begin{example*}
+  $$F(x) = (x^3 + 7x^2 + 1)^8$$
+  Fix a point $a$, what $F'(a)$
+  
+  
+  Let $F(x) = f(g(x))$, $g(x) = x^3 + 7x^2 + 1$ and $f(w) = w^8$
+
+  First, calculate $f'$ and $g'$
+  $$f'(w) = 8w^7$$ 
+  $$g'(x) = 3x^2 + 14x$$
+  Then cancluate $F'(x)$
+  \begin{align*}
+  F'(x) &= f'(g(x))g'(x) \\
+  &= 8(g(x))^7 \cdot (3x^2 + 14x) \\
+  &= 8(x^3 + 7x^2 + 1)^7 \cdot (3x^2 + 14x) \\
+  \end{align*}
+\end{example*}
+
+Attempt to prove the chain rule
+
+\begin{proof}
+  \begin{align*}
+    \frac{\zeta(a+h) - \zeta(a)}{h} &= \frac{f(g(a+h)) - f(g(a))}{h} \\
+    &= \underbrace{\frac{f(g(a+h)) - f(g(a))}{g(a+h) - g(a)}}_{\to f'(g(a))} \cdot \underbrace{\frac{g(a+h) - g(a)}{h}}_{\to g'(a)}
+  \end{align*}
+  But $g(a+h) - g(a)$ might be equal to $0$, So, we can't use this method to prove the chain rule.
+\end{proof}
+
+\begin{theorem*}[Decomposition theorem for differentation]
+  The function $f$ is differentiable at $a$ (with derivative $f'(a)$) \underline{if and only if} 
+  there is another function $u$ with the same domain as $f$, 
+  so that $u$ is continuous at $a$ and $$f(x) = f(a) + (x-a)u(x)$$
+  Then $$u(a) = f'(a)$$
+\end{theorem*}
+
+\begin{proof}
+  \text{}
+  \begin{enumerate}[(i)]
+    \item Assume that $f$ is differentiable at $a$, $f'(a)$ is the derivative
+  \[
+    u(x) = \begin{cases}
+      \frac{f(x) - f(a)}{x-a} & \text{if } x \neq a \\
+      f'(a) & \text{if } x = a
+    \end{cases} 
+  \]
+  ($u$ depends on $a$ but $a$ is fixed)
+
+  $u$ is continuous at $a$ because $\lim\limits_{x \to a} \frac{f(a+h) - f(a)}{h} = f'(a) = u(a)$
+  \item Assume that $f(x) = f(x) + (x-a)u(x)$ for some function that is continuous at $a$ (for all $x$ in the domain of $f$)
+  
+  Then I claim that $f$ is differentiable at $a$, $u(a) = f'(a)$ for $x = a + h, h \neq 0, x \neq a$, 
+  $$\frac{f(x) - f(a)}{x-a} = (x-a)u(x)$$
+  
+  $u$ is continuous at $a$, implies $u(x) \to u(a)$ as $x \to a$
+
+  \underline{fact}: $f(g(x))$, $f$ is differentiable at $g(a)$
+
+  $$g(x) = g(a) + (x-a)u(x)\ u \text{ continuous at }a$$
+  $$f(w) = f(g(a)) + (w - g(a))v(w)$$
+
+  $u$ is continuous at $a$, $u(a) = g'(a)$
+
+  $v$ is continuous at $g(a)$, $v(g(a)) = f'(g(a))$
+
+  $$f(g(x)) = f(g(a)) + (g(x) - g(a))v(g(x))$$
+  \end{enumerate}
+
+\end{proof}
