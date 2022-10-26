@@ -205,7 +205,8 @@ We will not talk much about higher derivative in this class
 Let $\zeta(x) = f(g(x))$
 Assume that $g$ is defined on an interval containing $a$, and $g$ is differentiable at \underline{$a$}.
 Let $f$ be defined in an interval that contain the range (image) of $g$, and let $f$ be differentiable at $g(a)$.
-then, $\zeta = f \circ g$ is differentiable at $a$ and $\zeta'(a) = f'(g(a))g'(a)$
+then, $\zeta = f \circ g$ is differentiable at $a$ and $$\zeta'(a) = f'(g(a))g'(a)$$
+
 
 \begin{example*}
   $$F(x) = (x^3 + 7x^2 + 1)^8$$
@@ -240,6 +241,7 @@ Attempt to prove the chain rule
   there is another function $u$ with the same domain as $f$, 
   so that $u$ is continuous at $a$ and $$f(x) = f(a) + (x-a)u(x)$$
   Then $$u(a) = f'(a)$$
+
 \end{theorem*}
 
 \begin{proof}
@@ -255,23 +257,95 @@ Attempt to prove the chain rule
   ($u$ depends on $a$ but $a$ is fixed)
 
   $u$ is continuous at $a$ because $\lim\limits_{x \to a} \frac{f(a+h) - f(a)}{h} = f'(a) = u(a)$
-  \item Assume that $f(x) = f(x) + (x-a)u(x)$ for some function that is continuous at $a$ (for all $x$ in the domain of $f$)
+  % \item Assume that $f(x) = f(x) + (x-a)u(x)$ for some function that is continuous at $a$ (for all $x$ in the domain of $f$)
   
-  Then I claim that $f$ is differentiable at $a$, $u(a) = f'(a)$ for $x = a + h, h \neq 0, x \neq a$, 
-  $$\frac{f(x) - f(a)}{x-a} = (x-a)u(x)$$
+  % Then I claim that $f$ is differentiable at $a$, $u(a) = f'(a)$ for $x = a + h, h \neq 0, x \neq a$, 
+  % $$\frac{f(x) - f(a)}{x-a} = (x-a)u(x)$$
   
-  $u$ is continuous at $a$, implies $u(x) \to u(a)$ as $x \to a$
+  % $u$ is continuous at $a$, implies $u(x) \to u(a)$ as $x \to a$
 
-  \underline{fact}: $f(g(x))$, $f$ is differentiable at $g(a)$
+  % \underline{fact}: $f(g(x))$, $f$ is differentiable at $g(a)$
 
-  $$g(x) = g(a) + (x-a)u(x)\ u \text{ continuous at }a$$
-  $$f(w) = f(g(a)) + (w - g(a))v(w)$$
+  % $$g(x) = g(a) + (x-a)u(x)\ u \text{ continuous at }a$$
+  % $$f(w) = f(g(a)) + (w - g(a))v(w)$$
 
-  $u$ is continuous at $a$, $u(a) = g'(a)$
+  % $u$ is continuous at $a$, $u(a) = g'(a)$
 
-  $v$ is continuous at $g(a)$, $v(g(a)) = f'(g(a))$
+  % $v$ is continuous at $g(a)$, $v(g(a)) = f'(g(a))$
 
-  $$f(g(x)) = f(g(a)) + (g(x) - g(a))v(g(x))$$
+  % $$f(g(x)) = f(g(a)) + (g(x) - g(a))v(g(x))$$
   \end{enumerate}
 
+\end{proof}
+
+Suppose that $$\zeta(x) = f(g(x)) \implies \zeta'(a) = f'(g(a))g'(a)$$
+\textbf{Assumption}
+\begin{enumerate}[(1)]
+  \item $g$ is differentiable at $a$
+  \item $f$ is differentiable at $g(a)$
+\end{enumerate}
+we can write 
+$$g(x) = g(a) + (x-a)u(x)$$
+where $u$ is continuous at $a$, $g'(a) = u(a)$, and
+$$f(y) = f(g(a)) + (y - g(a))v(y)$$
+where $v$ is continuous at $g(a)$, $v(g(a)) = f'(g(a))$
+
+\underline{\textbf{Goal}} is to find a function $w$ continuous at $a$ such that 
+$$\zeta(x) = \zeta(a) + (x - a)w(x)$$
+with $w(a) = f'(g(a))g'(a)$
+
+from (2), $$f(g(x)) = f(g(a)) + (g(x) - g(a))\underbrace{v(g(x))}_{\text{cts at }a}$$
+from (1), $$f(g(x)) = f(g(a)) + (x-a)\underbrace{u(x)v(g(x))}_{\text{cts at }a}$$
+Then, we get 
+$$w(x):= u(x)v(g(x))$$
+and
+$$w(a) = u(a)v(g(a)) = g'(a)f'(g(a))$$
+
+\section{Geometric meaning of Differentiation}
+
+\begin{theorem*}
+  Let $f$ be defined on an interval $I$ and let $a$ be a point in the interior of this interval.
+
+  \underline{Assume:}
+  \begin{enumerate}
+    \item $f$ has a maximum at $a$
+    \item $f$ is differentiable at $a$
+  \end{enumerate}
+  Then, $f'(a) = 0$ 
+  
+  formally $f$ has a maximum in $I$ at $a$, means $f(x) \leq f(a)$ for all $x \in I$
+  (Also works for $\min$ in place of $\max$)
+\end{theorem*}
+
+\begin{proof}
+  We know by the assumption $\lim\limits_{x\to a} \frac{f(x) - f(a)}{x - a} = f'(x)$ exists.
+
+  \begin{enumerate}
+    \item If $x > a$ then $f(x) \leq f(a) \implies \frac{f(x) - f(a)}{x - a} \leq 0$ (slope of right side $\leq 0$)
+    \item If $x < a$ then $f(x) \leq f(a)$ but now $x - a < 0$,$ \frac{f(x) - f(a)}{x - a} \geq 0$ (slope of left side $\geq 0$)
+  \end{enumerate}
+
+  So, $\lim\limits_{x\to a} \frac{f(x) - f(a)}{x - a}$ has to be $\geq 0$ and $\leq 0$, so it must be $0$.
+
+\end{proof}
+
+\section{Mean-Value Theorem}
+
+Let $f$ be defined on $\left[a, b\right]$ and $f$ continuous in $\left[a, b\right]$ and differentiable in $(a, b)$. 
+Then there is a $\xi \in (a, b)$ such that $$f'(\xi) = \frac{f(b) - f(a)}{b-a}$$
+
+\begin{proof}
+  First step in the proof is a \underline{special} case where $f(a) = f(b)$
+  (then there is a $\xi \in (a, b)$ such that $f'(\xi) = 0$)
+  \begin{enumerate}
+    \item if $f$ has a $\max$ and a $\min$ at the endpoint, $f$ is contant and therefore $f'(\xi) = 0$ for all $\xi \in (a, b)$
+    \item if $f$ has a maximum and a minimum in $(a, b)$, then we know already, at such a point, the derivative is $0$,
+    so at that point $\xi \implies f'(\xi) = 0$
+  \end{enumerate}
+  This particular case is called ``Rolle's theorem''
+
+  Consider $$g(x) = f(x) - f(a) - \frac{f(b) - f(a)}{b-a}(x-a)$$
+  Then, $g(a) = 0$ and $g(b) = 0$ and $g$ is continuous in $(a, b)$
+  $$g'(x) = f'(x) - \frac{f(b) - f(a)}{b-a}$$
+  Apply ``Rolle's theorem'' to $g$ on $(a, b)$, we get a $\xi \in (a, b)$ such that $g'(\xi) = 0$
 \end{proof}
