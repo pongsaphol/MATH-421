@@ -245,9 +245,8 @@ Attempt to prove the chain rule
 \end{theorem*}
 
 \begin{proof}
-  \text{}
-  \begin{enumerate}[(i)]
-    \item Assume that $f$ is differentiable at $a$, $f'(a)$ is the derivative
+  % \begin{enumerate}[(i)]
+    Assume that $f$ is differentiable at $a$, $f'(a)$ is the derivative
   \[
     u(x) = \begin{cases}
       \frac{f(x) - f(a)}{x-a} & \text{if } x \neq a \\
@@ -274,32 +273,32 @@ Attempt to prove the chain rule
   % $v$ is continuous at $g(a)$, $v(g(a)) = f'(g(a))$
 
   % $$f(g(x)) = f(g(a)) + (g(x) - g(a))v(g(x))$$
+  % \end{enumerate}
+
+
+  Suppose that $$\zeta(x) = f(g(x)) \implies \zeta'(a) = f'(g(a))g'(a)$$
+  \textbf{Assumption}
+  \begin{enumerate}[(1)]
+    \item $g$ is differentiable at $a$
+    \item $f$ is differentiable at $g(a)$
   \end{enumerate}
+  we can write 
+  $$g(x) = g(a) + (x-a)u(x)\ \ast$$
+  where $u$ is continuous at $a$, $g'(a) = u(a)$, and
+  $$f(y) = f(g(a)) + (y - g(a))v(y)\ \ast \ast $$
+  where $v$ is continuous at $g(a)$, $v(g(a)) = f'(g(a))$
 
+  \underline{\textbf{Goal}} is to find a function $w$ continuous at $a$ such that 
+  $$\zeta(x) = \zeta(a) + (x - a)w(x)$$
+  with $w(a) = f'(g(a))g'(a)$
+
+  from $\ast \ast $, $$f(g(x)) = f(g(a)) + (g(x) - g(a))\underbrace{v(g(x))}_{\text{cts at }a}$$
+  from $\ast $, $$f(g(x)) = f(g(a)) + (x-a)\underbrace{u(x)v(g(x))}_{\text{cts at }a}$$
+  Then, we get 
+  $$w(x):= u(x)v(g(x))$$
+  and
+  $$w(a) = u(a)v(g(a)) = g'(a)f'(g(a))$$
 \end{proof}
-
-Suppose that $$\zeta(x) = f(g(x)) \implies \zeta'(a) = f'(g(a))g'(a)$$
-\textbf{Assumption}
-\begin{enumerate}[(1)]
-  \item $g$ is differentiable at $a$
-  \item $f$ is differentiable at $g(a)$
-\end{enumerate}
-we can write 
-$$g(x) = g(a) + (x-a)u(x)$$
-where $u$ is continuous at $a$, $g'(a) = u(a)$, and
-$$f(y) = f(g(a)) + (y - g(a))v(y)$$
-where $v$ is continuous at $g(a)$, $v(g(a)) = f'(g(a))$
-
-\underline{\textbf{Goal}} is to find a function $w$ continuous at $a$ such that 
-$$\zeta(x) = \zeta(a) + (x - a)w(x)$$
-with $w(a) = f'(g(a))g'(a)$
-
-from (2), $$f(g(x)) = f(g(a)) + (g(x) - g(a))\underbrace{v(g(x))}_{\text{cts at }a}$$
-from (1), $$f(g(x)) = f(g(a)) + (x-a)\underbrace{u(x)v(g(x))}_{\text{cts at }a}$$
-Then, we get 
-$$w(x):= u(x)v(g(x))$$
-and
-$$w(a) = u(a)v(g(a)) = g'(a)f'(g(a))$$
 
 \section{Geometric meaning of Differentiation}
 
@@ -331,8 +330,10 @@ $$w(a) = u(a)v(g(a)) = g'(a)f'(g(a))$$
 
 \section{Mean-Value Theorem}
 
-Let $f$ be defined on $\left[a, b\right]$ and $f$ continuous in $\left[a, b\right]$ and differentiable in $(a, b)$. 
-Then there is a $\xi \in (a, b)$ such that $$f'(\xi) = \frac{f(b) - f(a)}{b-a}$$
+\begin{theorem*}[Mean-value theorem]
+  Let $f$ be defined on $\left[a, b\right]$ and $f$ continuous in $\left[a, b\right]$ and differentiable in $(a, b)$. 
+  Then there is a $\xi \in (a, b)$ such that $$f'(\xi) = \frac{f(b) - f(a)}{b-a}$$
+\end{theorem*}
 
 \begin{proof}
   First step in the proof is a \underline{special} case where $f(a) = f(b)$
@@ -342,10 +343,117 @@ Then there is a $\xi \in (a, b)$ such that $$f'(\xi) = \frac{f(b) - f(a)}{b-a}$$
     \item if $f$ has a maximum and a minimum in $(a, b)$, then we know already, at such a point, the derivative is $0$,
     so at that point $\xi \implies f'(\xi) = 0$
   \end{enumerate}
-  This particular case is called ``Rolle's theorem''
+  This particular case is called ``\textit{Rolle's theorem}''
 
   Consider $$g(x) = f(x) - f(a) - \frac{f(b) - f(a)}{b-a}(x-a)$$
   Then, $g(a) = 0$ and $g(b) = 0$ and $g$ is continuous in $(a, b)$
   $$g'(x) = f'(x) - \frac{f(b) - f(a)}{b-a}$$
-  Apply ``Rolle's theorem'' to $g$ on $(a, b)$, we get a $\xi \in (a, b)$ such that $g'(\xi) = 0$
+  Apply ``\textit{Rolle's theorem}'' to $g$ on $(a, b)$, we get a $\xi \in (a, b)$ such that $g'(\xi) = 0$
+\end{proof}
+
+Aforementioned theorem can be written as $$f(b) - f(a) = f'(\xi) (b-a)$$
+
+\section{Application of the Mean-Value Theorem}
+
+\begin{example*}
+  Prove $|\sin x| \leq |x|$
+\end{example*}
+\begin{proof}
+  We know that $\sin 0 = 0$ and $\sin'x = \cos x$
+
+  $$\sin x = \sin x - \underbrace{\sin 0}_{=0} = \sin'(\xi)(x-0)$$
+
+  where $\xi$ is between $0$ and $x$
+  $$\begin{cases}
+    0 < \xi < x & \text{if } x > 0\\
+    x < \xi < 0 & \text{if } x < 0
+  \end{cases}$$
+  So, $\sin x = (\cos \xi) x$, where $-1 \leq \cos \xi \leq 1 \implies |\cos\xi| \leq 1$
+
+  Therefore,
+  $$|\sin x| = |\cos\xi|\cdot|x| \leq |x|$$
+\end{proof}
+
+\begin{example*}
+  Can we get an estimate for $\cos x - 1$ where $x$ is small?
+  $$\cos x - 1 = \cos x - \cos 0 = \cos'(\xi)(x-0) = (-\sin \xi) x$$
+  We get $|\cos x - 1| \leq |x|$
+  
+  Can do better
+  \begin{align*}
+    |\cos x - 1| &\leq |(\sin \xi)|\cdot|x|\ \text{ for } \xi \text{ between } 0 \text{ and } x\\
+    &\leq |\xi|\cdot|x| \leq |x|^2\\
+  \end{align*}
+  for $|x| < 1$ this is a better estimate than the previous one
+\end{example*}
+
+\begin{theorem*}
+  If $f$ is differentiable on $(a, b)$ and if $f'(x) = 0$ for all $x\in(a, b)$ then $f$ is constant.
+\end{theorem*}
+
+\begin{proof}
+  take $x_1 < x_2$, both in the interval and apply the \textit{MVT} 
+  $$f(x_2) - f(x_1) = f'(\xi)(x_2-x_1),\ x_1 < \xi < x_2$$ 
+  we know $f'(\xi) = 0 \implies f(x_2) - f(x_1) = 0 \implies f(x_2) = f(x_1)$
+
+  So, $f$ is constant function
+\end{proof}
+
+\begin{example*}
+  for a differential equation
+
+  Q: Find $f(x)$ (differentiable, for $x > 0$) such that 
+  $$x f'(x) = f(x)$$
+\end{example*}
+
+\begin{proof}
+  By guessing $f(x) = x$ is a solution because $f'(x) = 1, x\cdot 1 = x$
+  
+  In fact, for any constant $C$, $f(x) = Cx$ is a solution.
+
+  Show that for an arbitrary solution $g$, $xg'(x) = g(x)$ for $x > 0$
+  try to show that $\frac{g(x)}{x}$ is constant
+
+  To do this, show that the derivative of $\frac{g(x)}{x}$ is zero
+  
+  $$\frac{g(x)}{x} = \frac{g'(x)x-g(x)\cdot 1}{x^2} = 0,\text{ since } g \text{ satisfies the differential equation}$$
+  So, $\frac{g(x)}{x}$ is constant
+\end{proof}
+
+\begin{example*}
+  $$xf'(x)=af(x)$$
+  $Cx^a$ is a solution
+\end{example*}
+
+\begin{proof}
+  Conjecture: All solutions are of the form $f(x) = Cx^a$
+
+  Let $g$ be a solution of the equation, we have $xg'(x) = ag(x)$
+  Consider 
+  \begin{align*}
+    \left(\frac{g(x)}{x^a}\right)' &= \frac{g'(x)x^a-g(x)ax^{a-1}}{x^{2a}} \\
+    &= \frac{x^{a-1}}{x^{2a}}\cdot \underbrace{(g'(x)x - ag(x))}_{=0}\\
+  \end{align*}
+  So, $\frac{g(x)}{x^a}$ is constant, so $g(x) = Cx^a$ for some $C$
+\end{proof}
+
+\begin{theorem*}[A]
+  If $f, f'$ are differentiable on $(a, b)$ if $f'(c) = 0$ and $f''(x) > 0$ for all $x$ in $(a, b)$ 
+  then $f$ has a minimum at $c$
+\end{theorem*}
+
+\begin{theorem*}[B]
+  \text{}
+  \begin{enumerate}[a)]
+    \item 
+    If $g$ is a differentiable function on $(a, b)$ such that 
+    $g'(x) > 0$ on $(a, b)$ then $g$ is strictly increasing
+
+    i.e., if $x_1 < x_2$ then $g(x_1) < g(x_2)$
+    \item If $g(x) < 0$ on $(a, b)$ then $g$ is decreasing
+  \end{enumerate}
+\end{theorem*}
+\begin{proof}[Proof of Theorem B]
+  If $x_1 < x_2$, apply MVT
+  $$g(x_2) - g(x_1) = \underbrace{g'(\xi)}_{ > 0}\underbrace{(x_2 - x_1)}_{ > 0} > 0$$
 \end{proof}
