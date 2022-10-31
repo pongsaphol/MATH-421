@@ -437,23 +437,95 @@ Aforementioned theorem can be written as $$f(b) - f(a) = f'(\xi) (b-a)$$
   So, $\frac{g(x)}{x^a}$ is constant, so $g(x) = Cx^a$ for some $C$
 \end{proof}
 
-\begin{theorem*}[A]
+\begin{theorem*}
   If $f, f'$ are differentiable on $(a, b)$ if $f'(c) = 0$ and $f''(x) > 0$ for all $x$ in $(a, b)$ 
   then $f$ has a minimum at $c$
 \end{theorem*}
 
-\begin{theorem*}[B]
-  \text{}
-  \begin{enumerate}[a)]
-    \item 
-    If $g$ is a differentiable function on $(a, b)$ such that 
-    $g'(x) > 0$ on $(a, b)$ then $g$ is strictly increasing
+\begin{proof}
+To do this, we want to check that $f$ is strictly increasing for $x > c$ and strictly decreasing for $x < 0$
 
-    i.e., if $x_1 < x_2$ then $g(x_1) < g(x_2)$
-    \item If $g(x) < 0$ on $(a, b)$ then $g$ is decreasing
-  \end{enumerate}
-\end{theorem*}
-\begin{proof}[Proof of Theorem B]
-  If $x_1 < x_2$, apply MVT
-  $$g(x_2) - g(x_1) = \underbrace{g'(\xi)}_{ > 0}\underbrace{(x_2 - x_1)}_{ > 0} > 0$$
+We do this by checking $f'(x) < 0, x < c$ and $f'(x) > 0, x > c$
+$$f''(x) > 0 \implies f' \text{ is increasing (strictly) on }(a, b) $$
+$$f'(c) = 0 \implies f'(x) > 0, x > c \text{ and } f'(x) < 0, x < c$$
 \end{proof}
+
+% \begin{theorem*}[B]
+%   \text{}
+%   \begin{enumerate}[a)]
+%     \item 
+%     If $g$ is a differentiable function on $(a, b)$ such that 
+%     $g'(x) > 0$ on $(a, b)$ then $g$ is strictly increasing
+
+%     i.e., if $x_1 < x_2$ then $g(x_1) < g(x_2)$
+%     \item If $g(x) < 0$ on $(a, b)$ then $g$ is decreasing
+%   \end{enumerate}
+% \end{theorem*}
+% \begin{proof}[Proof of Theorem B]
+%   If $x_1 < x_2$, apply MVT
+%   $$g(x_2) - g(x_1) = \underbrace{g'(\xi)}_{ > 0}\underbrace{(x_2 - x_1)}_{ > 0} > 0$$
+% \end{proof}
+
+\section{Function}
+
+\subsection{one-to-one (injective)}
+$f$ is one-to-one if $x_1 \neq x_2$ implies that $f(x_1) \neq f(x_2)$
+
+\begin{example*}
+  $$f: (1, 2) \to \RR$$
+  $$x \mapsto x^2$$
+  Show that $f$ is one-to-one
+\end{example*}
+
+\begin{proof}
+  proof by contradiction
+
+  $x_1^2 = x_2^2$ and $x_1, x_2 \in (1, 2)$
+
+  $\sqrt{x_1^2} = x_1, \sqrt{x_2^2} = x_2 \implies x_1 = x_2$
+\end{proof}
+
+\begin{example*}
+  $$f: (-5, 5) \to \RR$$
+  $$x \mapsto x^2$$
+  Show that $f$ is not one-to-one
+\end{example*}
+
+\begin{proof}
+  $2^2 = -2^2, x_1 = 2, x_2 = -2 \implies x_1^2 = x_2^2$
+\end{proof}
+
+\subsection{onto (surjective)}
+$f$ is ``onto'' means that every element in $B$ is a value $f(x)$ for some $x \in A$
+
+Every function is onto if the target space is equal to the range of $f$
+
+\subsection{one-to-one and onto (bijective)}
+If a function is both one-to-one and onto (injective and surjective) 
+
+$f : A \to B$ bijective mean that for ever $x \in A$ there is exactly one $y \in B$ such that $y = f(x)$
+and for every $y \in B$ there is exactly one $x$, such that $y = f(x)$
+we say $$x = f^{-1}(y) \iff y = f(x)$$
+We pronounce $f^{-1}$ as ``f inverse'' 
+
+% Assume $f: [a, b]$ and $f$ is strictly increasing
+
+\begin{theorem*}
+  If $f$ is strictly increasing on $[a, b]$ and continuous then $f[a, b] \to [f(a), f(b)]$ is bijective and $f$ has an inverse function
+  $$f^{-1}[f(a), f(b)] \to [a, b]$$
+  $$y \mapsto x$$
+  As the result, we get $f(f^{-1}(y)) = y$ and $f^{-1}(f(x)) = x$
+\end{theorem*}
+
+
+If $f$ and $f^{-1}$
+$$f: [a, b] \to [f(a), f(b)]$$
+$$f^{-1} : [f(a), f(b)] \to [a, b]$$
+are both differentiable, what is the relation between the derivatives
+
+Apply Chain rule on $f^{-1}(f(x)) = x$ then $(f^{-1})'(f(x))f'(x) = 1$
+
+Apply Chain rule on $f(f^{-1}(y)) = y$ then $f'(f^{-1}(y))(f^{-1})'(y) = 1$
+
+if and only if $y = f(x)$ and $x = f^{-1}(y)$
+
