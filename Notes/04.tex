@@ -466,7 +466,7 @@ $$f'(c) = 0 \implies f'(x) > 0, x > c \text{ and } f'(x) < 0, x < c$$
 %   $$g(x_2) - g(x_1) = \underbrace{g'(\xi)}_{ > 0}\underbrace{(x_2 - x_1)}_{ > 0} > 0$$
 % \end{proof}
 
-\section{Function}
+\section{Inverse Function}
 
 \subsection{one-to-one (injective)}
 $f$ is one-to-one if $x_1 \neq x_2$ implies that $f(x_1) \neq f(x_2)$
@@ -529,3 +529,71 @@ Apply Chain rule on $f(f^{-1}(y)) = y$ then $f'(f^{-1}(y))(f^{-1})'(y) = 1$
 
 if and only if $y = f(x)$ and $x = f^{-1}(y)$
 
+\begin{theorem*}
+  If $f$ is increasing or decreasing on some interval then it has an inverse function $f^{-1}$
+\end{theorem*}
+
+\begin{proof}
+  If $f$ and $f^{-1}$ are differentiable then we may get a formula for $(f^{-1})'$ from the chain rule applied to $f^{-1}(f(x)) = x$
+
+  The chain rule given us
+  $$(f^{-1})'(f(x)) = \frac{1}{f'(x)}$$
+  Derivative of $f^{-1}$, evaluated at $f(x)$
+  $$\implies (f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))}$$
+\end{proof}
+
+\begin{theorem*}
+  Let $f$ be (strictly) increasing on $[a, b]$ and $f'(x_0)$ exists for $x_0 \in (a, b)$ and $f'(x_0) \neq 0$ then $f^{-1}$ is differentiable at $f(x_0)$
+  and $(f^{-1})'(f(x_0)) = \frac{1}{f'(x_0)}$
+\end{theorem*}
+
+\begin{proof}
+  Precall $$f'(x_0) = \lim\limits_{x \to x_0}\frac{f(x) - f(x_0)}{x-x_0}$$
+  If $f(x) = y$ then $$\frac{f(x) - f(x_0)}{x-x_0} = \frac{y-f(x_0)}{f^{-1}(y) - x_0} = \frac{1}{\frac{f^{-1}(y) - f^{-1}(f(x_0))}{y-f(x_0)}}$$
+  $$\lim\limits_{y \to f(x_0)}\frac{f^{-1}(y) - f^{-1}(f(x_0))}{y - f(x_0)} = (f^{-1})'(f(x_0))$$
+  if that limit exists
+
+  We know that $f'(x_0) = c > 0$ and $\frac{f(x) - f(x_0)}{x - x_0} \to C$
+  There exists $\delta > 0$ such that 
+  $$\frac{f(x) - f(x_0)}{x - x_0} > \frac{C}{2} \text{ for } |x - x_0| < \delta$$
+  $$\frac{f(x) - f(x_0)}{x - x_0} < 2C \text{ for } |x - x_0| < \delta$$
+  $$f(x) - f(x_0) \text{ is between } \frac{C}{2}(x - x_0) \text{ and } 2C(x-x_0)$$
+  $$x - x_0 \text{ is between } \frac{f(x) - f(x_0)}{2C} \text{ and } \frac{f(x) - f(x_0)}{\frac{C}{2}}$$
+  Then we get
+  \begin{align*}
+    \lim\limits_{y \to f(x_0)} \frac{f^{-1}(y) - f^{-1}(f(x_0))}{y - f(x_0)} &= \lim\limits_{y \to f(x_0)} \frac{1}{\frac{f(x) - f(x_0)}{x-x_0}}\\
+    &= \frac{1}{f'(x_0)}
+  \end{align*}
+\end{proof}
+
+\begin{example*}
+  For $x > 0, f(x) = x^n, f:(0, \infty) \to (0, \infty) and f^{-1}: (0, \infty) \to (0, \infty)$
+  The inverse function $f^{-1}$ is called nth to of
+  $$f'(x) = nx^{n-1}$$
+  \begin{align*}
+  (f^{-1})'(y) &= \frac{1}{f'(x)} |_{x=f^{-1}(y)} \\
+  &= \frac{1}{nx^{n-1}}|_{x = f^{-1}(y)} \\
+  &= \frac{1}{n(\sqrt[n]{y}^{n-1})} \\
+  &= \frac{1}{n}\frac{1}{\sqrt[n]{y}}\sqrt[n]{y} \\
+  &= \frac{1}{n}\frac{1}{y}\sqrt[n]{y}
+  \end{align*}
+\end{example*}
+
+\begin{example*}
+  $f(x) = \frac{\sin x}{\cos x} = \tan x$ where $-\frac{\pi}{2} < x < \frac{\pi}{2}$
+  $f(x)$ is well-defined whenever $x\neq \frac{\pi}{2} + k\pi$ for $k \in \mathbb{Z}$
+  $$f'(x) = \frac{(\cos x)\cos x - \sin x (-\sin x)}{(\cos x)^2} = \frac{1}{(\cos x)^2}$$
+  $\tan : \left(-\frac{\pi}{2}, \frac{\pi}{2}\right) \mapsto (-\infty, \infty)$ and we found that $\tan$ is increasing $\tan' x = \frac{1}{(\cos x)^ 2} > 0$
+
+  What is $(\tan^{-1})'(y)$
+  \begin{align*}
+    (f^{-1})'(y) &= \frac{1}{f'(f^{-1}(y))} \\
+    &= \frac{1}{\frac{1}{\cos^2(f^{-1}(y))}} \\
+    &= (\cos(f^{-1}(y)))^2 \\
+    &= (\cos(\tan^{-1}(y)))^2 \\
+    &= (\cos(\arctan(y)))^2 \\
+  \end{align*}
+  $$\tan^2 x = \frac{\sin^2 x}{\cos^2 x} = \frac{1-(\cos x)^2}{(\cos x)^2} = \frac{1}{(\cos x)^2}-(\cos x)^2-1$$
+  $$\frac{1}{(\cos x)^2} = 1 + (\tan x)^2 \implies (\cos x)^2 = \frac{1}{1 + (\tan x)^2}$$
+  $$(\cos(\arctan(y)))^2 = \frac{1}{1 + (\tan(\arctan y))^2} = \frac{1}{1+y^2}$$
+\end{example*}
