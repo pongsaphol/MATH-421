@@ -5,13 +5,13 @@
     \draw[->] (-1, 0) -- (4.2, 0) node[right] {$x$};
     \draw[->] (0, -1) -- (0, 4.2) node[above] {$f(x)$};
     \draw[scale=1, domain=0:4, smooth, variable=\x] plot ({\x}, {\x^2/4});
-    \draw[dotted] (1, 0) -- (1, 0.25);
+    % \draw[dotted] (1, 0) -- (1, 0.25);
     \draw[dotted] (1, 0.25) -- (2, 0.25);
-    \draw[dotted] (2, 0) -- (2, 1);
+    % \draw[dotted] (2, 0) -- (2, 1);
     \draw[dotted] (2, 1) -- (3, 1);
-    \draw[dotted] (3, 0) -- (3, 2.25);
+    % \draw[dotted] (3, 0) -- (3, 2.25);
     \draw[dotted] (3, 2.25) -- (4, 2.25);
-    \draw[dotted] (4, 0) -- (4, 4);
+    % \draw[dotted] (4, 0) -- (4, 4);
 
     \draw[-] (1, 0.1) -- (1, -0.1) node[below] {$\frac{1}{4}$};
     \draw[-] (2, 0.1) -- (2, -0.1) node[below] {$\frac{1}{2}$};
@@ -43,19 +43,22 @@
 \end{definition*}
 
 \begin{definition*}[Lower Riemann Sum]
- $$L(f, P) = \sum_{j=1}^N (x_j - x_{j-1})\cdot \inf_{x_{j-1}\leq t\leq x_j}f(t)$$
-  lower Riemann sum, given $f$, and $P = \{x_0 <x_1 <\dotsc< x_N\}$
-
-  $\inf$ is the greatest lower bound for $f$ on $[x_{j-1}, x_j]$
+ $$L(f, P) = \sum_{j=1}^N (x_j - x_{j-1})\cdot m_j$$
+ $$m_j = \inf_{x_{j-1}\leq t\leq x_j}f(t)$$
+  Lower Riemann sum, given $f$, and $P = \{x_0 <x_1 <\dotsc< x_N\}$, 
+  $\inf$ is the greatest lower bound for $f$ on $[x_{j-1}, x_j]$,
+  $m_j$ is the greatest lower bound for $f$ on the partition$[x_{j-1}, x_j]$
 \end{definition*}
 
 \begin{definition*}[Uower Riemann Sum]
-  $$U(f, P) =\sum_{j=1}^N (x_j - x_{j-1})\cdot \sup_{x_{j-1}\leq t\leq x_j}f(t)$$
-  where $\sup$ is the least upper bound
+  $$U(f, P) =\sum_{j=1}^N (x_j - x_{j-1})\cdot M_j$$
+  $$M_j = \sup_{x_{j-1}\leq t\leq x_j}f(t)$$
+  where $\sup$ is the least upper bound,
+  $M_j$ is the least upper bound
 \end{definition*}
 
 the example $[a, b] = [0, 1]$
-$$P=\left\{0, \frac{1}{N}, \frac{2}{N}, \dotsc, , \frac{N}{N} = 1\right\}$$
+$$P=\left\{0, \frac{1}{N}, \frac{2}{N}, \dotsc, \frac{N}{N} = 1\right\}$$
 where $x_j = \frac{j}{N}, 0\leq j \leq N$
 \begin{align*}
   L(f, P) &= \sum_{j=1}^{N}\frac{1}{N}\left(\frac{j-1}{N}\right)^2 \\
@@ -68,15 +71,125 @@ where $x_j = \frac{j}{N}, 0\leq j \leq N$
   &= \frac{1}{N^3}(1^2 + 2^2 + \dotsc + N^2) \\
 \end{align*}
 
-What happens with $L(f, P)$ if we refine the partition
+What happens with $L(f, P)$ if we refine the partition?
 
-What happens with $U(f, P)$ if we refine the partition
+What happens with $U(f, P)$ if we refine the partition?
 
 \underline{\textbf{Proposition}}:if $P, \tilde{P}$ are partitions $P \subset \tilde{P}$ then 
 $L(f, P) \leq L(f, \tilde{P})$ and $U(f, P) \geq U(f, \tilde{P})$
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (-1, 0) -- (4.2, 0) node[right] {$x$};
+    \draw[->] (0, -1) -- (0, 4.2) node[above] {$f(x)$};
+    \draw[scale=1, domain=0:4, smooth, variable=\x] plot ({\x}, {\x^2/4});
+    \draw[dotted] (1, 0) -- (1, 0.25);
+    \draw[dotted] (1, 0.25) -- (2, 0.25);
+    \draw[dotted] (2, 0) -- (2, 1);
+    \draw[dotted] (2.5, 0) -- (2.5, 1.5625);
+    \draw[dotted] (2.5, 1.5625) -- (3, 1.5625);
+    \draw[dotted] (2, 1) -- (3, 1);
+    \draw[dotted] (3, 0) -- (3, 2.25);
+    \draw[dotted] (3, 2.25) -- (4, 2.25);
+    \draw[dotted] (4, 0) -- (4, 4);
+
+    \draw[-] (1, 0.1) -- (1, -0.1) node[below] {$\frac{1}{4}$};
+    \draw[-] (2, 0.1) -- (2, -0.1) node[below] {$\frac{1}{2}$};
+    \draw[-] (2.5, 0.1) -- (2.5, -0.1) node[below] {$v$};
+    \draw[-] (3, 0.1) -- (3, -0.1) node[below] {$\frac{3}{4}$};
+    \draw[-] (4, 0.1) -- (4, -0.1) node[below] {$1$};
+
+
+    % \draw[dotted] (0, 0) rectangle (1, 0.25);
+    % \draw[dotted] (1, 0) rectangle (2, 1);
+    % \draw[dotted] (2, 0) rectangle (3, 2.25);
+    % \draw[dotted] (3, 0) rectangle (4, 4);
+  \end{tikzpicture}
+
+  $f(x) = x^2$ defined on $[0, 1]$
+\end{center}
+
+If we refine the partition by adding a point $\tilde{P} = P \cup \{v\}$
 
 The key for the proof $x_{j-1}, x_j \in P$ take a new partition point $v$ between $x_{j-1}$ and $x_j$
 \begin{align*}
   (x_j - x_{j-1}) \inf_{x_{j-1} \leq t \leq x_j} f(t) &= (x_j - v) \inf_{x_{j-1} \leq t \leq x_j} f(t) + (v - x_{j-1}) \inf_{x_{j-1} \leq t \leq x_j} f(t) \\
   &\leq (x_j - v) \inf_{v \leq t \leq x_j} f(t) + (v - x_{j-1}) \inf_{x_{j-1} \leq t \leq v} f(t) \\
 \end{align*}
+
+\begin{theorem*}
+  Let $f$ be a bounded function on $[a, b]$. Then
+  $$\sup_{P} L(f, P) \leq \inf_{P} U(f, P)$$
+  where $\sup_{P}$ is supremum over all partition and $\inf_{P}$ is infimum over all partitions.
+\end{theorem*}
+
+\begin{definition*}
+  Given the theorem, we say that $f$ is integrable (or Riemann integrable) if
+  $$\sup_{P} L(f, P) = \inf_{P} U(f, P)$$
+\end{definition*}
+
+\begin{proof}
+  \text{}
+  \begin{enumerate}[(i)]
+    \item If $P_1, P_2$ are two partitions then 
+    $$L(f, P_1) \leq U(f, P_2)$$
+    Key: Take a refinement $P$ of both $P_1, P_2$ where $P \supset P_1 \cup P_2$ then 
+    $$L(f, P_1) \leq L(f, P) \leq U(f, P) \leq U(f, P_2)$$
+    \item Conjecture: $U(f, P_2)$ is an upper bound for all $L(f, P)$ where $P$ is any partition
+    so the least upper bound for the $L(f, P)$ cannot exceed $U(f, P)$ that menas 
+    $$\sup_P L(f, P) \leq U(f, P_2)$$
+    for any fixed partition
+
+    For all partition $P_2$, the number $\displaystyle\sup_P L(f, P)$ is a lower bound for $U(f, P_2)$
+    The greatest lower bound for the $U(f, P_2)$ cannot be smaller than $\displaystyle\sup_P L(f, P)$
+    $$\implies \sup_P L(f, P) \leq \inf_P U(f, P)$$
+  \end{enumerate}
+\end{proof}
+
+\begin{example*}
+\[
+  f(x) = \begin{cases}
+    1 & \text{if } x \text{ is irrational on } [0, 1] \\
+    0 & \text{if } x \text{ is rational on } [0, 1]
+    \end{cases}
+\]
+Take any partition $P =\{0 = x_0 < x_1 < \cdots < x_n = 1\}$ on $[x_{j-1}, x_j]$
+$$\inf_{[x_{j-1}, x_j]}f = 0\text{ and }\sup_{[x_{j-1}, x_j]}f = 1$$
+$$L(f, P) = \sum_{j=1}^{N} (x_j - x_{j-1}) \cdot 0 = 0$$
+$$U(f, P) = \sum_{j=1}^{N} (x_j - x_{j-1}) \cdot 1 = 1$$
+So this function is not integrable
+\end{example*} 
+
+\begin{example*}
+\[
+  f(x) = \begin{cases}
+    1 & \text{if } 0 < x < \frac{1}{2}\\
+    0 & \text{if } \frac{1}{2} \leq x \leq 1
+    \end{cases}
+\] 
+
+$$P = \left\{0, \frac{1}{2}, 1\right\}, \inf_{[0, \frac{1}{2}]} = 0, \sup_{[0, \frac{1}{2}]} f = 1$$
+$$L(f, P) = 0\cdot\frac{1}{2} + \frac{1}{2} = \frac{1}{2}$$
+$$U(f, P) = 1\cdot\frac{1}{2} + \frac{1}{2} = 1$$
+We pick new points
+$$x_0 = 0, x_1 = \frac{1}{2} - \frac{1}{N}, x_2 = \frac{1}{2}, x_3 = 1$$
+$$L(f, P) = \left(\frac{1}{2} - \frac{1}{N}\right)\cdot 0 + \frac{1}{N}\cdot 0 + \frac{1}{2}\cdot 1 = \frac{1}{2}$$
+$$U(f, P) = \left(\frac{1}{2} - \frac{1}{N}\right)\cdot 0 + \frac{1}{N}\cdot 1 + \frac{1}{2}\cdot 1 = \frac{1}{2} + \frac{1}{N}$$
+$$\sup L(f, P) \ge \frac{1}{2}\text{ and } \inf U(f, P) \le \frac{1}{2} + \frac{1}{N}$$
+$$\implies \sup L(f, P) = \inf U(f, P) = \frac{1}{2}$$
+\end{example*}
+
+\begin{example*}
+  Define on $[0, 1]$
+
+\[
+  f(x) = \begin{cases}
+    0 & \text{if } x \text{ is irrational}\\
+    \frac{1}{q} & \text{if } x \text{ is rational}, x = \frac{p}{q}\text{ in lowest term}
+    \end{cases}
+\]
+
+Question: Is $f$ integrable on $[0, 1]$?
+
+Answer: Yes, and the integral is $0$
+\end{example*}
