@@ -598,3 +598,78 @@ if and only if $y = f(x)$ and $x = f^{-1}(y)$
   $$\frac{1}{(\cos x)^2} = 1 + (\tan x)^2 \implies (\cos x)^2 = \frac{1}{1 + (\tan x)^2}$$
   $$(\cos(\arctan(y)))^2 = \frac{1}{1 + (\tan(\arctan y))^2} = \frac{1}{1+y^2}$$
 \end{example*}
+
+\section*{Practice Problems}
+
+\begin{example*}[Q8]
+  $f(t) = t^n - 1 - nt + n$ for $0 < t < 1$ what sign does $f$ have? 
+  $$f(1) = 1^n - 1 - n + n = 0$$
+  If $f'(t) > 0$ on $(0, 1)$ then $f$ is increasing on $(0, 1)$
+
+  If $f'(t) < 0$ on $(0, 1)$ then $f$ is decreasing on $(0, 1)$
+
+  For $t\in(0, 1)$, $f'(t) = nt^{n- 1} - n$, $0 < t^{n-1} < 1$ on $(0, 1)$. So, $f'(t) < 0$ on $(0, 1)$
+  and $f(0) = n - 1$, $f$ is decreasing on $(-1, 0)$. Then $f(t) > n-1$ on $(-1, 0)$
+\end{example*}
+
+\begin{example*}[Q2]
+  $f$ differentiable at $a$, $f'(a) > 0$  
+  $$f(x) > f(a) \text{ for } a < x < a + \beta$$
+  $$f(x) < f(a)\text{ for } a - \beta < x < a$$
+  $$0 < f'(x) = \lim\limits_{x \to a} \frac{f(x) - f(a)}{x - a} = \lim\limits_{h \to 0}\frac{f(a + h) - f(x)}{h}$$
+  Choose in the definition of limit, choose $\eps = \frac{f'(a)}{2}$
+  There is a $\delta$ such that for $0 < |h| < \delta$ (i.e. $h \in (-\delta, \delta)$ and $h \neq 0$)
+  $$\left|\frac{f(a+h) - f(a)}{h} - f'(a)\right| < \eps = \frac{f'(a)}{2}$$
+  We get that $$\frac{f(a+h) - f(a)}{h} \text{ is in the interval }\left(\frac{f'(a)}{2}, \frac{3f'(a)}{2}\right)$$
+
+  In the partition $$\frac{f(a+h) - f(a)}{h} > \frac{f'(a)}{2}$$
+
+  First case: $h > 0$ we get $$f(a + h) - f(a) > \frac{f'(a)}{2}h > 0$$ 
+  i.e., $f(a + h) > f(a)$ for $0 < h < \delta$
+
+  Second case: $h < 0$ we get $$\frac{f(a + h) - f(a)}{h} = \frac{f(a) - f(a+h)}{-h} > \frac{f'(a)}{2}$$
+  $$\implies f(a) - f(a+h) > \frac{f'(a)}{2}(-h) > 0$$
+  i.e., $f(a) > f(a + h)$ for $-\delta < h < 0$
+\end{example*}
+
+\begin{example*}[Q9]
+  $f: [a, b] \to [c, d]$ (strictly) decreasing $\implies f$ is one-to-one, $f(c) = d, f(b) = c$, $f$ is onto
+  So, $f^{-1}:[c, d] \to [a, b]$ exists
+
+  $$f^{-1}(y) = \left.\frac{1}{f'(x)}\right|_{x = f^{-1}(y)} = \frac{1}{f'(f^{-1}(y))}\text{ defined on }[c, d]$$
+
+  From the Quotient Rule, $$\left(\frac{1}{g(y)}\right)' = -\frac{g'(y)}{g(y)^2}$$
+  apply this with $g(y) = f'(f^{-1}(y))$ then using Chain Rule
+  $$g'(y) = f''(f^{-1}(y)) \cdot (f^{-1})'(y) = f''(f^{-1}(y))\cdot \frac{1}{f'(f^{-1}(y))}$$
+  $$(f^{-1})''(y) = - \frac{f''(f^{-1}(y)) \cdot \frac{1}{f'(f^{-1}(y))}}{f'(f^{-1}(y))^2} = -\frac{f''(f^{-1}(y))}{(f'(f^{-1}(y)))^3}$$
+\end{example*}
+
+There are formula for the second and higher derivatives of composite functions
+
+\begin{example*}[Q6]
+  Given a function $f'(x) = x^2 + x + 1$ and $f(3) = 5$
+  One such function satisfying $f'(x) = x^2 + x + 1$ is 
+  $$f(x) = \frac{x^3}{3} + \frac{x^2}{2} + x + c$$
+  For this function $f(3) = \frac{27}{3} + \frac{9}{2} + 3 + c = 5$
+  Can compute $c$ so that this true
+
+  If on an interval ($\RR$ here) a differentiable function has $F'(x) = 0$ everywhere then $F(x)$ is constant.
+  In particular $F(x) = F(3)$. 
+
+  Now let $f, g$ be function such that their derivatiive is $x^2 + x + 1$ and their value at $3$ is $5$
+  $$F(x):= f(x) - g(x) \implies F'(x) = 0$$
+  $$F(3) = f(3) - g(3) = 5 - 5 = 0$$
+  $\implies F$ is constant, and equal to $F(3) = 0 \implies f(x) = g(x)$ everywhere   
+\end{example*}
+
+\begin{example*}[Q10]
+  $f: \tan: (-\frac{\pi}{2}, \frac{\pi}{2}) \to \RR$
+  $$f'(x) = \frac{1}{(\cos x)^2} > 0$$
+  So, $f$ is increasing and $f$ is one-to-one
+
+  Pick $y \in \RR$ and show there is $x$ such that $f(x) = y, x \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$
+  $$\lim\limits_{x \to \frac{\pi}{2}} \tan x = \infty \vartriangle$$
+  $$\lim\limits_{x \to -\frac{\pi}{2}} \tan x = -\infty \blacktriangle$$
+  $\vartriangle$ For every $R$ there is an interval $\left(\frac{\pi}{2} - \delta, \frac{\pi}{2}\right)$ such that 
+  $\tan x > R$ in this interval
+\end{example*}

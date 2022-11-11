@@ -215,9 +215,9 @@ If $\tilde{P}$ is a refinement of $P$ then $L(f, \tilde{P}) \geq L(f, P)$ and $U
     Let $\eps > 0$ there is a partition $P_1$ such that 
     $$\int_a^b f - \frac{\eps}{10} < L(f, P_1)$$
     There is a partition $P_2$ such that 
-    $$U(f, P_2) < \int_a^b + \frac{\eps}{10}$$
+    $$U(f, P_2) < \int_a^b f+ \frac{\eps}{10}$$
     Then we get 
-    $$\int_a^b f - \frac{\eps}{10} < L(f, P_1) \leq L(f, P_1\cup P_2) \leq U(f, P_1\cup P_2) \leq U(f, P_2) < \int_a^b + \frac{\eps}{10}$$
+    $$\int_a^b f - \frac{\eps}{10} < L(f, P_1) \leq L(f, P_1\cup P_2) \leq U(f, P_1\cup P_2) \leq U(f, P_2) < \int_a^b f+ \frac{\eps}{10}$$
     $$\implies U(f, P_1 \cup P_2) - L(f, P_1 \cup P_2) < \frac{\eps}{5}$$
     \item Assume that for every $\eps > 0$, there is a partition $P$ such that
     $$U(f, P) - L(f, P) < \eps$$
@@ -238,7 +238,7 @@ If $\tilde{P}$ is a refinement of $P$ then $L(f, \tilde{P}) \geq L(f, P)$ and $U
 
 Recall the defnition of continuity.
 A function is continuous at $x_0 \in [a, b]$
-$$\forall \eps > 0, \exists \delta > 0, |x-x_0| < \delta \implies |f(x) - f(x_0)| < \eps (x \in [a, b])$$
+$$\forall \eps > 0, \exists \delta > 0, |x-x_0| < \delta \implies |f(x) - f(x_0)| < \eps\ (\text{for }x \in [a, b])$$
 Theorem: A continuous function on $[a, b]$ is uniformly continuous.
 
 \begin{proof}
