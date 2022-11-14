@@ -571,8 +571,8 @@ if and only if $y = f(x)$ and $x = f^{-1}(y)$
   The inverse function $f^{-1}$ is called nth to of
   $$f'(x) = nx^{n-1}$$
   \begin{align*}
-  (f^{-1})'(y) &= \frac{1}{f'(x)} |_{x=f^{-1}(y)} \\
-  &= \frac{1}{nx^{n-1}}|_{x = f^{-1}(y)} \\
+  (f^{-1})'(y) &= \left.\frac{1}{f'(x)} \right|_{x=f^{-1}(y)} \\
+  &= \left.\frac{1}{nx^{n-1}}\right|_{x = f^{-1}(y)} \\
   &= \frac{1}{n(\sqrt[n]{y}^{n-1})} \\
   &= \frac{1}{n}\frac{1}{\sqrt[n]{y}}\sqrt[n]{y} \\
   &= \frac{1}{n}\frac{1}{y}\sqrt[n]{y}
@@ -599,7 +599,7 @@ if and only if $y = f(x)$ and $x = f^{-1}(y)$
   $$(\cos(\arctan(y)))^2 = \frac{1}{1 + (\tan(\arctan y))^2} = \frac{1}{1+y^2}$$
 \end{example*}
 
-\section*{Practice Problems}
+\section{Practice Problems}
 
 \begin{example*}[Q8]
   $f(t) = t^n - 1 - nt + n$ for $0 < t < 1$ what sign does $f$ have? 
