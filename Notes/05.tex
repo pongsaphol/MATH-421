@@ -194,6 +194,36 @@ Question: Is $f$ integrable on $[0, 1]$?
 Answer: Yes, and the integral is $0$
 \end{example*}
 
+\begin{proof}
+  \underline{Claim} $f$ is integrable on $[0, 1]$, and $\int_{0}^{1} f =0$
+
+  $L(f, P) = 0$ for all partitions $P$. Given $\eps > 0$ we have to find a partition $P_\eps$ such $U(f, P_\eps) < \eps$.
+
+  Choose $N$ large, $\frac{1}{N} \ll \eps$
+  Form a partition which contain the fractions $\frac{p}{q}$ (in lowest terms) such that $1 \le q \le N$
+  
+  Observe, there are no more than $N^2$ such numbers whenever
+  $$\left|\frac{p}{q} - \frac{p'}{q'}\right| = \left|\frac{pq'-qp'}{qq'}\right| \ge \frac{1}{qq'} \ge \frac{1}{N^2}$$
+  We choose the partition $P_\eps$ by including all $\frac{p}{q} \in [0, 1], 1 \le q \le N$ 
+  and then for each of those, $v = \frac{p}{q}$, add $v - \frac{1}{N^3}, v+ \frac{1}{N^3}$
+
+  Then number of partition point is $\le 3N(N+1)$
+
+  Estimate $$U(f, P) = \sum_{j=1}^{M} (x_j - x_{j-1})M_j,\ M_j = \sup_{[x_{j-1}, x_j}f$$
+  I have the estimate
+  \begin{align*}
+  (x_j - x_{j-1})M_j &\leq \max\left\{\frac{1}{N^3}, (x_j - x_{j-1})\frac{1}{N + 1}\right\} \\
+  &\leq \frac{1}{N^3} + (x_j - x_{j-1})\frac{1}{N+1} \\
+  \end{align*}
+
+  \begin{align*}
+    U(f, P) &\leq \sum_{j=1}^{M \leq 3N(N+1)} \frac{1}{N^3} + (x_j - x_{j-1})\frac{1}{N+1}\\
+    &= \sum_{j=1}^{M} \frac{1}{N^3} + \sum_{j=1}^{M} (x_j - x_{j-1})\frac{1}{N+1}\\
+    &= \frac{M}{N^3} + \frac{1}{N+1}\underbrace{\sum_{j=1}^{M} (x_j - x_{j-1})}_{= 1}\\
+    &\leq \frac{3N(N+1)}{N^3} + \frac{1}{N+1}\\
+  \end{align*}
+\end{proof}
+
 \section{Simple criteria for Riemann integrability}
 
 % Criteria
@@ -256,4 +286,32 @@ Theorem: A continuous function on $[a, b]$ is uniformly continuous.
     &\leq \frac{\eps}{b-a}\cdot \frac{1}{100} \cdot (b-a)\\
     &= \frac{\eps}{100}
   \end{align*}
+\end{proof}
+
+\section{Estimation of integrals}
+
+\begin{theorem*}
+  If $f$ and $g$ are integrable on $[a, b]$ and if $f(x) \le g(x)$ for all $x \in [a, b]$ then
+  $$\int_a^b f \le \int_a^b g$$
+\end{theorem*}
+
+\begin{proof}
+  For any partition $P$ show that $L(f, P) \le F(g, P)$ and $U(f, P) \le U(g, P)$
+  $$L(f, P) = \sum (x_j - x_{j-1}) \inf_{[x_{j-1}, x_j]} f$$
+  $$U(f, P) = \sum (x_j - x_{j-1}) \sup_{[x_{j-1}, x_j]} f$$
+  use that if $f(x) \le g(x)$ then 
+  $$\inf_{[x_{j-1}, x_j]} f \le \inf_{[x_{j-1}, x_j]} g$$
+  $$\sup_{[x_{j-1}, x_j} f \le \sup_{[x_{j-1}, x_j]} g$$
+\end{proof}
+
+
+\begin{theorem*}
+  Given $f$, $-|f(x)| \le f(x) \le |f(x)|$
+  $$\int_a^b -|f| \le \int_a^b f \le \int_a^b |f|$$
+\end{theorem*}
+
+\begin{proof}
+  Use the following inequality for ?????? to show that $|f|$ is integrable
+  if $f$ is integrable 
+  $$\left||v|-|w|\right| \le |v-w|$$
 \end{proof}
