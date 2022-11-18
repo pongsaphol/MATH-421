@@ -58,7 +58,7 @@
 \end{definition*}
 
 the example $[a, b] = [0, 1]$
-$$P=\left\{0, \frac{1}{N}, \frac{2}{N}, \dotsc, \frac{N}{N} = 1\right\}$$
+\[P=\left\{0, \frac{1}{N}, \frac{2}{N}, \dotsc, \frac{N}{N} = 1\right\}\]
 where $x_j = \frac{j}{N}, 0\leq j \leq N$
 \begin{align*}
   L(f, P) &= \sum_{j=1}^{N}\frac{1}{N}\left(\frac{j-1}{N}\right)^2 \\
@@ -305,13 +305,105 @@ Theorem: A continuous function on $[a, b]$ is uniformly continuous.
 \end{proof}
 
 
+% \begin{theorem*}
+%   Given $f$, $-|f(x)| \le f(x) \le |f(x)|$
+%   \[\int_a^b -|f| \le \int_a^b f \le \int_a^b |f|\]
+% \end{theorem*}
+
+% \begin{proof}
+%   Use the following inequality for ?????? to show that $|f|$ is integrable
+%   if $f$ is integrable 
+%   \[\left||v|-|w|\right| \le |v-w|\]
+% \end{proof}
+
+\section{Class of Riemann Integrable functions}
+
+\[ \mathcal{I}: f \mapsto \int_a^b f\]
+
+$\mathfrak{R}(a, b) = $ class of Riemann integrable function
+
+\begin{itemize}
+  \item If $f, g \in \mathfrak{R}(a, b)$ then $f+g \in \mathfrak{R}(a, b)$
+
+  If $f \in \mathfrak{R}(a, b)$ and $c \in \mathbb{R}$ then $cf \in \mathfrak{R}(a, b)$
+  \item $\displaystyle\int_a^b f+g = \int_a^b f + \int_a^b g$
+
+   $\displaystyle\int_a^b cf = c\int_a^b f$
+\end{itemize}
+
+The cast two properties say that 
+
+$\mathcal{I} :\mathfrak{R}(a, b) \to \RR$ is \underline{linear}
+$$\mathcal{I}(f, g) = \mathcal{I}(f) + \mathcal{I}(g)$$
+$$\mathcal{I}(cf) = c\mathcal{I}(f)$$
+
+Given afined partition
+
+It is usually not true that $L(f + g, P) = L(f, P) + L(g, P)$
+
+Suppose that $M_j(f) = \sup_{[x_{j-1}, x_j]} f(x)$ and $m_j(f) = \inf_{[x_{j-1}, x_j]} f(x)$
+$$M_j(f + g) \le M_j(f) + M_j(g)$$
+$$m_j(f + g) \ge m_j(f) + m_j(g)$$
+$$L(f, P) + L(g, P) \le L(f+g, P) \le U(f + g, P) \le U(f, P) + U(g, P)$$
+
+We get $M_j(cf) = cM_j(f)$ and $m_j(cf) = cm_j(f)$ if $c \ge 0$ and $M_j(-f) = -m_j(f)$
+
+We recognized that $f, g$ are integrable and if $f(x) \le g(x)$ for all $x \in [a, b]$ then
+\[\int_a^bf(x) \le \int_a^bg(x)\]
+This is because $L(f, P) \le L(g, P)$ and $U(f, P) \le U(g, P)$
+
 \begin{theorem*}
-  Given $f$, $-|f(x)| \le f(x) \le |f(x)|$
-  $$\int_a^b -|f| \le \int_a^b f \le \int_a^b |f|$$
+  If $f$ is integrable, so is $|f|$
 \end{theorem*}
 
 \begin{proof}
-  Use the following inequality for ?????? to show that $|f|$ is integrable
-  if $f$ is integrable 
-  $$\left||v|-|w|\right| \le |v-w|$$
+  Prove this by showing
+  \[0 \le U(|f|, P) - L(|f|, P) \le U(f, P) - L(f, P)\]
+  Check this and apply our integrability criteria
+
+  Check that $M_j(|f|) - m_j(|f|) \le M_j(f) - m_j(f)$
+
+  Given $\eps > 0$ 
+  \begin{itemize}
+    \item There is a $w$ such that $M_j \ge f(w) \ge M_j- \eps$
+    \item There is a $z$ such that $m_j \ge f(z) \ge m_j- \eps$
+  \end{itemize}
+  We know that $||f(w)| - |f(z)|| \le |f(w) - f(z)|$
+  \begin{align*}
+  M_j(|f|) - m_j(|f|) &\le |f(w)| - |f(z)| + 2\eps \\
+  &\le |f(w) - f(z)| \\
+  &\le M_j(f) - m_j(f) \\
+  \end{align*}
 \end{proof}
+
+As the result if
+$-|f(x)| \le f(x) \le |f(x)|$ for all $x$ in $[a, b]$ then 
+\[\int_a^b -|f(x)| \,\mathrm{d}x \le \int_a^b f(x) \,\mathrm{d}x \le \int_a^b |f(x)| \,\mathrm{d}x\] 
+So $\displaystyle\int_a^b f(x) \,\mathrm{d}x$ has absolute value $\displaystyle\le \int_a^b |f(x)| \,\mathrm{d}x$
+
+\[\left|\int_a^b f(x) \,\mathrm{d}x\right|\le\int_a^b |f(x)|\,\mathrm{d}x\]
+
+\[|f(x)| \le \underbrace{\sup_{w \in [a, b]} |f(w)|}_{\text{constant function which is larger than all }f(x)}\]
+\[\int_a^b |f(x)| \,\mathrm{d}x \le \int_a^b \sup_{[a, b]}|f| \,\mathrm{d}x = (b-a) \sup_{[a, b]} |f| \]
+
+We can use this to bound the integral of $f$ by the integral of $|f|$ and the supremum of $|f|$ over $[a, b]$
+
+\begin{example*}
+  \[\int_0^{\frac{1}{2}} \frac{\sin x}{x} \,\mathrm{d}x \le \int_0^{\frac{1}{2}} 1 \,\mathrm{d}x = \frac{1}{2} \]
+  \[\int_0^{\frac{1}{2}} \frac{\sin x}{x + \frac{1}{10^6}e^{-x}} \,\mathrm{d}x \le \frac{1}{2} \]
+\end{example*}
+
+\underline{Note}: prefer to write $\displaystyle\int_{[a, b]}$
+
+\begin{theorem*}[Exercise]
+  Let $f$ be integrable. Let $g$ be such that $f(x) = g(x)$ except at a finite number of points. 
+  Then $g$ is integrable and 
+  \[\int_a^b f = \int_a^b g\]
+\end{theorem*}
+
+\begin{theorem*}[Lebesgue]
+  A subset $E$ of $[0, 1]$ is called a null set if for every $\eps > 0$ 
+  there is a sequence  of intervals $I_j$ such $\sum length(I_j) < \eps$
+
+  Lebesque states $f$ is Riemann integrable if and only if the set of discontinuities is a null sets.
+\end{theorem*}
