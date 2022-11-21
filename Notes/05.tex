@@ -407,3 +407,85 @@ We can use this to bound the integral of $f$ by the integral of $|f|$ and the su
 
   Lebesque states $f$ is Riemann integrable if and only if the set of discontinuities is a null sets.
 \end{theorem*}
+
+\section{Fundamental Theorem of Calculus}
+
+\begin{theorem*}
+  Given an interval $[a, b]$ and and integrable function on $[a, b]$, given $a < c < b$
+  then $f$ is integrable on $[a, c]$ and integrable on $[c, b]$ and
+  \[\int_a^b f = \int_a^c f + \int_c^b f \]
+\end{theorem*}
+
+\begin{proof}
+  We work with partition $P$ of $[a, b]$, $c\in P$. 
+  \[P = \{x_0 = a < x_1 < x_2 < \cdots < x_{M-1} < x_M = c < x_{M+1} < x_N = b\}\]
+  $P = P' \cup P''$ where $P'$ is the partition of $[a, c]$ and $P''$ is the partition of $[c, b]$
+
+  Then we get, 
+  $L(f, P) = L(f, P') + L(f, P'')$ and 
+  $U(f, P) = U(f, P') + U(f, P'')$
+\end{proof}
+
+\[ x \mapsto \int_a^x f = \int_a^x f(t) \,\mathrm{d}t \]
+
+\begin{example*}
+  $[-1, 1]$
+  \[ f(t) = \begin{cases}
+    -1 & -1 \le t < 0 \\
+    1 &  0 \le t \le 1
+  \end{cases}
+    \]
+  \[ \int_{-1}^x f(t)\,\mathrm{d}t = \begin{cases}
+    -1(x-(-1)) = -(x+1) & -1 \le x < 0 \\
+    -1+x & 0 \le x \le 1
+  \end{cases}
+  \]
+  \[ F(x) = \begin{cases}
+    -x-1 & -1 \le x < 0 \\
+    x-1 & 0 \le x \le 1
+  \end{cases} = -1+|x|
+  \]
+\end{example*}
+
+Claim: If $f$ is integrable on $[a, b]$ the function $\displaystyle F(x) = \int_a^x f(t) \,\mathrm{d}t$ is continuous on $[a, b]$
+
+We show that $F(x+h) - F(x) \to 0$ as $h \to 0$.
+
+$\displaystyle F(x+h) = \int_a^{x+h} f$ and 
+$\displaystyle F(x) = \int_a^{x} f$
+
+If $h > 0$, $$\displaystyle F(x+h) - F(x) = \int_a^x f + \int_x^{x+h} f - \int_a^x f = \int_x^{x+h} f$$
+
+If $h < 0$, $$\displaystyle F(x+h) - F(x) = \int_a^{x+h} f -\left( \int_a^{x+h} f + \int_{x+h}^x f\right) = \int_{x+h}^{x} f$$
+
+Precall: If $|f(x)| \le M$ then 
+\[\left|\int_{a_1}^{a_2} f\right| \le M(a_2 - a_1)\]
+\underline{apply this} to our $f$ which is bounded, There is some  $M$ such that $|f(t)| \le M$ for all $t$
+\[\left|\int_{x}^{x+h} f\right| \le M|h|\]
+\[\left|\int_{x+h}^{x} f\right| \le M|h|\]
+Goes to $0$ as $h \to 0$
+
+\begin{theorem*}[Fundamental theorem of calculus]
+  If $f$ is integrable on $[a, b]$ and continuous at some point $c \in [a, b]$ then the function
+  $F$, defined by $\displaystyle F(x) = \int_a^x f$ is differentiable at $c$, and $F'(c) = f(c)$ 
+\end{theorem*}
+
+\begin{proof}
+  For $h > 0$,
+  \begin{align*}
+    \frac{F(c+h)-F(c)}{h} - f(c) &= \frac{1}{h}\int_c^{c+h} f - f(c) \\
+    &= \frac{1}{h} \int_c^{c+h} f(t) \,\mathrm{d}t - \frac{1}{h}\int_c^{c+h} f(c)\,\mathrm{d}t \\
+    &= \frac{1}{h} \int_c^{c+h}[f(t) - f(c)]\,\mathrm{d}t \\
+  \end{align*}
+  Show that $\displaystyle \left|\frac{F(c+h) - F(c)}{h} - f(c)\right| < \eps$ if $h>0$ is small enough
+
+  Know: There is a $\delta$ such $|f(t) - f(c)| < \eps$ provided $|t-c| < \delta$
+
+  If $0  < h < \delta$ then 
+  \begin{align*}
+    \frac{1}{h} \int_c^{c+h} |f(t) - f(c) &\le\frac{1}{h} \int_c^{c+h} \underbrace{|f(t)-f(c)|}_{\text{Integrate is } \le \eps \text{ if } 0 < h < \delta}\,\mathrm{d}t \\ 
+    &\le \frac{1}{h} \int_c^{c+h} \eps \,\mathrm{d}t \\
+    &= \eps
+  \end{align*}
+\end{proof}
+
