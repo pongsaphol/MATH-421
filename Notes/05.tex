@@ -483,9 +483,89 @@ Goes to $0$ as $h \to 0$
 
   If $0  < h < \delta$ then 
   \begin{align*}
-    \frac{1}{h} \int_c^{c+h} |f(t) - f(c) &\le\frac{1}{h} \int_c^{c+h} \underbrace{|f(t)-f(c)|}_{\text{Integrate is } \le \eps \text{ if } 0 < h < \delta}\,\mathrm{d}t \\ 
+    \frac{1}{h} \int_c^{c+h} |f(t) - f(c)| &\le\frac{1}{h} \int_c^{c+h} \underbrace{|f(t)-f(c)|}_{\text{Integrate is } \le \eps \text{ if } 0 < h < \delta}\,\mathrm{d}t \\ 
     &\le \frac{1}{h} \int_c^{c+h} \eps \,\mathrm{d}t \\
     &= \eps
   \end{align*}
 \end{proof}
+\[\int_a^x f(t)\,\mathrm{d}t = -\int_x^a f(t)\,\mathrm{d}t\]
 
+\section{Logarithm function}
+
+\begin{definition*}
+  $\exp(x)$ is the unique differentiable function on $(-\infty, \infty)$  
+  where $\exp'(x) = \exp(x)$ and $\exp(0) = 1$
+\end{definition*}
+
+\begin{example*}
+  $x \in (0, \infty)$
+  \[x \mapsto \log x = \int_1^x \frac{1}{t}\,\mathrm{d}t\]
+  \underline{Goal} To show this log is ``ln'' with preserves the properties $\ln(ab) = \ln a + \ln b$
+\end{example*}
+
+\begin{theorem*}
+  $\log : (0, \infty) \to \RR$ satisfies $\log(xy) = \log x + \log y$ for all $x, y > 0$
+\end{theorem*}
+
+\begin{proof}
+  FTC give us $\log'(x) = \frac{1}{x}$.
+  Fix $y > 0$ then $F_1(x) = \log(xy)$, $F_2(x) = \log x + \log y$
+
+  First check that $F_1'(x) = F_2'(x)$
+
+  \[F_2'(x) = \frac{1}{x}\]
+  \[F_1'(x) = \log'(xy) \frac{\mathrm{d}}{\mathrm{d}x}(xy) = \frac{1}{xy}y=\frac{1}{x}\]
+  \[F_1(x) = F_2(x) + C(y)\]
+  \underline{know} $\log 1 = 0$, by the definition
+  \begin{align*}
+    F_1(x) - F_2(x) = C(y) &= F_1(1) - F_2(1) \\
+    &= \log(1-y) - (\log 1 + \log y)  = 0\\
+  \end{align*}
+  so we have $C(y) = 0$, so $F_1 = F_2$
+\end{proof}
+
+Range of log
+\begin{itemize}
+  \item know: $\log$ is increasing
+  \item Want $\lim\limits_{x\to \infty} \log x = \infty$, $\lim\limits_{x\to 0^+} \log x = -\infty$
+\end{itemize}
+\begin{align*}
+  \log(2^N) &= \int_1^{2^N} \frac{1}{t}\,\mathrm{d}t \\
+  &= \int_1^2 + \int_2^4 + \int_{2^4}^{2^3} + \cdots + \int_{2^{N-1}}^{2^N} \frac{1}{t}\,\mathrm{d}t\\
+  &= \sum_{K=1}^N \int_{2^{K-1}}^{2^K} \frac{1}{t}\,\mathrm{d}t,\, \int_{2^{K-1}}^{2^K} \frac{1}{t}\,\mathrm{d}t \ge \int_{2^{K-1}}^{2^K} \frac{1}{2^K}\,\mathrm{d}t =\frac{1}{2}\\
+  \implies \int_1^{2^N} \frac{1}{t}\,\mathrm{d}t &\ge \frac{1}{2}N\\
+\end{align*}
+$\displaystyle\log(2^{-N}) = \int_1^{2^{-N}} \frac{1}{t}\,\mathrm{d}t =-\int_{2^{-N}}^1 \frac{1}{t}\,\mathrm{d}t$
+
+want to show $\displaystyle\int_{2^{-N}}^1 \frac{1}{t}\,\mathrm{d}t \to \infty$ if $N \to \infty$
+\[\int_{2^{-N}}^1 \frac{1}{t}\,\mathrm{d}t = \sum_{K=1}^{N} \int_{2^{-K}}^{2^{1-K}} \frac{1}{t}\,\mathrm{d}t,\, \int_{2^{-K}}^{2^{1-K}} \frac{1}{t}\,\mathrm{d}t \ge \int_{2^{-K}}^{2^{1-K}} \frac{1}{2^{1-K}}\,\mathrm{d}t = \frac{1}{2}\]
+\[ \implies log(2^{-N}) \le -\frac{1}{2}N\]
+
+We define $e$ as the unique $x$ for which $\log x = 1$
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (-1, 0) -- (4.2, 0) node[right] {$x$};
+    \draw[->] (0, -1) -- (0, 4.2) node[above] {$f(x)$};
+    \draw[scale=1, domain=0.3:3.5, smooth, variable=\x] plot ({\x}, {1/\x});
+    \draw[dotted] (1, 1) -- (1, 0) node[below] {$1$};
+    \draw[dotted] (2.7, 0.37) -- (2.7, 0) node[below] {$e$};
+  \end{tikzpicture}
+\end{center}
+
+$\log^{-1}:(-\infty, \infty) \to (0, \infty)$ is $\exp$
+
+$\exp(0) = 1$, 
+$$\exp'(y) = \left.\frac{1}{\log(x)}\right|_{x=\exp(y)} = \left.\frac{1}{\frac{1}{x}}\right|_{x=\exp(y)}=\left.x\right|_{x=\exp{y}} = \exp(y)$$
+
+
+\underline{claim}
+$\exp(a+b) = \exp(a)\cdot\exp(b)$
+
+verify the claim by applying the log to both sides
+
+\begin{align*}
+  \log(\exp(a+b)) &= a + b\\
+  \log(\exp a \cdot \exp b) &= \log(\exp a) + \log(\exp b) = a + b\\
+\end{align*}
+$\exp(n) = \exp(1 + 1 + \dotsc + 1) = (\exp(1))^n = e^n$
