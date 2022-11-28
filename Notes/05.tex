@@ -488,7 +488,7 @@ Goes to $0$ as $h \to 0$
     &= \eps
   \end{align*}
 \end{proof}
-\[\int_a^x f(t)\,\mathrm{d}t = -\int_x^a f(t)\,\mathrm{d}t\]
+% \[\int_a^x f(t)\,\mathrm{d}t = -\int_x^a f(t)\,\mathrm{d}t\]
 
 \section{Logarithm function}
 
@@ -531,7 +531,7 @@ Range of log
 \end{itemize}
 \begin{align*}
   \log(2^N) &= \int_1^{2^N} \frac{1}{t}\,\mathrm{d}t \\
-  &= \int_1^2 + \int_2^4 + \int_{2^4}^{2^3} + \cdots + \int_{2^{N-1}}^{2^N} \frac{1}{t}\,\mathrm{d}t\\
+  &= \int_1^2 + \int_2^4 + \int_{2^2}^{2^3} + \cdots + \int_{2^{N-1}}^{2^N} \frac{1}{t}\,\mathrm{d}t\\
   &= \sum_{K=1}^N \int_{2^{K-1}}^{2^K} \frac{1}{t}\,\mathrm{d}t,\, \int_{2^{K-1}}^{2^K} \frac{1}{t}\,\mathrm{d}t \ge \int_{2^{K-1}}^{2^K} \frac{1}{2^K}\,\mathrm{d}t =\frac{1}{2}\\
   \implies \int_1^{2^N} \frac{1}{t}\,\mathrm{d}t &\ge \frac{1}{2}N\\
 \end{align*}
@@ -539,7 +539,7 @@ $\displaystyle\log(2^{-N}) = \int_1^{2^{-N}} \frac{1}{t}\,\mathrm{d}t =-\int_{2^
 
 want to show $\displaystyle\int_{2^{-N}}^1 \frac{1}{t}\,\mathrm{d}t \to \infty$ if $N \to \infty$
 \[\int_{2^{-N}}^1 \frac{1}{t}\,\mathrm{d}t = \sum_{K=1}^{N} \int_{2^{-K}}^{2^{1-K}} \frac{1}{t}\,\mathrm{d}t,\, \int_{2^{-K}}^{2^{1-K}} \frac{1}{t}\,\mathrm{d}t \ge \int_{2^{-K}}^{2^{1-K}} \frac{1}{2^{1-K}}\,\mathrm{d}t = \frac{1}{2}\]
-\[ \implies log(2^{-N}) \le -\frac{1}{2}N\]
+\[ \implies \log(2^{-N}) \le -\frac{1}{2}N\]
 
 We define $e$ as the unique $x$ for which $\log x = 1$
 
@@ -563,9 +563,90 @@ $$\exp'(y) = \left.\frac{1}{\log(x)}\right|_{x=\exp(y)} = \left.\frac{1}{\frac{1
 $\exp(a+b) = \exp(a)\cdot\exp(b)$
 
 verify the claim by applying the log to both sides
-
 \begin{align*}
   \log(\exp(a+b)) &= a + b\\
-  \log(\exp a \cdot \exp b) &= \log(\exp a) + \log(\exp b) = a + b\\
+  \log(\exp a \cdot \exp b) &= \log(\exp a) + \log(\exp b) = a + b
 \end{align*}
 $\exp(n) = \exp(1 + 1 + \dotsc + 1) = (\exp(1))^n = e^n$
+
+\section{Review version of FTC}
+
+$f$ is integrable on $[a, b]$
+\[A(x) = \int_a^x f(t)\,\mathrm{d}t \implies A \text{ is a continuous function}\]
+
+\underline{FTC} If $c \in [a, b]$ and $f$ is continuous at $c$ then $A$ is differentiable at $c$ and $A'(c) = f(c)$
+
+Compute
+\[\frac{A(c+h) - A(c)}{h} = \frac{1}{h}\left[\int_a^{c+h}f - \int_a^c f\right] = \frac{1}{h}\int_c^{c+h}f \]
+\[\frac{A(c+h) - A(c)}{h} - f(c) = \frac{1}{h}\int_c^{c+h}\left[f(t) - f(c)\right]\,\mathrm{d}t\]
+Compute for $h < 0$ ($-h = |h|$ if $h < 0$)
+
+\[ \frac{A(c+h) - A(c)}{h} = \frac{1}{h} \left(-\int_{c+h}^c f(t)\,\mathrm{d}t\right) = \frac{1}{|h|}\int_{c-|h|}^{c}f(t)\,\mathrm{d}t\]
+
+Let $\displaystyle G(x) = \int_x^b f(t)\,\mathrm{d}t$, Assume $f$ is continuous
+
+if $h > 0$
+\[\frac{G(x+h) - G(x)}{h} = \frac{1}{h}\left[\int_{x+h}^b f - \int_x^h f\right] = \frac{1}{h}\left(-\int_x^{x+h}f\right) = -\frac{1}{h}\int_x^{x+h}f\]
+if $h < 0$
+\[\frac{G(x+h) - G(x)}{h} = \frac{1}{h}\left[\int_{x+h}^b f - \int_x^h f\right] = \frac{1}{h}\int_{x+h}^{x}f = -\frac{1}{|h|}\int^x_{x-|h|}f\]
+
+\[\left.\frac{\mathrm{d}}{\mathrm{d}x}\int_x^b f(t)\mathrm{d}t\right|_{x=c} = -f(c)\]
+$a < b$
+\[\int_b^a f(t)\,\mathrm{d}t = -\int_a^b f(t)\,\mathrm{d}t\]
+
+\begin{theorem*}[Second version of FTC]
+  Given a function $g$ which is differentiable on $[a, b]$ and assume $g'$ is continuous function
+  Then 
+  \[\int_a^b g'(t)\,\mathrm{d}t = g(b) - g(a)\]
+\end{theorem*}
+
+\begin{proof}
+  \underline{Goal} $\displaystyle F(x) = \int_a^x g'(t)\,\mathrm{d}t$ and $G(x) = g(x) - g(a)$ is the same function
+
+  Apply FTC (main version) we get $F'(x) = g'(x)$ and $G'(x) = g'(x)$
+
+  $F(x) - G(x)$ differ only by a constant $F(x) = G(x) = C \implies C = F(a) - G(a) = 0$
+\end{proof}
+
+\begin{theorem*}[More sophisticated version of the second FTC]
+  let $g$ be a function on $[a, b]$ which is differentiable such that $g'$ is integrable then 
+  \[\int_a^b g'(t)\,\mathrm{d}t = g(b) - g(a)\]
+\end{theorem*}
+
+\begin{proof}
+  Idea is to examine lower and upper sums for the $g'$, and use the mean value theorem for derivatives
+  
+  Suppose that $P = [a = t_0 < t_1 < \dotsc < t_N = b]$ 
+  \[L(g', P) = \sum_{j=1}^N (t_j - t_{j-1}m_j(g'))\]
+  \[U(g', P) = \sum_{j=1}^N (t_j - t_{j-1}M_j(g'))\]
+  where $\displaystyle m_j(g') = \inf_{t \in [t_{j-1}, t_j]} g'(t)$ and $\displaystyle M_j(g') = \sup_{t \in [t_{j-1}, t_j]} g'(t)$
+
+  Mean value theorem applied in $[t_{j-1}, t_j]$ gives $$g(t_j) - g(t_{j-1}) = g'(\xi_j)(t_j - t_{j-1})$$ where $\xi_j$ is between $t_{j-1}$ and $t_j$
+  \begin{align*}
+    L(g', P) &= \sum_{j=1}^N (t_j - t_{j-1})m_j(g')\\
+    &\leq \sum_{j=1}^N (t_j - t_{j-1})g'(\xi_j)\\
+    &= \sum_{j=1}^N g(t_j) - g(t_{j-1})\\
+    U(g', P) &= \sum_{j=1}^N (t_j - t_{j-1})M_j(g')\\
+    &\geq \sum_{j=1}^N (t_j - t_{j-1})g'(\xi_j)\\
+    &= \sum_{j=1}^N g(t_j) - g(t_{j-1})\\
+  \end{align*}
+  \begin{align*}
+    \sum_{j=1}^{N}(g(t_j) - g(t_{j-1}) &= g(t_1) - g(t_0) + g(t_2) - g(t_1) + \dotsc + g(t_N) - g(t_{N-1})\\
+    &= g(t_N) - g(t_0)\\
+    &= g(b) - g(a)
+  \end{align*}
+  \[L(g', P) \le \sum_{j=1}^{N}(g(t_j) - g(t_{j-1}) \le U(g', P)\]
+  \[L(g', P) \le g(b) - g(a) \le U(g', P)\]
+\end{proof}
+
+\begin{example*}
+  Assume $f$ is continuous
+  \[\frac{\mathrm{d}}{\mathrm{d}x}\int_0^{x^2} f(t) \mathrm{d}t = ?\]
+  let $\displaystyle F(w) = \int_0^w f(t)\,\mathrm{d}t$ then $\displaystyle F(x^2) = \int_0^{x^2} f(t)\,\mathrm{d}t$
+  \begin{align*}
+    \frac{\mathrm{d}}{\mathrm{d}x}F(x^2) &= F'(x^2) \frac{\mathrm{d}}{\mathrm{d}x}x^2\\
+    &= f(x^2)2x\\
+  \end{align*}
+  Therefore
+  \[\frac{\mathrm{d}}{\mathrm{d}x}\int_0^{g(x)} f(t) \mathrm{d}t = f(g(x))g'(x)\]
+\end{example*}
