@@ -378,19 +378,19 @@ This is because $L(f, P) \le L(g, P)$ and $U(f, P) \le U(g, P)$
 
 As the result if
 $-|f(x)| \le f(x) \le |f(x)|$ for all $x$ in $[a, b]$ then 
-\[\int_a^b -|f(x)| \,\mathrm{d}x \le \int_a^b f(x) \,\mathrm{d}x \le \int_a^b |f(x)| \,\mathrm{d}x\] 
-So $\displaystyle\int_a^b f(x) \,\mathrm{d}x$ has absolute value $\displaystyle\le \int_a^b |f(x)| \,\mathrm{d}x$
+\[\int_a^b -|f(x)| \,dx \le \int_a^b f(x) \,dx \le \int_a^b |f(x)| \,dx\] 
+So $\displaystyle\int_a^b f(x) \,dx$ has absolute value $\displaystyle\le \int_a^b |f(x)| \,dx$
 
-\[\left|\int_a^b f(x) \,\mathrm{d}x\right|\le\int_a^b |f(x)|\,\mathrm{d}x\]
+\[\left|\int_a^b f(x) \,dx\right|\le\int_a^b |f(x)|\,dx\]
 
 \[|f(x)| \le \underbrace{\sup_{w \in [a, b]} |f(w)|}_{\text{constant function which is larger than all }f(x)}\]
-\[\int_a^b |f(x)| \,\mathrm{d}x \le \int_a^b \sup_{[a, b]}|f| \,\mathrm{d}x = (b-a) \sup_{[a, b]} |f| \]
+\[\int_a^b |f(x)| \,dx \le \int_a^b \sup_{[a, b]}|f| \,dx = (b-a) \sup_{[a, b]} |f| \]
 
 We can use this to bound the integral of $f$ by the integral of $|f|$ and the supremum of $|f|$ over $[a, b]$
 
 \begin{example*}
-  \[\int_0^{\frac{1}{2}} \frac{\sin x}{x} \,\mathrm{d}x \le \int_0^{\frac{1}{2}} 1 \,\mathrm{d}x = \frac{1}{2} \]
-  \[\int_0^{\frac{1}{2}} \frac{\sin x}{x + \frac{1}{10^6}e^{-x}} \,\mathrm{d}x \le \frac{1}{2} \]
+  \[\int_0^{\frac{1}{2}} \frac{\sin x}{x} \,dx \le \int_0^{\frac{1}{2}} 1 \,dx = \frac{1}{2} \]
+  \[\int_0^{\frac{1}{2}} \frac{\sin x}{x + \frac{1}{10^6}e^{-x}} \,dx \le \frac{1}{2} \]
 \end{example*}
 
 \underline{Note}: prefer to write $\displaystyle\int_{[a, b]}$
@@ -426,7 +426,7 @@ We can use this to bound the integral of $f$ by the integral of $|f|$ and the su
   $U(f, P) = U(f, P') + U(f, P'')$
 \end{proof}
 
-\[ x \mapsto \int_a^x f = \int_a^x f(t) \,\mathrm{d}t \]
+\[ x \mapsto \int_a^x f = \int_a^x f(t) \,dt \]
 
 \begin{example*}
   $[-1, 1]$
@@ -435,7 +435,7 @@ We can use this to bound the integral of $f$ by the integral of $|f|$ and the su
     1 &  0 \le t \le 1
   \end{cases}
     \]
-  \[ \int_{-1}^x f(t)\,\mathrm{d}t = \begin{cases}
+  \[ \int_{-1}^x f(t)\,dt = \begin{cases}
     -1(x-(-1)) = -(x+1) & -1 \le x < 0 \\
     -1+x & 0 \le x \le 1
   \end{cases}
@@ -447,7 +447,7 @@ We can use this to bound the integral of $f$ by the integral of $|f|$ and the su
   \]
 \end{example*}
 
-Claim: If $f$ is integrable on $[a, b]$ the function $\displaystyle F(x) = \int_a^x f(t) \,\mathrm{d}t$ is continuous on $[a, b]$
+Claim: If $f$ is integrable on $[a, b]$ the function $\displaystyle F(x) = \int_a^x f(t) \,dt$ is continuous on $[a, b]$
 
 We show that $F(x+h) - F(x) \to 0$ as $h \to 0$.
 
@@ -474,8 +474,8 @@ Goes to $0$ as $h \to 0$
   For $h > 0$,
   \begin{align*}
     \frac{F(c+h)-F(c)}{h} - f(c) &= \frac{1}{h}\int_c^{c+h} f - f(c) \\
-    &= \frac{1}{h} \int_c^{c+h} f(t) \,\mathrm{d}t - \frac{1}{h}\int_c^{c+h} f(c)\,\mathrm{d}t \\
-    &= \frac{1}{h} \int_c^{c+h}[f(t) - f(c)]\,\mathrm{d}t \\
+    &= \frac{1}{h} \int_c^{c+h} f(t) \,dt - \frac{1}{h}\int_c^{c+h} f(c)\,dt \\
+    &= \frac{1}{h} \int_c^{c+h}[f(t) - f(c)]\,dt \\
   \end{align*}
   Show that $\displaystyle \left|\frac{F(c+h) - F(c)}{h} - f(c)\right| < \eps$ if $h>0$ is small enough
 
@@ -483,12 +483,12 @@ Goes to $0$ as $h \to 0$
 
   If $0  < h < \delta$ then 
   \begin{align*}
-    \frac{1}{h} \int_c^{c+h} |f(t) - f(c)| &\le\frac{1}{h} \int_c^{c+h} \underbrace{|f(t)-f(c)|}_{\text{Integrate is } \le \eps \text{ if } 0 < h < \delta}\,\mathrm{d}t \\ 
-    &\le \frac{1}{h} \int_c^{c+h} \eps \,\mathrm{d}t \\
+    \frac{1}{h} \int_c^{c+h} |f(t) - f(c)| &\le\frac{1}{h} \int_c^{c+h} \underbrace{|f(t)-f(c)|}_{\text{Integrate is } \le \eps \text{ if } 0 < h < \delta}\,dt \\ 
+    &\le \frac{1}{h} \int_c^{c+h} \eps \,dt \\
     &= \eps
   \end{align*}
 \end{proof}
-% \[\int_a^x f(t)\,\mathrm{d}t = -\int_x^a f(t)\,\mathrm{d}t\]
+% \[\int_a^x f(t)\,dt = -\int_x^a f(t)\,dt\]
 
 \section{Logarithm function}
 
@@ -499,7 +499,7 @@ Goes to $0$ as $h \to 0$
 
 \begin{example*}
   $x \in (0, \infty)$
-  \[x \mapsto \log x = \int_1^x \frac{1}{t}\,\mathrm{d}t\]
+  \[x \mapsto \log x = \int_1^x \frac{1}{t}\,dt\]
   \underline{Goal} To show this log is ``ln'' with preserves the properties $\ln(ab) = \ln a + \ln b$
 \end{example*}
 
@@ -514,7 +514,7 @@ Goes to $0$ as $h \to 0$
   First check that $F_1'(x) = F_2'(x)$
 
   \[F_2'(x) = \frac{1}{x}\]
-  \[F_1'(x) = \log'(xy) \frac{\mathrm{d}}{\mathrm{d}x}(xy) = \frac{1}{xy}y=\frac{1}{x}\]
+  \[F_1'(x) = \log'(xy) \frac{d}{dx}(xy) = \frac{1}{xy}y=\frac{1}{x}\]
   \[F_1(x) = F_2(x) + C(y)\]
   \underline{know} $\log 1 = 0$, by the definition
   \begin{align*}
@@ -530,15 +530,15 @@ Range of log
   \item Want $\lim\limits_{x\to \infty} \log x = \infty$, $\lim\limits_{x\to 0^+} \log x = -\infty$
 \end{itemize}
 \begin{align*}
-  \log(2^N) &= \int_1^{2^N} \frac{1}{t}\,\mathrm{d}t \\
-  &= \int_1^2 + \int_2^4 + \int_{2^2}^{2^3} + \cdots + \int_{2^{N-1}}^{2^N} \frac{1}{t}\,\mathrm{d}t\\
-  &= \sum_{K=1}^N \int_{2^{K-1}}^{2^K} \frac{1}{t}\,\mathrm{d}t,\, \int_{2^{K-1}}^{2^K} \frac{1}{t}\,\mathrm{d}t \ge \int_{2^{K-1}}^{2^K} \frac{1}{2^K}\,\mathrm{d}t =\frac{1}{2}\\
-  \implies \int_1^{2^N} \frac{1}{t}\,\mathrm{d}t &\ge \frac{1}{2}N\\
+  \log(2^N) &= \int_1^{2^N} \frac{1}{t}\,dt \\
+  &= \int_1^2 + \int_2^4 + \int_{2^2}^{2^3} + \cdots + \int_{2^{N-1}}^{2^N} \frac{1}{t}\,dt\\
+  &= \sum_{K=1}^N \int_{2^{K-1}}^{2^K} \frac{1}{t}\,dt,\, \int_{2^{K-1}}^{2^K} \frac{1}{t}\,dt \ge \int_{2^{K-1}}^{2^K} \frac{1}{2^K}\,dt =\frac{1}{2}\\
+  \implies \int_1^{2^N} \frac{1}{t}\,dt &\ge \frac{1}{2}N\\
 \end{align*}
-$\displaystyle\log(2^{-N}) = \int_1^{2^{-N}} \frac{1}{t}\,\mathrm{d}t =-\int_{2^{-N}}^1 \frac{1}{t}\,\mathrm{d}t$
+$\displaystyle\log(2^{-N}) = \int_1^{2^{-N}} \frac{1}{t}\,dt =-\int_{2^{-N}}^1 \frac{1}{t}\,dt$
 
-want to show $\displaystyle\int_{2^{-N}}^1 \frac{1}{t}\,\mathrm{d}t \to \infty$ if $N \to \infty$
-\[\int_{2^{-N}}^1 \frac{1}{t}\,\mathrm{d}t = \sum_{K=1}^{N} \int_{2^{-K}}^{2^{1-K}} \frac{1}{t}\,\mathrm{d}t,\, \int_{2^{-K}}^{2^{1-K}} \frac{1}{t}\,\mathrm{d}t \ge \int_{2^{-K}}^{2^{1-K}} \frac{1}{2^{1-K}}\,\mathrm{d}t = \frac{1}{2}\]
+want to show $\displaystyle\int_{2^{-N}}^1 \frac{1}{t}\,dt \to \infty$ if $N \to \infty$
+\[\int_{2^{-N}}^1 \frac{1}{t}\,dt = \sum_{K=1}^{N} \int_{2^{-K}}^{2^{1-K}} \frac{1}{t}\,dt,\, \int_{2^{-K}}^{2^{1-K}} \frac{1}{t}\,dt \ge \int_{2^{-K}}^{2^{1-K}} \frac{1}{2^{1-K}}\,dt = \frac{1}{2}\]
 \[ \implies \log(2^{-N}) \le -\frac{1}{2}N\]
 
 We define $e$ as the unique $x$ for which $\log x = 1$
@@ -572,36 +572,36 @@ $\exp(n) = \exp(1 + 1 + \dotsc + 1) = (\exp(1))^n = e^n$
 \section{Review version of FTC}
 
 $f$ is integrable on $[a, b]$
-\[A(x) = \int_a^x f(t)\,\mathrm{d}t \implies A \text{ is a continuous function}\]
+\[A(x) = \int_a^x f(t)\,dt \implies A \text{ is a continuous function}\]
 
 \underline{FTC} If $c \in [a, b]$ and $f$ is continuous at $c$ then $A$ is differentiable at $c$ and $A'(c) = f(c)$
 
 Compute
 \[\frac{A(c+h) - A(c)}{h} = \frac{1}{h}\left[\int_a^{c+h}f - \int_a^c f\right] = \frac{1}{h}\int_c^{c+h}f \]
-\[\frac{A(c+h) - A(c)}{h} - f(c) = \frac{1}{h}\int_c^{c+h}\left[f(t) - f(c)\right]\,\mathrm{d}t\]
+\[\frac{A(c+h) - A(c)}{h} - f(c) = \frac{1}{h}\int_c^{c+h}\left[f(t) - f(c)\right]\,dt\]
 Compute for $h < 0$ ($-h = |h|$ if $h < 0$)
 
-\[ \frac{A(c+h) - A(c)}{h} = \frac{1}{h} \left(-\int_{c+h}^c f(t)\,\mathrm{d}t\right) = \frac{1}{|h|}\int_{c-|h|}^{c}f(t)\,\mathrm{d}t\]
+\[ \frac{A(c+h) - A(c)}{h} = \frac{1}{h} \left(-\int_{c+h}^c f(t)\,dt\right) = \frac{1}{|h|}\int_{c-|h|}^{c}f(t)\,dt\]
 
-Let $\displaystyle G(x) = \int_x^b f(t)\,\mathrm{d}t$, Assume $f$ is continuous
+Let $\displaystyle G(x) = \int_x^b f(t)\,dt$, Assume $f$ is continuous
 
 if $h > 0$
 \[\frac{G(x+h) - G(x)}{h} = \frac{1}{h}\left[\int_{x+h}^b f - \int_x^h f\right] = \frac{1}{h}\left(-\int_x^{x+h}f\right) = -\frac{1}{h}\int_x^{x+h}f\]
 if $h < 0$
 \[\frac{G(x+h) - G(x)}{h} = \frac{1}{h}\left[\int_{x+h}^b f - \int_x^h f\right] = \frac{1}{h}\int_{x+h}^{x}f = -\frac{1}{|h|}\int^x_{x-|h|}f\]
 
-\[\left.\frac{\mathrm{d}}{\mathrm{d}x}\int_x^b f(t)\mathrm{d}t\right|_{x=c} = -f(c)\]
+\[\left.\frac{d}{dx}\int_x^b f(t)dt\right|_{x=c} = -f(c)\]
 $a < b$
-\[\int_b^a f(t)\,\mathrm{d}t = -\int_a^b f(t)\,\mathrm{d}t\]
+\[\int_b^a f(t)\,dt = -\int_a^b f(t)\,dt\]
 
 \begin{theorem*}[Second version of FTC]
   Given a function $g$ which is differentiable on $[a, b]$ and assume $g'$ is continuous function
   Then 
-  \[\int_a^b g'(t)\,\mathrm{d}t = g(b) - g(a)\]
+  \[\int_a^b g'(t)\,dt = g(b) - g(a)\]
 \end{theorem*}
 
 \begin{proof}
-  \underline{Goal} $\displaystyle F(x) = \int_a^x g'(t)\,\mathrm{d}t$ and $G(x) = g(x) - g(a)$ is the same function
+  \underline{Goal} $\displaystyle F(x) = \int_a^x g'(t)\,dt$ and $G(x) = g(x) - g(a)$ is the same function
 
   Apply FTC (main version) we get $F'(x) = g'(x)$ and $G'(x) = g'(x)$
 
@@ -610,7 +610,7 @@ $a < b$
 
 \begin{theorem*}[More sophisticated version of the second FTC]
   let $g$ be a function on $[a, b]$ which is differentiable such that $g'$ is integrable then 
-  \[\int_a^b g'(t)\,\mathrm{d}t = g(b) - g(a)\]
+  \[\int_a^b g'(t)\,dt = g(b) - g(a)\]
 \end{theorem*}
 
 \begin{proof}
@@ -631,22 +631,98 @@ $a < b$
     &= \sum_{j=1}^N g(t_j) - g(t_{j-1})\\
   \end{align*}
   \begin{align*}
-    \sum_{j=1}^{N}(g(t_j) - g(t_{j-1}) &= g(t_1) - g(t_0) + g(t_2) - g(t_1) + \dotsc + g(t_N) - g(t_{N-1})\\
+    \sum_{j=1}^{N}(g(t_j) - g(t_{j-1})) &= g(t_1) - g(t_0) + g(t_2) - g(t_1) + \dotsc + g(t_N) - g(t_{N-1})\\
     &= g(t_N) - g(t_0)\\
     &= g(b) - g(a)
   \end{align*}
-  \[L(g', P) \le \sum_{j=1}^{N}(g(t_j) - g(t_{j-1}) \le U(g', P)\]
+  \[L(g', P) \le \sum_{j=1}^{N}(g(t_j) - g(t_{j-1})) \le U(g', P)\]
   \[L(g', P) \le g(b) - g(a) \le U(g', P)\]
 \end{proof}
 
 \begin{example*}
   Assume $f$ is continuous
-  \[\frac{\mathrm{d}}{\mathrm{d}x}\int_0^{x^2} f(t) \mathrm{d}t = ?\]
-  let $\displaystyle F(w) = \int_0^w f(t)\,\mathrm{d}t$ then $\displaystyle F(x^2) = \int_0^{x^2} f(t)\,\mathrm{d}t$
+  \[\frac{d}{dx}\int_0^{x^2} f(t) dt = ?\]
+  let $\displaystyle F(w) = \int_0^w f(t)\,dt$ then $\displaystyle F(x^2) = \int_0^{x^2} f(t)\,dt$
   \begin{align*}
-    \frac{\mathrm{d}}{\mathrm{d}x}F(x^2) &= F'(x^2) \frac{\mathrm{d}}{\mathrm{d}x}x^2\\
+    \frac{d}{dx}F(x^2) &= F'(x^2) \frac{d}{dx}x^2\\
     &= f(x^2)2x\\
   \end{align*}
   Therefore
-  \[\frac{\mathrm{d}}{\mathrm{d}x}\int_0^{g(x)} f(t) \mathrm{d}t = f(g(x))g'(x)\]
+  \[\frac{d}{dx}\int_0^{g(x)} f(t) dt = f(g(x))g'(x)\]
 \end{example*}
+
+\section{Mean Value Theorem for Integrals}
+
+\begin{theorem*}
+  if $f$ is integrable on $[a, b]$ and if $m = f(x) = M$ for all $x \in [a, b]$ then
+  \[\int_a^b f(t)\, dt = (b-a)\mu \]
+  where $m \le \mu \le M$
+  (in other words $\displaystyle \frac{1}{b-a}\int_a^b f(t) \,dt = \mu$)
+\end{theorem*}
+
+\begin{proof}
+  Another way of expression 
+  \[ m(b-a) \le \int_a^b f(t)\, dt \le M(b-a)\]
+  Given any partition $P = \{a = t_0 < t_1 < \dotsc < t_N = b\}$
+  \[ L(P, f) = \sum_{j=1}^N (t_j - t_{j-1}) \overbrace{\inf_{t_{j-1} \le t \le t_j} f(t)}^{m_j(f)}\]
+  \[ U(P, f) = \sum_{j=1}^N (t_j - t_{j-1}) \overbrace{\sup_{t_{j-1} \le t \le t_j} f(t)}^{M_j(f)}\]
+  We have that for all $j$, $m_j(f) \ge m$ and $M_j(f) \le M$
+
+  We get 
+  \[L(P, f) \ge \sum_{j=1}^N (t_j - t_{j-1})m = m(b-a)\]
+  \[U(P, f) \le \sum_{j=1}^N (t_j - t_{j-1})M = M(b-a)\]
+  \[m(b-a) \le L(P, f) \le \int_a^b f(t)\, dt \le U(P, f) \le M(b-a)\]
+\end{proof}
+
+\begin{theorem*}
+  If $f$ is continuous on $[a, b]$ (thus certainly integrable) then there is a point $\xi \in [a, b]$
+  such that 
+  \[\int_a^b f(x)\,dx = (b-a)f(\xi)\]
+\end{theorem*}
+
+\begin{proof}
+  Use that a continuous function on a closed and bounded interval $[a, b]$ has a minimum and a maximum
+  Means there is a point $X_{max}$ so that $\sup_{x \in [a, b]} f = f(X_{max})$ and a point $X_{min}$ so that $\inf_{x \in [a, b]} f = f(X_{min})$.
+  We call $M = \max_{[a, b]} f(x)$ and $m = \min_{[a, b]} f(x)$ then $M$ and $m$ are in the range of $f$.
+
+  We have 
+  \[\underbrace{m}_{\text{in the range of }f} \le \frac{1}{b-a}\int_a^b f(t)\,dt \le \underbrace{M}_{\text{in the range of }f}\]
+  Use the intermediate value theorem to conclude that$\displaystyle \frac{1}{b-a}\int_a^b f(t)\,dt$ is in the range of $f$.
+  i.e. there is $\xi \in [a, b]$ such that $\displaystyle f(\xi) = \frac{1}{b-a}\int_a^b f(t)\,dt$ 
+\end{proof}
+
+Counter example if $f$ is not continuous
+
+\begin{example*}
+  $f(x) = \lfloor x \rfloor$ on $[0, 2]$
+  \[ f(x) = \begin{cases}
+  0 & \text{if }  0 \le x < 1 \\
+  1 & \text{if } 1 \le x < 2 \\ 
+  2 & \text{if } x = 2 \\  
+  \end{cases}  \]
+  \[\int_0^2 f(x)\,dx = \int_0^1 f(x)\,dx + \int_1^2 f(x)\,dx = 1 = \frac{1}{2}\underbrace{(b-a)}_{=2} \]
+\end{example*}
+
+
+\begin{theorem*}
+  Given a function $g$ that is integrable nad non-negative. 
+  Given a continuous function $f$ on $[a, b]$ 
+  \[\int_a^b f(x)g(x)\,dx = f(\xi)\int_a^b g(x)\,dx\]
+  for some $\xi \in [a, b]$, in other words
+  \[ f(\xi) = \frac{1}{\int_a^b g(x)\,dx} \displaystyle\int_a^b f(x)g(x)\,dx\]
+\end{theorem*}
+
+\begin{proof}
+  If $g(x) = 1$ for all $x$ we get the previous theorem.
+
+  Let $m = \min_{[a, b]} f$ and $M = \max_{[a, b]} f$
+  \[ \int_a^b f(x)g(x)\,dx \ge \int_a^b mg(x)\,dx = m\int_a^bg(x)\,dx\]
+  \[ \int_a^b f(x)g(x)\,dx \le \int_a^b Mg(x)\,dx = M\int_a^bg(x)\,dx\]
+  Assume $\displaystyle \int_a^b g(x)\, dx > 0$
+  \[m \le \underbrace{\frac{\displaystyle\int_a^b f(x)g(x)\,dx}{\displaystyle\int_a^b g(x) \,dx}}_{\text{this is a value } f(\xi)} \le M\]
+\end{proof}
+
+If $f$ is integrable and $f \ge 0$ everywhere.
+Suppose I know that $\int_a^b f(x)\,dx = 0$
+what can we say about $f$?
+(If $f$ is continuous implies that $f$ is a zero function)
