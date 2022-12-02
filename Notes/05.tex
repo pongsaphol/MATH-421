@@ -726,3 +726,85 @@ If $f$ is integrable and $f \ge 0$ everywhere.
 Suppose I know that $\int_a^b f(x)\,dx = 0$
 what can we say about $f$?
 (If $f$ is continuous implies that $f$ is a zero function)
+
+\begin{example*}
+  $f$ defined on $(-1, 1)$
+  \[ f(x) = \begin{cases}
+    0 & x\le 0 \\
+    x^a\sin\left(\frac{1}{x^c}\right) &  x > 0 \\
+  \end{cases}
+  \]
+  \textbf{Questions}
+  \begin{enumerate}
+    \item Is $f$ bounded?
+
+    \textbf{No}, if $a$ is negative, i.e., $a < 0, c > 0$
+
+    Bounded, there is $M$ such that $|f(x)| \le M$,
+    consider the choices of $x_k$
+    \footnote{$\sin 2k\pi = 0$ and $\sin\left(2k\pi + \frac{\pi}{2}\right) = 1$}
+    \[\frac{1}{x_k^c} = 2k\pi + \frac{\pi}{2} \iff x_k\left(\frac{1}{2k\pi + \frac{\pi}{2}}\right)^{\frac{1}{c}} (k \ge 1)\]
+    \begin{align*}
+    f(x_k) &= x_k^a (a < 0) \\ 
+      &= (2k\pi + \frac{\pi}{2})^{\overbrace{\frac{(-a)}{c}}^{a < 0}} \\
+    \end{align*}
+
+    Given $M$, I claim that for largn enough $k$ we have $|f(x_k)| > M$
+    \[ f(x_k) =\left(2k\pi + \frac{\pi}{2}\right)^b > M, 2k\pi + \frac{\pi}{2} > M^{\frac{1}{b}}\]
+    $b = \frac{(-a)}{c} > 0$
+
+    \textbf{No}, if $a < 0, c = 0$
+
+    \textbf{Yes}, if $a = 0, c \in \RR$
+
+    $a < 0, c < 0, c = -b, b > 0$
+
+    $|x^a \sin(x^b)| \le x^{a + b}\text{ for } x > 0$ \footnote{$|\sin w| \le |w|$}
+
+    If $a + b \ge 0$ (i.e., $a - c \ge 0$)
+
+    \textbf{Yes}, if $a < 0, c \le a$
+
+    \textbf{No}, if $a < 0, c > a$
+    \item Is $f$ continuous at $x = 0$?
+
+    $|x^a \sin(x^{-c})| \le x ^ {a - c}$, continuity, $\lim\limits_{x \to 0} f(x) = 0$ if $a - c > 0$
+    $\lim\limits_{x \to 0} f(x) = 0$ if $a > 0$
+
+    If $a = 0, c > 0$, $f(x) = \sin\left(\frac{1}{x^c}\right)$ for $x > 0$ 
+
+    If $x_k = \left(\frac{1}{2k\pi + \frac{\pi}{2}}\right)^{\frac{1}{c}}$ then $f(x_k) = 1$
+
+    If $x_k = \left(\frac{1}{2k\pi}\right)^{\frac{1}{c}}$ then $f(x_k) = 0$
+
+    $f$ does not have the limit $0$ as $x \to 0$ means: there exists an $\eps > 0$ such that there is no $\delta$ with $|f(x) - \underbrace{f(0)}_{=0}| < \eps$
+
+    \textbf{No} if $a \le 0, c \ge 0$
+    \item Is $f$ differentiable at $0$?
+    \[\frac{f(h) - \underbrace{f(0)}^{= 0}}{h} = \begin{cases}
+      0 & h < 0 \\ 
+      h^{a-1}\sin\left(\frac{1}{h^c}\right) & h > 0
+    \end{cases}\]
+    $\lim\limits_{h \to 0} h^{a-1}\sin\left(\frac{1}{h^c}\right) = 0$ if $a > 1$, does not exists if $a = 1$
+
+    \textbf{Yes} If $c \ge 0, a - 1 > 0$
+    \item Is $f'$ bounded?
+
+    If $a > 1$, then $f$ is differentiable and 
+    \[f'(x) = \begin{cases}
+      0 & x \le 0 \\ 
+      ax^{a-1}\sin(x^{-c}) + x^a\cos(x^{-c})(-c)x^{-c-1} & x > 0
+    \end{cases}\]
+
+    $a > 1$, unbounded $a - c - 1 \ge 0$
+
+    \textbf{Yes} If $a > 1$ and $a - c - 1 \le 0$
+    \item Is $f'$ continuous at $x = 0$?
+    \[f'(x) = \begin{cases}
+      0 & x \le 0 \\ 
+      \underbrace{ax^{a-1}\sin(x^{-c})}_{|\text{ }| \le a|x|^{a-1}} + x^a\cos(x^{-c})(-c)x^{-c-1} & x > 0
+    \end{cases}\]
+    
+    \textbf{Yes} If $a > 1$, $a - c - 1 > 0$
+  \end{enumerate}
+\end{example*}
