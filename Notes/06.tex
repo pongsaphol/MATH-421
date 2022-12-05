@@ -1,0 +1,21 @@
+\chapter{Taylor's Theorem}
+
+\begin{example*}
+  Our fundamental theorem of calculus
+  \[\int_a^x f'(t)\,dt = f(x) - f(a)\]
+
+  Meanwhile theorem for integrals
+  \[f(x) = f(a) = (x-a)f'(\xi)\]
+  (also we get this from the mean value theorem for derivatives)
+
+  Do an integration by parts, in the integral (If $f$ is differentiable twice)
+  \begin{align*}
+    \int_a^x 1 f'(t)\, dt &= \int_a^x \underbrace{\frac{d}{dx}(t-x)}_{u'}\underbrace{f'(t)}_v\, dt \\
+    &= \underbrace{(x-x)f'(x)}_{=0} - (a-x)f'(a) - \int_a^x (t-x)f''(t)\, dt \\
+    &= (x-a)f'(a) + \int_a^x (x-t)f''(t)\, dt
+  \end{align*}
+  \[f(x) - f(a) = f'(a)(x-a) + \int_a^x(x-t)f''(t)\, dt\]
+  View this formula as approximating $f(x)$ for $x$ near $a$ by $f(a) + f'(a)(x-a) + \text{ Error term}$
+
+  Error term $\displaystyle = \int_a^x (x-t) f''(t)\, dt$
+\end{example*}

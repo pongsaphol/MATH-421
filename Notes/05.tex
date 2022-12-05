@@ -722,6 +722,8 @@ Counter example if $f$ is not continuous
   \[m \le \underbrace{\frac{\displaystyle\int_a^b f(x)g(x)\,dx}{\displaystyle\int_a^b g(x) \,dx}}_{\text{this is a value } f(\xi)} \le M\]
 \end{proof}
 
+\section{Example on Function}
+
 If $f$ is integrable and $f \ge 0$ everywhere.
 Suppose I know that $\int_a^b f(x)\,dx = 0$
 what can we say about $f$?
@@ -807,4 +809,79 @@ what can we say about $f$?
     
     \textbf{Yes} If $a > 1$, $a - c - 1 > 0$
   \end{enumerate}
+\end{example*}
+
+\section{Substitution Rule}
+Rule on how to compute integrals directly reflected to chain rule
+
+\begin{theorem*}
+Given 
+\begin{enumerate}[-]
+  \item $g : [a, b]$, assuming that $g$ is differentiable and $g'$ is continuous 
+  \item $f$ which is defined on an interval containing the range of $g$, $f$ is continuous
+\end{enumerate}
+
+Then \[\displaystyle\int_a^b f(g(t))g'(t)\,dt = \int_{g(a)}^{g(b)} f(u)\,du\]
+\end{theorem*}
+
+\begin{proof}
+  Let $\displaystyle F_1(x) = \int_a^x f(g(t))g'(t)\,dt$ and $\displaystyle F_2(x) = \int_{g(a)}^{g(x)} f(u)\,du$
+
+  Since $F_1, F_2$ is continuous, so, we can compute the derivatiive
+  \[F_1'(x) = f(g(x))g'(x) \text{ by FTC} \]
+  Define $\displaystyle A(w) \int_{g(a)}^w f(u)\,du$. Then $F_2(x) = A(g(x))$
+
+  By the cain rule $F_2'(x) = A'(g(x))g'(x) = f(g(x))g'(x)$
+
+  $A(w) = f(w)$ by again FTC
+
+  We see that $F_1(x) - F_2(x)$ is constant, inparticular equal to $F_1(a) - F_2(a) = 0$
+\end{proof}
+
+\begin{example*}
+  \[\int_0^3 x \sin(x^2) \, dx\]
+  Let $g(x) = x^2$, $g'(x) = 2x$ and $g(x) = x^2$
+  \begin{align*}
+  \int_0^3 x \sin(x^2) \, dx &= \frac{1}{2} \int_0^3 2x \sin(x^2)\,dx \\
+  &= \frac{1}{2} \int_{0^2}^{3^2} \sin(u)\, du \\
+  &= \frac{1}{2}(-\cos(3^2) + \cos(0^2)) \\
+  \end{align*}
+\end{example*}
+
+\section{Integration by Parts}
+is related to the product rule
+\begin{theorem*}
+  Given $f, g$ both differentialbe, with $f', g'$ continuous in $[a, b]$
+  Then
+  \[\int_a^b f(x)g'(x)\,dx = f(b)g(b) - f(a)g(a) - \int_a^b f'(x)g(x)\,dx\]
+\end{theorem*}
+
+\begin{proof}
+  \begin{align*}
+    \int_a^b f(x)g'(x)\,dx + \int_a^b f(x)g'(x)\, dx &= \int_a^b f(x)g'(x) + f'(x)g(x)\, dx \\
+    &= \int_a^b (f(x)g(x))'\, dx \\
+    &= f(b)g(b) - f(a)g(a)
+  \end{align*}
+\end{proof}
+
+\begin{example*}
+Given a nice function $f(x)$ on an interval $[a, b]$ ($f, f'$ are continuous on $[a, b]$)
+\[\int_a^b f(x)\cos(Nx)\, dx\]
+what can we say about the size of this integral?
+
+Standard estimate: assume $a < b$, then 
+\[\left|\int_a^b f(x)\cos(Nx)\,dx\right| \le \int_a^b |f(x)|\,dx \le (b-a)\cdot \max|f|\]
+We know $N\cos Nx = (\sin Nx)'$
+\begin{align*}
+  \int_a^b f(x)\cos Nx\, dx &= \frac{1}{N} \int_a^b f(x)(\sin(Nx))'\,dx \\
+  &= \frac{1}{N}\left[f(b)(\sin(Nb)) - f(a)(\sin Na) - \int_a^b f'(x)\sin Nx\, dx\right]
+\end{align*}
+\[\left|\int_a^b f'(x)\sin Nx\, dx \right| \le (b-a)\cdot \max|f'|\]
+\end{example*}
+
+\begin{example*}
+Try to estimate 
+\begin{align*}
+  \int_A^B f(x)\sin(x^2) \,dx =  \int_A^B \frac{f(x)}{2x}\underbrace{2x\sin(x^2)}_{\frac{d}{dx}(\sin x^2)} \,dx 
+\end{align*}
 \end{example*}

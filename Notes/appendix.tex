@@ -1,0 +1,164 @@
+\chapter{Definition and Theorem}
+
+\section*{Infremum and Supremum}
+
+\begin{definition*}
+  A set $B \subseteq \RR$ is bounded below if there exists $b \in \RR$ such that $ x \ge b$ for all $x \in B$. 
+\end{definition*}
+
+\begin{definition*}
+  A set $A \subseteq \RR$ is bounded above if there exists $a \in \RR$ such that $ x \le a$ for all $x \in A$. 
+\end{definition*}
+
+\begin{definition*}
+  Let $B \subseteq \RR$ be a bounded set. We say that $b \in \RR$ is the least upper bound of $B$ ($\sup B$) if
+  \begin{enumerate}
+    \item $b$ is an upper bound of $B$.
+    \item if $b'$ is an upper bound of $B$, then $b \le b'$.
+  \end{enumerate}
+\end{definition*}
+
+\begin{definition*}
+  Let $A \subseteq \RR$ be a bounded set. We say that $a \in \RR$ is the greatest lower bound of $A$ ($\inf A$) if
+  \begin{enumerate}
+    \item $a$ is an lower bound of $A$.
+    \item if $a'$ is an lower bound of $A$, then $a' \le a$.
+  \end{enumerate}
+\end{definition*}
+
+\section*{Limit}
+
+\begin{definition*}
+  $\lim\limits_{x\to a} f(x) = l$ means: for any $\eps > 0$, there exists $\delta > 0$ such that $0 < |x-a| < \delta$, then $|f(x)-l| < \eps$.
+\end{definition*}
+
+\begin{definition*}
+  $\lim\limits_{x \to a^+} f(x) = l$ means: for any $\eps > 0$, there exists $\delta > 0$ such that $0 < x-a < \delta$, then $|f(x)-l| < \eps$.
+\end{definition*}
+
+\begin{definition*}
+  $\lim\limits_{x \to a^-} f(x) = l$ means: for any $\eps > 0$, there exists $\delta > 0$ such that $0 < a-x < \delta$, then $|f(x)-l| < \eps$.
+\end{definition*}
+
+\section*{Continuous}
+
+\begin{definition*}
+  Let $f: \RR \to \RR$.
+  $f$ is continuous at $a$ if $\lim\limits_{x \to a} f(x) = f(a)$.
+\end{definition*}
+
+\begin{definition*}
+  Let $f: \RR \to \RR$, and $a < $ be real numbers.
+  \begin{enumerate}
+    \item We say $f$ is continuous on $(a, b)$ if $f$ is continuous at $x$ for every $x \in (a, b)$
+    \item We say $f$ is continuous on $[a, b]$ if $f$ is continuous on $(a, b)$ and $\lim\limits_{x \to a^+} f(x) = f(a)$ and $\lim\limits_{x \to b^-} f(x) = f(b)$.
+  \end{enumerate}
+\end{definition*}
+
+\section*{3 Hard theorems}
+
+\begin{theorem*}[Intermediate Value Theorem]
+  Let $f : \RR \to \RR$ be continuous on $[a, b]$ for $a < b$. Suppose $f(a) < 0 < f(b)$ then there exists $\xi \in (a, b)$ such that $f(\xi) = 0$.
+\end{theorem*}
+
+\begin{theorem*}
+  Let $f : \RR \to \RR$ be continuous on $[a, b]$ for $a < b$. Then $f$ is bounded above on $[a, b]$.
+  i.e, there exists $M \in \RR$ such that $f(x) \le M$ for all $x \in [a, b]$.
+\end{theorem*}
+
+\begin{theorem*}
+  Let $f : \RR \to \RR$ be continuous on $[a, b]$ for $a < b$. Then there exists $\xi \in [a, b]$ such that $f(x) \le f(\xi)$ for all $x \in [a, b]$.
+  i.e., $f(\xi) = \sup \{f(x) : x \in [a, b]\}$
+\end{theorem*}
+
+\section*{Uniform Continuity}
+
+\begin{definition*}
+  Let $f : \RR \to \RR$.
+  We say that $f$ is uniformly continuous on an interval $A$ if for all $\eps > 0$, there exists $\delta = \delta(\eps) > 0$ such that
+  $|x-y| < \delta$ and $x, y \in A$ implies $|f(x)-f(y)| < \eps$.
+\end{definition*}
+
+\begin{theorem*}
+  If $f$ is continuous on $[a, b]$, then $f$ is uniformly continuous on $[a, b]$.
+\end{theorem*}
+
+\section*{Differentiation}
+
+\begin{definition*}
+  $f$ is differentiable at the point $a$ if $\lim\limits_{x \to a} \frac{f(x)-f(a)}{x-a}$ exists. We call this limit $f'(a)$.
+\end{definition*}
+
+\begin{theorem*}
+  Let $f$ be differentiable at $a$ and $f$ has a maximum at $a$. Then $f'(a) = 0$. 
+\end{theorem*}
+
+\begin{theorem*}[Rolle's Theorem]
+  If $f$ is continuous on $[a,b]$ and differentiable on $(a, b)$, and $f(a) = f(b)$, then
+  there is a number $x$ in $(a, b)$ such that $f'(x) = 0$.
+\end{theorem*}
+
+\begin{theorem*}[Mean Value Theorem]
+  If $f$ is continuous on $[a,b]$ and differentiable on $(a, b)$, then there is a number $x$ in $(a, b)$ such that
+    $f(b) - f(a) = f'(x)(b-a)$
+\end{theorem*}
+
+\section*{Inverse function}
+
+\begin{theorem*}
+  If $f$ is increasing on some interval the it has an inverse function $f^{-1}$.
+\end{theorem*}
+
+\begin{theorem*}
+  If $f$ be (strictly) increasing on $[a, b]$ and $f'(x_0)$ exists for $x_0 \in (a, b)$ and $f'(x_0) \neq 0$ then 
+  $f^{-1}$ is differentiable at $f(x_0)$ and $f^{-1}(f(x_0)) = \frac{1}{f'(x_0)}$. 
+\end{theorem*}
+
+\section*{Integration}
+\begin{definition*}[Partition]
+  A partition of $[a, b]$ (called $P$) is a finite collection of distinct numbers in $[a, b]$. 
+  which contains the end point $a$ and $b$;
+\end{definition*}
+
+\begin{definition*}[Lower Riemann Sum]
+  Let $P = \{a = x_0 < x_1 < \dotsc < x_N = b \}$ be a partition of $[a, b]$.
+  The lower Riemann sum of $f$ on $P$ is defined as
+  \[ L(f, P) = \sum_{j=1}^N (x_j - x_{j-1}) \cdot m_j \]
+  where $\displaystyle m_j = \inf_{t \in {[x_{j-1}, x_j]}} f(t)$.
+\end{definition*}
+
+\begin{definition*}[Upper Riemann Sum]
+  Let $P = \{a = x_0 < x_1 < \dotsc < x_N = b \}$ be a partition of $[a, b]$.
+  The upper Riemann sum of $f$ on $P$ is defined as
+  \[ U(f, P) = \sum_{j=1}^N (x_j - x_{j-1}) \cdot M_j \]
+  where $\displaystyle M_j = \sup_{t \in {[x_{j-1}, x_j]}} f(t)$.
+\end{definition*}
+
+\begin{theorem*}
+  If $\tilde{P} \supseteq P$ is a partition of $[a, b]$ then \[L(f, P) \le L(f, \tilde{P})\] \[U(f, P) \ge U(f, \tilde{P})\]
+\end{theorem*}
+
+\begin{theorem*}
+  Let $P_1$ and $P_2$ be partitions of $[a, b]$.
+  Let $f$ be a function which is bounded on $[a, b]$ then 
+  \[L(f, P_1) \le U(f, P_2)\]
+\end{theorem*}
+
+\begin{definition*}
+  A function $f$ which is bounded on $[a, b]$ is \textbf{integrable} on $[a, b]$ if 
+  \[\sup_P L(f, P) = \inf_P U(f, P)\]
+  In this case, this common number is called the \textbf{integral} of $f$ on $[a, b]$ and is denoted by \[\int_a^b f\].
+\end{definition*}
+
+\begin{theorem*}
+  If $f$ is bounded on $[a, b]$ then $f$ is integrable on $[a, b]$ if and only if for every $\eps > 0$ there is a partition $P$ of $[a, b]$ such that
+  \[ U(f, P) - L(f, P) < \eps \]
+\end{theorem*}
+
+\begin{theorem*}
+  If $f$ is continuous on $[a, b]$ then $f$ is integrable on $[a, b]$.
+\end{theorem*}
+
+% \begin{theorem*}
+%   Let $a < c < b$. If $f$ 
+% \end{theorem*}
