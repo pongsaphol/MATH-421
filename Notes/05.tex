@@ -827,9 +827,9 @@ Then \[\displaystyle\int_a^b f(g(t))g'(t)\,dt = \int_{g(a)}^{g(b)} f(u)\,du\]
 \begin{proof}
   Let $\displaystyle F_1(x) = \int_a^x f(g(t))g'(t)\,dt$ and $\displaystyle F_2(x) = \int_{g(a)}^{g(x)} f(u)\,du$
 
-  Since $F_1, F_2$ is continuous, so, we can compute the derivatiive
+  Since $F_1, F_2$ is continuous, so, we can compute the derivative
   \[F_1'(x) = f(g(x))g'(x) \text{ by FTC} \]
-  Define $\displaystyle A(w) \int_{g(a)}^w f(u)\,du$. Then $F_2(x) = A(g(x))$
+  Define $\displaystyle A(w) = \int_{g(a)}^w f(u)\,du$. Then $F_2(x) = A(g(x))$
 
   By the cain rule $F_2'(x) = A'(g(x))g'(x) = f(g(x))g'(x)$
 
@@ -851,7 +851,7 @@ Then \[\displaystyle\int_a^b f(g(t))g'(t)\,dt = \int_{g(a)}^{g(b)} f(u)\,du\]
 \section{Integration by Parts}
 is related to the product rule
 \begin{theorem*}
-  Given $f, g$ both differentialbe, with $f', g'$ continuous in $[a, b]$
+  Given $f, g$ both differentiable, with $f', g'$ continuous in $[a, b]$
   Then
   \[\int_a^b f(x)g'(x)\,dx = f(b)g(b) - f(a)g(a) - \int_a^b f'(x)g(x)\,dx\]
 \end{theorem*}

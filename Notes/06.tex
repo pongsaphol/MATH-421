@@ -10,7 +10,7 @@
 
   Do an integration by parts, in the integral (If $f$ is differentiable twice)
   \begin{align*}
-    \int_a^x 1 f'(t)\, dt &= \int_a^x \underbrace{\frac{d}{dx}(t-x)}_{u'}\underbrace{f'(t)}_v\, dt \\
+    \int_a^x 1 f'(t)\, dt &= \int_a^x \underbrace{\frac{d}{dt}(t-x)}_{u'}\underbrace{f'(t)}_v\, dt \\
     &= \underbrace{(x-x)f'(x)}_{=0} - (a-x)f'(a) - \int_a^x (t-x)f''(t)\, dt \\
     &= (x-a)f'(a) + \int_a^x (x-t)f''(t)\, dt
   \end{align*}
