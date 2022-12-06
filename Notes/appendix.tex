@@ -1,6 +1,6 @@
 \chapter{Definition and Theorem}
 
-\section*{Infremum and Supremum}
+\section{Infremum and Supremum}
 
 \begin{definition*}
   A set $B \subseteq \RR$ is bounded below if there exists $b \in \RR$ such that $ x \ge b$ for all $x \in B$. 
@@ -26,7 +26,7 @@
   \end{enumerate}
 \end{definition*}
 
-\section*{Limit}
+\section{Limit}
 
 \begin{definition*}
   $\lim\limits_{x\to a} f(x) = l$ means: for any $\eps > 0$, there exists $\delta > 0$ such that $0 < |x-a| < \delta$, then $|f(x)-l| < \eps$.
@@ -40,7 +40,15 @@
   $\lim\limits_{x \to a^-} f(x) = l$ means: for any $\eps > 0$, there exists $\delta > 0$ such that $0 < a-x < \delta$, then $|f(x)-l| < \eps$.
 \end{definition*}
 
-\section*{Continuous}
+\begin{definition*}
+  $\lim\limits_{x \to \infty} f(x) = l$ means: for any $\eps > 0$, there exists $R > 0$ such that $x > R$, then $|f(x)-l| < \eps$.
+\end{definition*}
+
+\begin{definition*}
+  Let $\{a_n\}_{n \in \NN}$ be a sequence of real numbers. We say that $\lim\limits_{n \to \infty} a_n = l$ if for any $\eps > 0$, there exists $N \in \NN$ such that $n > N$, then $|a_n-l| < \eps$.
+\end{definition*}
+
+\section{Continuous Function}
 
 \begin{definition*}
   Let $f: \RR \to \RR$.
@@ -55,7 +63,7 @@
   \end{enumerate}
 \end{definition*}
 
-\section*{3 Hard theorems}
+\section{3 Hard theorems}
 
 \begin{theorem*}[Intermediate Value Theorem]
   Let $f : \RR \to \RR$ be continuous on $[a, b]$ for $a < b$. Suppose $f(a) < 0 < f(b)$ then there exists $\xi \in (a, b)$ such that $f(\xi) = 0$.
@@ -71,7 +79,7 @@
   i.e., $f(\xi) = \sup \{f(x) : x \in [a, b]\}$
 \end{theorem*}
 
-\section*{Uniform Continuity}
+\section{Uniform Continuity}
 
 \begin{definition*}
   Let $f : \RR \to \RR$.
@@ -83,7 +91,7 @@
   If $f$ is continuous on $[a, b]$, then $f$ is uniformly continuous on $[a, b]$.
 \end{theorem*}
 
-\section*{Differentiation}
+\section{Differentiation}
 
 \begin{definition*}
   $f$ is differentiable at the point $a$ if $\lim\limits_{x \to a} \frac{f(x)-f(a)}{x-a}$ exists. We call this limit $f'(a)$.
@@ -103,7 +111,7 @@
     $f(b) - f(a) = f'(x)(b-a)$
 \end{theorem*}
 
-\section*{Inverse function}
+\section{Inverse function}
 
 \begin{theorem*}
   If $f$ is increasing on some interval the it has an inverse function $f^{-1}$.
@@ -114,7 +122,7 @@
   $f^{-1}$ is differentiable at $f(x_0)$ and $f^{-1}(f(x_0)) = \frac{1}{f'(x_0)}$. 
 \end{theorem*}
 
-\section*{Integration}
+\section{Integration}
 \begin{definition*}[Partition]
   A partition of $[a, b]$ (called $P$) is a finite collection of distinct numbers in $[a, b]$. 
   which contains the end point $a$ and $b$;
@@ -159,6 +167,72 @@
   If $f$ is continuous on $[a, b]$ then $f$ is integrable on $[a, b]$.
 \end{theorem*}
 
-% \begin{theorem*}
-%   Let $a < c < b$. If $f$ 
-% \end{theorem*}
+\begin{theorem*}
+  Let $a < c < b$. If $f$ is integrable on $[a, b]$, then $f$ is integrable on $[a, c]$ and on $[c, b]$.
+  Conversely, if $f$ is integrable on $[a, c]$ and on $[c, b]$, then $f$ is integrable on $[a, b]$.
+  Finally, if $f$ is integrable on $[a, b]$, then
+  \[\int_a^b f = \int_a^c f + \int_c^b f\]
+\end{theorem*}
+
+\begin{theorem*}
+  If $f$ and $g$ are integrable on $[a, b]$, then $f + g$ is integrable on $[a, b]$ and 
+  \[ \int_a^b (f + g) = \int_a^b f + \int_a^b g \]
+\end{theorem*}
+
+\begin{theorem*}
+  If $f$ is integrable on $[a, b]$, then for any number $c$, the function $cf$ is integrable on $[a, b]$ and 
+  \[ \int_a^b cf = c \cdot\int_a^b f \]
+\end{theorem*}
+
+\begin{theorem*}
+  If $f$ is integrable on $[a, b]$ and $F$ is defined on $[a, b]$ By
+  \[F(x) = \int_a^x f\]
+  then $F$ is continuous on $[a, b]$.
+\end{theorem*}
+\section{Mean Value Theorem for Integrals}
+\begin{theorem*}
+  Suppose $f$ is integrable on $[a, b]$ and that $m \le f(x) \le M$ for all $x$ in $[a, b]$.
+  Then 
+  \[m(b-a) \le \int_a^b f \le M(b-a)\]
+\end{theorem*}
+\begin{theorem*}
+  If $f$ is continuous on $[a, b]$ then there is a point $\xi \in [a, b]$ such that 
+  \[\int_a^b f = (b-a)f(\xi)\]
+\end{theorem*}
+\begin{theorem*}
+  Given a function $g$ that is integrable and non-negative. Given a continuous function $f$ on $[a, b]$ then
+  \[ \int_a^b f(x)g(x)\,dx = f(\xi)\int_a^b g(x)\,dx\]
+\end{theorem*}
+
+\section{The Fundamental Theorem of Calculus}
+
+\begin{theorem*}
+  Let $f$ be integrable on $[a, b]$, and define $F$ on $[a, b]$ by
+  \[F(x) = \int_a^x f\]
+  If $f$ is continuous at $c$ in $[a, b]$, then $F$ is differentiable at $c$ and 
+  \[F'(c) = f(c)\]
+\end{theorem*}
+
+\begin{theorem*}
+  If $f$ is integrable on $[a, b]$ and $f = g'$ for some function $g$, assume $g'$ is continuous function then 
+  \[\int_a^b f = g(b) - g(a)\]
+\end{theorem*}
+
+\begin{theorem*}
+  If $f$ is integrable on $[a, b]$ and $f = g'$ for some function $g$, then 
+  \[\int_a^b f = g(b) - g(a)\]
+\end{theorem*}
+
+\section{Rule on Integration}
+
+\begin{theorem*}[Substitution Rule]
+  If $g$ is defined on $[a, b]$ and differentiable, and $g'$ is continuous, given $f$ which is defined on an interval containing the range of $g$ and $f$ is continuous.
+  Then
+  \[\int_a^bf(g(t))g'(t)\,dt = \int_{g(a)}^{g(b)}f(u)\,du\]
+\end{theorem*}
+
+\begin{theorem*}[Integration by Parts]
+  Given $f, g$ which are differentiable, with $f'$ and $g'$ are continuous on $[a, b]$.
+  Then 
+  \[\int_a^b f(x)g'(x)\,dx = f(b)g(b) - f(a)g(a) - \int_a^b f'(x)g(x)\,dx\]
+\end{theorem*}

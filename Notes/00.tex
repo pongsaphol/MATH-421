@@ -1,9 +1,14 @@
 \chapter{Method of Proof}
 \section{Direct proof}
 some statements can be shown to be true through a direct arguement e.g. our proof of Theorem 1
-\begin{theorem}
-    hello
-\end{theorem}
+
+\section{Proving the contrapositive}
+Let $A$ and $B$ be statements. Suppose we are trying to show that $A$ implies $B$, which is written $A \implies B$,
+This is equivalent to show that $\text{not }B \implies \text{not }A$, which is written $\lnot B \implies \lnot A$.
+
+\section{Proof by contradiction}
+To prove $A \implies B$. Start by assuming that $B$ is false and show that this leads to a contradiction in $A$.
+
 \section{Proof by induction}
 the aim is to proof that a statement is true for all rational number
 \begin{enumerate}[(i)]
@@ -12,12 +17,25 @@ the aim is to proof that a statement is true for all rational number
     \item Using assumption (ii), prove the statement is true for $n+1$
     \item Conclude your proof with a sentence like "by mathematical information, the result holds for all $n\in \NN$"
 \end{enumerate}
-
 \begin{example}
     Show that $\sqrt{2} \in \RR\setminus\QQ$
 \end{example}
+\begin{example}
+    for $n \in \NN$ and $k \in \ZZ$, $\binom{n}{k}$ is denoted by
+    \[\binom{n}{k} = \begin{cases}
+        \frac{n!}{k!(n-k)!} & \text{if } k \le n \\
+        0 & \text{otherwise}
+    \end{cases}\]
+    There holds
+    \begin{enumerate}[(a)]
+        \item $\displaystyle\binom{n+1}{k} = \binom{n}{k-1} + \binom{n}{k}$
+        \item $\displaystyle\binom{n}{k}$ belongs to $\NN$ for all choices of $n$ and $k$
+        \item (binomial theorem) for all $x \in \RR$ we have 
+        $$(1+x)^n=\sum_{j=0}^{n} \binom{n}{j}x^j$$
+    \end{enumerate}
+\end{example}
 
-\begin{theorem}
+\begin{theorem}[binomial theorem]
     Let $x\in \RR$ and $n \in \NN$. Then, there holds the formula
     $$(1+x)^n=\sum_{j=0}^{n} \binom{n}{j}x^j$$
 \end{theorem}

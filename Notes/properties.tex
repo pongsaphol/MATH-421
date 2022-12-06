@@ -1,5 +1,39 @@
 \chapter{Properties of Real Number}
 
+\section{Addition Properties}
+
+\begin{enumerate}[1.]
+  \item (Associativity) Given $a, b, c \in \RR$ then $(a+b)+c = a+(b+c)$
+  \item (Additive Identity) There exists the number zero denoted by $0$ which $a + 0 = 0 +a = a, a \in \RR$
+  \item (Additive Inverse) Given any $a \in \RR$ there exists a number $(-a) \in \RR$ such that $a + (-a) = (-a) + a = 0$
+  \item (Communicativity) Given any $a, b \in \RR$ then $a + b = b + a$
+\end{enumerate}
+
+$(\RR, +)$ forms a communicative group
+
+\section{Multiplication Properties}
+\begin{enumerate}[1.]
+  \setcounter{enumi}{4}
+  \item (Associativity) Given $a, b, c \in \RR$ then $(a\cdot b)\cdot c = a\cdot (b\cdot c)$
+  \item (Additive Identity) There exists the number one denoted by $1$ which $a \cdot 1 = 1 \cdot a = a, a \in \RR$
+  \item (Additive Inverse) Given any $a\neq 0, a \in \RR$ there exists a number $a^{-1} \in \RR$ such that $a \cdot a^{-1} = a^{-1} \cdot a= 1$
+  \item (Communicativity) Given any $a, b \in \RR$ then $a \cdot b = b \cdot a$
+\end{enumerate}
+$(\RR \setminus \{0\}, \cdot)$ forms a communicative group
+\begin{enumerate}[1.]
+  \setcounter{enumi}{8}
+  \item (Distributivity) Given $a, b, c \in \RR$ then $a\cdot(b+c) = a\cdot b + a\cdot c$
+\end{enumerate}
+
+A special propertiy of $\RR$ is that it has an \textbf{ordinary}, i.e., we use the symbols $\ge, >, <, \le$
+
+\begin{enumerate}
+  \item if $a > 0$, we say $a$ is positive
+  \item if $a \ge 0$, we say $a$ is non-negative
+  \item if $a < 0$, we say $a$ is negative
+  \item if $a \le 0$, we say $a$ is non-positive
+\end{enumerate}
+
 \begin{definition}
 Given any $a\in\RR$, we define its absolute value to be
 \[ |a| =
@@ -14,3 +48,55 @@ Given any $a\in\RR$, we define its absolute value to be
 Given $a, b\in\RR$, there holds
 $$|a+b|\leq |a| + |b|$$
 \end{theorem}
+
+\begin{proof}
+  There are 4 cases to consider
+  \begin{enumerate}[(i)]
+    \item $a \ge 0, b \ge 0$
+    \item $a \ge 0, b < 0$
+    \item $a < 0, b \ge 0$
+    \item $a < 0, b < 0$ 
+  \end{enumerate}
+  \begin{enumerate}[step 1.]
+    \item since $a+b = b+a$, by exchanging the rule of $a$ and $b$ we see that (ii) $\iff$ (iii)
+
+    the case $a = 0$ in (i) is easy, since $|0 + b| = |b| = |b| + 0$ and so the inequality is satisfied
+
+    Moreover, when $a < 0, b < 0$, as in (iv), we have $(-a) > 0$ and $(-b) > 0$ and 
+    \[|a+b| = |-(a+b)| = |(-a)+(-b)|\] 
+    while $|-a| = |a|$ and $|-b| = |b|$, satisfies to prove (i)
+
+    So, it satifies to prove (i) and (ii)
+    \item We prove (i), since $a + b \ge 0$ when $a, b \ge 0$, so $|a + b| = a + b = |a| + |b|$, so, the inequality is satisfied
+    \item We prove the case which $a \ge 0, b < 0$, the case can be written in 2 subcases
+    \begin{enumerate}[(A)]
+      \item $a + b \ge 0$
+      \item $a + b < 0$
+    \end{enumerate}
+    Suppose (A) is true. then $|a + b| = a + b = |a| + b \le |a| + |b|$
+
+    Case (b) $|a +b| = -(a + b) = (-a) + (-b) \le |a| + |b|$
+  \end{enumerate}
+\end{proof}
+\section{Notation}
+\begin{itemize}
+  \item a set is a collection of number, say $\{0, \pi, -101\}$
+  We call the set $A$, for instance, and write $A = \{0, \pi, -101\}$
+
+  Given some set $B$, we write $x\in B$ if the number $x$ belongs to the set $B$, 
+  $y \notin B$ if the number $y$ does not belong to the set $B$. 
+  For instance, $0 \in A$ and $2 \notin A$
+  \item The collection of natural numbers is denoted by
+  \[\NN = \{1, 2, 3, \dotsc\}\]
+  \item There is also the collection of integers, denoted by
+  \[\ZZ = \{1, 2, 3, \dotsc\} \cup \{0\} \cup \{-1, -2, -3, \dotsc\}\]
+  \item The collection of rational numbers, denoted by
+  \[\QQ = \left\{\frac{m}{n} : m \in \ZZ; n \in \NN\right\}\]
+  \item The symbol $\setminus$ means ``minus'', e.g., if $A = \{0, 1, 2, 3, \pi\}$ and $B = \{1, \pi\}$ then $A \setminus B = \{0, 2, 3\}$
+  \item We denote the irrational numbers by $\RR \setminus \QQ$
+  \item within $\NN$, we can distinguish between the even numbers and the odd numbers, 
+  \begin{enumerate}
+    \item[even] $\{p\in\NN : p = 2q,\ \exists Q \in \NN\}$
+    \item[odd] $\{p\in\NN : p = 2q-1,\ \exists Q \in \NN\}$
+  \end{enumerate}
+\end{itemize}
