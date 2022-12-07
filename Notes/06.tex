@@ -27,10 +27,11 @@
   \item (Assumptions), $f$ is differentiable $n + 1$-times on $I$, let says $f^{(n+1)}$ is continuous on $I$
 \end{itemize}
 Therefore, 
-\[f(x) = \underbrace{\sum_{k = 0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k}_{T_N(x, a)} + \underbrace{R_n(x, a)}_{\text{``error term''}}\]
+\[f(x) = \underbrace{\sum_{k = 0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k}_{T_n(x, a)} + \underbrace{R_n(x, a)}_{\text{``error term''}}\]
 \[R_n(x, a) = \frac{(x-a)^{n+1}}{n!}\int_0^1(1-t)^nf^{(n+1)}(a + t(x-a))\, dt\]
 It can also be written as 
-\[\frac{1}{n!}\int_a^x (x-u)^nf^{(n+1)}(u)\, du\]
+\[R_n(x, a) = \frac{1}{n!}\int_a^x (x-u)^nf^{(n+1)}(u)\, du\]
+where $u = a + t(x-a)$
 
 \[T_n(x, a) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n\]
 Convention $0! = 1$
