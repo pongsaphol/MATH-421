@@ -54,7 +54,7 @@ Two form of the remainder are the same, in the second form
 
 \begin{proof}
   Checking that 
-  \[R_n(x, a) = \frac{f^{n_1}(a)}{(n+1)!}(x-a)^{n+1} R_{n+1}(x, a)\]
+  \[R_n(x, a) = \frac{f^{(n+1)}(a)}{(n+1)!}(x-a)^{n+1} R_{n+1}(x, a)\]
   Proof by Induction
 
   $n = 0$
@@ -63,13 +63,15 @@ Two form of the remainder are the same, in the second form
     &= f(0) + \int_a^x f'(u) \, du\\
   \end{align*}
   True by FTC
+
+  Let
   \[U(u) = -\frac{(x-u)^{n+1}}{n+1}\]
   \[V(u) = f^{(n+1)}(u)\]
   \begin{align*}
     R_n(x, a) &= \frac{1}{n!}\int_a^x\underbrace{(x-u)^n}_{U'(u)}\underbrace{f^{(n+1)}(u)}_{V(u)}\, du\\
-    &= \frac{1}{n!}\left[\underline{U(x)V(x)}_{=0}-U(a)V(a) -\int_a^x-\frac{(x-u)^{n+1}}{n+1}f^{(n+2)}(u)\, du\right] \\
-    &= \frac{(x-a)^{n+1}}{(n+1)!} + \int_a^x (x-u)^{n+1}f^{(n+2)}(u)\, du \\
-    &=  \frac{(x-a)^{n+1}}{(n+1)!} + R_{n+1}(x, a) 
+    &= \frac{1}{n!}\left[\underbrace{U(x)V(x)}_{=0}-U(a)V(a) -\int_a^x-\frac{(x-u)^{n+1}}{n+1}f^{(n+2)}(u)\, du\right] \\
+    &= \frac{(x-a)^{n+1}}{(n+1)!}f^{(n+1)}(u) + \int_a^x (x-u)^{n+1}f^{(n+2)}(u)\, du \\
+    &=  \frac{(x-a)^{n+1}}{(n+1)!}f^{(n+1)}(u) + R_{n+1}(x, a) 
   \end{align*}
 \end{proof}
 
