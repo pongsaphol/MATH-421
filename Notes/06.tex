@@ -19,3 +19,64 @@
 
   Error term $\displaystyle = \int_a^x (x-t) f''(t)\, dt$
 \end{example*}
+
+\section{Taylor's theorem on polynomial approximation}
+
+\begin{itemize}
+  \item Given a function defined on an interval $I$ and $a \in I$
+  \item (Assumptions), $f$ is differentiable $n + 1$-times on $I$, let says $f^{(n+1)}$ is continuous on $I$
+\end{itemize}
+Therefore, 
+\[f(x) = \underbrace{\sum_{k = 0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k}_{T_N(x, a)} + \underbrace{R_n(x, a)}_{\text{``error term''}}\]
+\[R_n(x, a) = \frac{(x-a)^{n+1}}{n!}\int_0^1(1-t)^nf^{(n+1)}(a + t(x-a))\, dt\]
+It can also be written as 
+\[\frac{1}{n!}\int_a^x (x-u)^nf^{(n+1)}(u)\, du\]
+
+\[T_n(x, a) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n\]
+Convention $0! = 1$
+
+Factorial can be written in integral term
+\[n! = \int_0^\infty t^ne^{-t}\, dt = \lim\limits_{R\to\infty} \int_0^{R}t^ne^{-t}\, dt\]
+\[\Gamma(x) = \int_0^\infty t^{x-1}e^{-t}\, dt\]
+
+If $f$ is itself a polynomial of degree $\le n$ then $R_n(x, a) = 0$
+
+Two form of the remainder are the same, in the second form 
+\begin{align*}
+  u &= a + t(x-a) (u\text{ is between } a \text{ and } x \iff t \text{ between 0 and 1})\\ 
+  du &= (x-a)\, dt
+\end{align*}
+\begin{align*}
+  \int_a^x(x-u)^nf^{(n+1)}(u)\, du &= \int_0^1(x-a -t(x-a))^nf^{(n+1)}(a + t(x-a))(x-a)\, dt \\ 
+  &= \int_0^1\left[(x-a)(1-t)\right]^nf^{(n+1)}(a + t(x-a))(x-a)\, dt \\
+  &= (x-a)^{n+1} \int_0^1(1-t)^nf^{(n+1)}(a + t(x-a))\, dt
+\end{align*}
+
+\begin{proof}
+  Checking that 
+  \[R_n(x, a) = \frac{f^{n_1}(a)}{(n+1)!}(x-a)^{n+1} R_{n+1}(x, a)\]
+  Proof by Induction
+
+  $n = 0$
+  \begin{align*}
+    f(x) &= f(0) + \frac{1}{0!}\int_a^x(x-a)^0f'(u)\, du\\
+    &= f(0) + \int_a^x f'(u) \, du\\
+  \end{align*}
+  True by FTC
+  \[U(u) = -\frac{(x-u)^{n+1}}{n+1}\]
+  \[V(u) = f^{(n+1)}(u)\]
+  \begin{align*}
+    R_n(x, a) &= \frac{1}{n!}\int_a^x\underbrace{(x-u)^n}_{U'(u)}\underbrace{f^{(n+1)}(u)}_{V(u)}\, du\\
+    &= \frac{1}{n!}\left[\underline{U(x)V(x)}_{=0}-U(a)V(a) -\int_a^x-\frac{(x-u)^{n+1}}{n+1}f^{(n+2)}(u)\, du\right] \\
+    &= \frac{(x-a)^{n+1}}{(n+1)!} + \int_a^x (x-u)^{n+1}f^{(n+2)}(u)\, du \\
+    &=  \frac{(x-a)^{n+1}}{(n+1)!} + R_{n+1}(x, a) 
+  \end{align*}
+\end{proof}
+
+In Spivak's book, there is a different representation of the remainder term
+\[R_n(x, a) = \frac{(x-a)^{n+1}}{(n+1)!}f^{(n+1)}(\xi)\]
+where $\xi$ is between $a$ and $x$
+
+Apply the second mean value 23, ch.13
+
+\[\int_a^x (x-u)^nf^{(n+1)}u\, du = f^{(n+1)}(\xi) \underbrace{\int_a^x (x-u)^n \, du}_{\frac{(x-a)^{n+1}}{n+1}}\]
