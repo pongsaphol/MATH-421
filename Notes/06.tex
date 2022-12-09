@@ -55,13 +55,13 @@ Two form of the remainder are the same, in the second form
 
 \begin{proof}
   Checking that 
-  \[R_n(x, a) = \frac{f^{(n+1)}(a)}{(n+1)!}(x-a)^{n+1} R_{n+1}(x, a)\]
+  \[R_n(x, a) = \frac{f^{(n+1)}(a)}{(n+1)!}(x-a)^{n+1} + R_{n+1}(x, a)\]
   Proof by Induction
 
   $n = 0$
   \begin{align*}
-    f(x) &= f(0) + \frac{1}{0!}\int_a^x(x-a)^0f'(u)\, du\\
-    &= f(0) + \int_a^x f'(u) \, du\\
+    f(x) &= f(a) + \frac{1}{0!}\int_a^x(x-a)^0f'(u)\, du\\
+    &= f(a) + \int_a^x f'(u) \, du\\
   \end{align*}
   True by FTC
 
@@ -83,3 +83,94 @@ where $\xi$ is between $a$ and $x$
 Apply the second mean value 23, ch.13
 
 \[\int_a^x (x-u)^nf^{(n+1)}u\, du = f^{(n+1)}(\xi) \underbrace{\int_a^x (x-u)^n \, du}_{\frac{(x-a)^{n+1}}{n+1}}\]
+
+\section{Exponential Function}
+
+$\exp$ it is the unique differentiable function such $\exp'(x) = \exp(x)$ and $\exp(0) = 1$
+
+For $x > 0$, $\displaystyle\log(x) = \int_1^x \frac{1}{t}\, dt$, $\log: (0, \infty) \to \RR, \log'(x) = \frac{1}{x} > 0$
+
+$\log^{-1} = \exp, \exp(x) = e^x, \exp(1) = e$
+
+We say $e$ is the unique number $b > 1$ for which $\displaystyle\int_1^b \frac{1}{t}\, dt = 1$
+
+Taylor's formula for the Exponential function
+
+\[e^x = P_n(x) + R_n(x, 0)\]
+\[P_n(x) = \sum_{k=0}^n \frac{1}{k!}x^k\]
+\[R_n(x, 0) = \frac{x^{n+1}}{(n+1)!}e^{\xi}\]
+where $\xi$ is between $0$ and $x$
+
+\begin{theorem*}
+  The number $e$ is irrational
+
+\end{theorem*}
+\begin{proof}
+  Assume that $e = \frac{p}{q}$ with integers $p, q$ where $q \ge 3$
+  (we want to show a contraction to this assumption)
+
+  \begin{align*}
+    e^1 &= \sum_{k=0}^{q} \frac{1}{k!}1^k + \frac{e^\xi}{(q+1)!}1^{q+1} \text{ and $\xi$ is between $0$ and $1$ }\\
+    \frac{p}{q}&= \sum_{k=0}^{q} \frac{1}{k!} + \frac{e^\xi}{(q+1)!}\\
+    \frac{p}{q}q! &= q!\sum_{k=0}^{q} \frac{1}{k!} + \frac{e^\xi}{(q+1)}\\
+  \end{align*}
+  $\frac{pq!}{q}$ is an integer.
+  $\frac{q!}{k!}$ is an integer for $k \le q$.
+  Since $e^\xi < 3$ then $0 < \frac{e^\xi}{q+1} < 1$
+\end{proof}
+You could prove with a similar argument that $\cos 1, \sin 1$ are irrational
+
+\[e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dotsc + \frac{x^n}{n!} + R_n(x, 0)\]
+\[\cos^{(k)}(0) = \begin{cases}
+  \cos(0) = 1 & k = 4p\\
+  -\sin(0) = 0 & k = 4p + 1\\
+  -\cos(0) = -1 & k = 4p + 2\\
+  \sin(0) = 0 & k = 4p + 3
+\end{cases}\]
+\[\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \dotsc \]
+\[\sin^{(k)}(0) = \begin{cases}
+  \sin(0) = 0 & k = 4p\\
+  \cos(0) = 1 & k = 4p + 1\\
+  -\sin(0) = 0 & k = 4p + 2\\
+  -\cos(0) = -1 & k = 4p + 3
+\end{cases}\]
+\[\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \dotsc \]
+Formally
+\begin{align*}
+  e^{ix} &= 1 + ix + \frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \dotsc \\
+  &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \frac{x^8}{8!} + \dotsc + i\left( x - \frac{x^3}{3!} + \frac{x^5}{5!} + \dotsc \right)\\
+  e^{ix} &= \cos x + i\sin x
+\end{align*}
+
+\begin{example*}
+  $x > 0$
+  \[\int_0^x \frac{\sin t}{t}\, dt\]
+
+  Can we approximate this by a polynomial with a good estimate on the error?
+\end{example*}
+
+Strategy: Use Taylor's formula for the integral (in a smart way)
+
+\begin{align*}
+  \sin x &= x - \frac{x^3}{3!} + R_4(x, 0), R_4(x) = \frac{\sin^(4)(\xi)}{4!}x^k \\
+  &= x - \frac{x^3}{3!} + R_5(x, 0), R_5(x) = \frac{\cos \xi}{5!}x^5 \\ 
+\end{align*}
+
+\begin{align*}
+  \int_0^x \frac{\sin t}{t}\, dt &= \int_0^x \frac{1}{t}\left(t - \frac{t^3}{6} + R_5(t, 0) \right)\, dt \\
+  &= \int_0^x \left(1 - \frac{t^2}{6}\right)\,dt + \int_0^x \frac{R_5(t, 0)}{t}\, dt \\
+  &= x-\frac{x^3}{16} + E(x) \\
+  \frac{|R_5(t, 0)|}{|t|}&\le \frac{|t|^5}{5!}\cdot\frac{1}{|t|} = \frac{t^4}{5!} 
+\end{align*}
+
+For $x \ge 0$
+\[\left|\int_0^x \frac{R_5(t, 0)}{t} \, dt \right|\le \int_0^x \frac{t^4}{5!} = \frac{x^5}{5\cdot5!} = \frac{x^5}{600}\]
+For $x \le 0$
+
+\[\left|\int_0^x \frac{R_5(t, 0)}{t} \, dt\right| \le \frac{|x|^5}{600}\]
+
+
+
+
+% \[\gamma = \sum_{k=1}^n \frac{1}{k} - \ln n\]
+% (Euler Mascheroni-constant) Q: Is $\gamma$ irrational?
