@@ -82,7 +82,7 @@ where $\xi$ is between $a$ and $x$
 
 Apply the second mean value 23, ch.13
 
-\[\int_a^x (x-u)^nf^{(n+1)}u\, du = f^{(n+1)}(\xi) \underbrace{\int_a^x (x-u)^n \, du}_{\frac{(x-a)^{n+1}}{n+1}}\]
+\[\int_a^x (x-u)^nf^{(n+1)}(u)\, du = f^{(n+1)}(\xi) \underbrace{\int_a^x (x-u)^n \, du}_{\frac{(x-a)^{n+1}}{n+1}}\]
 
 \section{Exponential Function}
 
@@ -152,8 +152,8 @@ Formally
 Strategy: Use Taylor's formula for the integral (in a smart way)
 
 \begin{align*}
-  \sin x &= x - \frac{x^3}{3!} + R_4(x, 0), R_4(x) = \frac{\sin^(4)(\xi)}{4!}x^k \\
-  &= x - \frac{x^3}{3!} + R_5(x, 0), R_5(x) = \frac{\cos \xi}{5!}x^5 \\ 
+  \sin x &= x - \frac{x^3}{3!} + R_3(x, 0), R_3(x) = \frac{\sin^{(4)}(\xi)}{4!}x^4 \\
+  &= x - \frac{x^3}{3!} + R_4(x, 0), R_4(x) = \frac{\cos^{(5)} (\xi)}{5!}x^5 \\ 
 \end{align*}
 
 \begin{align*}
