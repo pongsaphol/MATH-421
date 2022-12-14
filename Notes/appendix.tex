@@ -201,6 +201,7 @@
 \end{theorem*}
 \begin{theorem*}
   Given a function $g$ that is integrable and non-negative. Given a continuous function $f$ on $[a, b]$ then
+  there is a point $\xi \in [a, b]$ such that 
   \[ \int_a^b f(x)g(x)\,dx = f(\xi)\int_a^b g(x)\,dx\]
 \end{theorem*}
 
@@ -236,3 +237,16 @@
   Then 
   \[\int_a^b f(x)g'(x)\,dx = f(b)g(b) - f(a)g(a) - \int_a^b f'(x)g(x)\,dx\]
 \end{theorem*}
+
+\section{Taylor's Theorem}
+Given $f$ which is differentiable $n+1$-time, i.e, $f^{(n+1)}$ is continuous 
+\[f(x) = T_n(x, a) + R_n(x, a)\]
+where 
+\[T_n(x, a) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^n\]
+and
+\begin{align*}
+  R_n(x, a) &= \frac{(x-a)^{(n+1)}}{n!}\int_0^1(1-t)^nf^{(n+1)}(a+t(x-a))\, dt \\
+  &= \frac{1}{n!}\int_a^u(x-u)^nf^{(n+1)}(u)\, du \\
+  &= \frac{(x-a)^{n+1}}{(n+1)!}f^{(n+1)}(\xi) \\
+\end{align*}
+where $\xi \in [a, u]$

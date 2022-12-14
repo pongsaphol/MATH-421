@@ -1,1 +1,206 @@
 \chapter{Practice Problems}
+
+\newtheorem{innercustomthm}{Question}
+\newenvironment{question}[1]
+  {\renewcommand\theinnercustomthm{#1}\innercustomthm}
+  {\endinnercustomthm}
+\section{Review for Final Exam}
+\begin{question}{1}
+  \text{}
+  \begin{enumerate}[(i)]
+    \item Let $A, B$ be subsets of $\RR$ such that for all $a \in A$ and all $b \in B$ we
+    have $a \le b$. Prove that $\sup A \le \inf B$.
+    \item Let $A, B$ be subsets of $\RR$ such that for all $a \in A$ and all $b \in B$ we
+    have $a < b$. Is it necessarily true that $\sup A < \inf B$? Give a proof or a
+    counterexample. 
+    \item Let $A, B$ be subsets of $\RR$ such that there exists a
+    $\delta > 0$ with the property that for all $a \in A$ and all $b \in B$ we have $a < b - \delta$.
+    Is it necessarily true that $\sup A < \inf B$? Give a proof or a counterexample.
+  \end{enumerate}
+\end{question}
+
+\begin{proof}
+  \text{}
+  \begin{enumerate}[(i)]
+    \item strategy: $\sup A \le b$ for all $b \in B$.
+
+    $\sup A$ is the least upper bound for $A$ (no smaller number can be an upper bound)
+
+    Proof by contradiction. 
+    Suppose we have $b < \sup A$, so $b$ is not an upper bound for $A$, so there exists an $a \in A$ 
+    such that $b < a$
+
+    We now know that $\sup A$ is a lower bound for $B$.
+
+    Assume $\sup A > \inf B = \text{greatest lower bound for } B$, so any number $ > \inf B$ cannot be a lower bound for $B$.
+    Therefore, $\sup A$ cannot be a lower bound for $B$.
+    So, we get a contradiction.
+    \item $A = (0, 1)$, $B = (1, 2)$
+    \item 
+  \end{enumerate}
+\end{proof}
+
+\begin{question}{6}
+  What should be the correct definitions for
+  \[\lim\limits_{x \to a^+} f(x) = b\]
+  Consider the function given by
+  \[f(x)\begin{cases}
+    x^2 & \text{for } x > a\\
+    (x-1)^2 & \text{for } x \le a
+  \end{cases}\]
+\end{question}
+
+Given $\eps > 0$ there is $\delta > 0$ such that for all $a < x < a + \delta$ we have $|f(x) - b| < \eps$
+
+$\lim\limits_{x \to a^+} f(x) = a^2$
+\begin{proof}
+  For $x > a$
+  \[|f(x) - a^2| = |x^2 - a^2| = |(x-a)(x+a)| \le |x-a| (2|a| + 1)\]
+  If $|x - a| \le 1$, $|x + a| \le |x| + |a| \le 2|a| + 1$
+
+  For $|x-a| < \frac{\eps}{2|a| + 1} = \delta$ we have $|f(x) - a^2| < \eps$
+\end{proof}
+
+$\lim\limits_{x \to a^-} f(x) = (a-1)^2$
+
+$\lim\limits_{x \to a} f(x)$ does not exist if $a^2 \neq (a-1)^2$ (unless $a = \frac{1}{2}$)
+(if $a^2 = (a-1)^2 = a^2 - 2a + 1$)
+
+\begin{question}{7}
+  What should be the correct definition for
+  \[\lim\limits_{x \to \infty} f(x) = b\]
+  Using this definition find
+  \[\lim\limits_{x \to \infty} \frac{2x - 50}{x - 1}\] 
+\end{question}
+
+Given $\eps > 0$ there is and $R(\eps)$ such that $|f(x) - b| < \eps$ for $x > R$
+
+\begin{align*}
+\frac{2x-50}{x-1} &= \frac{2 - \frac{50}{x}}{1 - \frac{1}{x}}\\
+\frac{2 - \frac{50}{x}}{1 - \frac{1}{x}} - 2 &= \frac{2 - \frac{50}{x} -2 + \frac{2}{x}}{1 - \frac{1}{x}}\\
+&= \frac{-\frac{48}{x}}{1 - \frac{1}{x}}\\
+\end{align*}
+
+
+% $f(x) = O(x^2)$ if there exists an interval containing $0$ and $c$ such that 
+% \[|f(x)| \le C|x^2|\]
+
+\begin{question}{14}
+  $f'(x) = mf(x)$, $Ce^{mx}$ is a solution
+  \begin{align*}
+    (g(x)e^{-mx})' &= g'(x)e^{-mx} + g(x)(-m)e^{-mx} \\
+    &= (g'(x)-mg(x))e^{-mx} = 0 \\
+    g(x)e^{-mx} &= C \\
+    g(x) &= Ce^{mx} \\ 
+    g(1) &= Ce^m \\
+  \end{align*}
+  
+\end{question}
+
+\begin{question}{17}
+  solution will be posted on Canvas
+\end{question}
+
+\begin{question}{18}
+  Let $f$ be integrable on $[a,b]$. Let $g : [a,b] \to\RR$be a bounded function
+such that $f(x) = g(x)$ for all except possibly finitely many $x$. Prove that $g$
+is integrable on $[a,b]$ and $\int_a^b f(x) dx = \int_a^b g(x) dx$ 
+\end{question}
+
+\begin{proof}
+  Call $c_1 < c_2 < \dotsc < c_L$ be point that make $g$ not continuous
+  Suppose that $|f(x), g(x)| < M$
+
+  The difference between between $f, g$ will not larger than $M\delta L$, so, we can pick $\delta$ as small as we want
+
+\end{proof}
+
+\begin{question}{19}
+  Let $0 < \delta < 1/2$. Give an estimate for.
+  \[\left|\int_{-\delta}^{\delta} (1+x^m)^{-1}\, dx -2\delta\right|\] 
+\end{question}
+
+\begin{align*}
+  f(t) &= \frac{1}{1+t}\\
+  f'(t) &= -\frac{1}{(1+t)^2}, f'(0) = -1 \\
+  f''(t) &= \frac{2}{(1+t)^3} \\
+  f(t) &= 1 - t + r(t) \\
+  r(t) &= \frac{f''(\xi)}{2!}t^2 \\
+  |r(t)| &\le \frac{t^2}{2}\max|f''| \\
+\end{align*}
+$\frac{1}{1+x^m} = 1-x^m + r(x^m)$ where $|x| \le \delta$ $|x|^m \le \delta^m$ then 
+
+\[|f''(\xi)| \le \frac{2}{1-\delta^m} < \frac{2}{1-\frac{1}{2}} = 4\]
+\[|r(t)| \le \frac{t^2}{2}\max|f''| \le 4\cdot\frac{t^2}{2} = 2t^2 \]
+
+\begin{align*}
+  \int_{-\delta}^{\delta} (1+x^m)^{-1}\, dx -2\delta &= \int_{-\delta}^{\delta} 1-x^m \, dx +\int_{-\delta}^{\delta} r(x^m)\, dx \\
+  &= 2\delta - \left(\frac{\delta^{m+1}}{m+1} - \frac{(-\delta)^{m+1}}{m+1}\right) + \text{Error} \\
+  \text{Error} &\le \int_{-\delta}^{\delta} 2x^{2m}\, dx = 2\cdot 2\cdot\frac{\delta^{2m + 2}}{2} \\
+\end{align*}
+
+\begin{question}{20}
+  \text{}
+  \begin{enumerate}[(i)]
+    \item $\lim\limits_{x \to 0} \frac{x - \sin x}{x\sin^2 x}$
+    \item $\lim\limits_{x \to 0} \frac{1}{\sin x} - \frac{1}{x}$
+    \item $\lim\limits_{x \to 0} \frac{\sin(x^2)}{\sin(3x)^2}$
+  \end{enumerate} 
+\end{question}
+
+  \begin{enumerate}[(i)]
+    \item 
+    \[x - \sin x = x - \left(x - \frac{x^3}{3!} + o(x^4)\right)\]
+    \begin{align*}
+      x(\sin x)^2 &= x\left(x - \frac{x^3}{6} + o(x^4)\right)^2 \\
+      &= x(x^2 + o(x^4))
+    \end{align*}
+    \begin{align*}
+      \frac{x - \sin x}{x\sin^2 x} &= \frac{\frac{x^3}{3!} + o(x^4)}{x^3 + o(x^4)} \\
+      &= \frac{\frac{1}{3!} + o(x)}{1 + o(x)} \\
+    \end{align*}
+    \item \begin{align*}
+      \frac{1}{\sin x} - \frac{1}{x} &= \frac{x - \sin x}{x \sin x} \\
+      &= \frac{\frac{x^3}{6} + o(x^4)}{x(x + o(x^3))} \\
+      &= \frac{-\frac{x}{6} + o(x^2)}{1+o(x^2)} \\
+    \end{align*}
+    \item \begin{align*}
+      \sin(x^2) &= x^2 + o(x^4) \\
+      \sin(3x)^2 &= \left(3x - \frac{(3x)^3}{6} + o(x^4)\right)^2 \\
+      &= 9x^2 + o(x^3) \\
+    \end{align*}
+  \end{enumerate} 
+\begin{proof}
+\end{proof}
+
+\section{Previous Final Exam}
+
+\begin{question}{4}
+  Let $1 < m < n$. Prove that 
+  \[\sum_{k=m}^n \frac{1}{k^2} = \frac{1}{m^2} +\dotsc + \frac{1}{n^2}\] 
+  is between $0$ and $\frac{1}{m-1}$
+\end{question}
+
+\begin{proof}
+ \[ \sum_{k=m}^n \frac{1}{k^2} = \frac{1}{m^2} +\dotsc + \frac{1}{n^2} < \int_{m-1}^{n} \frac{1}{x^2} \,dx\]
+ \[0 \le L(P, f) \le \int_{m-1}^n\frac{1}{x^2} = \frac{1}{m-1} - \frac{1}{n} < \frac{1}{m-1}\]
+\end{proof}
+
+\begin{question}{6}
+  $f$ is continuous and $f(1) = 5$
+  \[H(x) = 3 + \int_1^{x^4} (2+f(t))\, dt\] 
+\end{question}
+
+\begin{align*}
+  A(x) &= 3 + \int_1^{x} (2+f(t))\, dt \\
+  A'(x) &= 2 + f(x) \\
+  \frac{d}{dx} A(x^4) &= A'(x^4)4x^3 \\
+  H'(x)&= (2+ f(x^4))4x^3 \\
+  H'(1) &= (2 + 5)\cdot 4 \\
+      &= 28 > 0 \\
+\end{align*}
+\begin{align*}
+  H(1) &= 3 \\
+  H^{-1}(3) &= 1 \\ 
+  (H^{-1})'(3) &= \frac{1}{H'(1)} \\
+\end{align*}
